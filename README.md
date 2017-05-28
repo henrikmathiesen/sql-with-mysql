@@ -8,7 +8,7 @@ To my understanding as of right know (as a beginner), SQL for the most part is t
 
 ## This project
 
-I'am going to install MySQL and following along 2 courses using the command prompt, trying to note in this read me as I go. If time permits we might also build a little node api querying the database.
+I'am going to install MySQL and follow along 2 courses using the command prompt, trying to note in this read me as I go. If time permits we might also build a little node api querying the database.
 
 https://www.youtube.com/watch?v=yPu6qV5byu4  
 https://app.pluralsight.com/library/courses/introduction-to-sql
@@ -17,7 +17,6 @@ https://app.pluralsight.com/library/courses/introduction-to-sql
 
 We are going to start here: https://dev.mysql.com/doc/mysql-getting-started/en/
 
-I installed the server, workbench and shell as a custom installation. There were alot of other things, like connectors, but those can be installed later if needed.  
-https://dev.mysql.com/downloads/
+I installed the server, workbench and shell as a custom installation. There were alot of other things, like connectors, but those can be installed later if needed. https://dev.mysql.com/downloads/
 
 The syntax to connect with the shell I downloaded (https://dev.mysql.com/downloads/shell/) was a little bit different than whats described in the getting started. There is also a GUI application, the so called work bench.
