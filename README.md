@@ -19,3 +19,5 @@ We are going to start here: https://dev.mysql.com/doc/mysql-getting-started/en/
 
 I installed the server, workbench and shell as a custom installation. There were alot of other things, like connectors, but those can be installed later if needed.  
 https://dev.mysql.com/downloads/
+
+The syntax to connect with the shell I downloaded (https://dev.mysql.com/downloads/shell/) was a little bit different than whats described in the getting started. There is also a GUI application, the so called work bench.
