@@ -8,7 +8,7 @@ To my understanding as of right know (as a beginner), SQL for the most part is t
 
 ## This project
 
-I'am going to install MySQL and follow along 2 courses using the command prompt, trying to note in this read me as I go. If time permits we might also build a little node api querying the database.
+I'am going to install MySQL and follow along some courses, trying to note in this read me as I go. If time permits we might also build a little node api querying the database.
 
 https://www.youtube.com/watch?v=yPu6qV5byu4  
 https://app.pluralsight.com/library/courses/introduction-to-sql
