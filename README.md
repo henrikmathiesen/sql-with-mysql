@@ -56,6 +56,8 @@ Column names will never repeat inside of one database, that includes primary key
 
 #### Names in SQL are scoped
 
+Can be relevant if columns have the same name in different tables.
+
 Database.Table , Table.Column
 
 #### Creating a Database
@@ -65,7 +67,7 @@ USE DATABASE Products;
 
 Creates a database and switches the context to it, so for example a SELECT statement is run against that database.
 
-CREATE TABLE Products.Game (...);
+CREATE TABLE Products.Game (...); or just: CREATE TABLE Game (...); If already in the context of Products DB.
 
 Creates a table Game under the Products database, with column definitions in parentheses.
 
