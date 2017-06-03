@@ -29,6 +29,42 @@ One thing of note is the already created database "sys" (seen in the left panel)
 
 ## Lets dive in ...
 
-### Relational Database Basics
+### Database Basics
 
+A database is a container that help us organize data, most useful when we have a lot of data. We can query, update, insert and delete the data in the database. A database also provide one source of thruth for our data. There are different types of databases: relational, object oriented, document based. In this project we will focus on relational databases. SQL is the common language for operations on relational databases.
 
+In a relational database data is stored in a table with columns, where the data is stored as rows. The table and columns describe the data, the column also has a restriction on the size and type of data (data type, size, required/not required) that can be stored in that column. Each table should have one key column that can uniquely identify a row, this is called a Primary Key. A table can also have a column called Foreign Key, that is a link to a Primary Key in another table.
+
+When designing tables, think about using relations between tables instead of adding columns to one table.
+
+ContactsTable: Id, First_Name, Last_Name  
+EmailTable: Id, Contact_Key, Email_Address
+
+### SQL
+
+It is built for manipulating relational databases. SQL is not case sensitive, but it is convention to write SQL specific words (like SELECT) in uppercase and user defined words (like column names) in lower case. We can write comments in SQL, -- is for single line comments, and /* comment */ is for multi line comments.
+
+SQL statements start with a command, for example SELECT. SELECT MyColumnName, 'Constant' FROM MyTableName;
+
+#### Naming things (user defined words)
+
+Naming conventions can vary, but the most important thing is to be consistent. Here are some conventions that can be used:
+
+Table names will be singular: user, email, phone -- it describes what a row in that table is
+
+Column names will never repeat inside of one database, that includes primary keys which should be named tablename_id -- useful when joining tables
+
+#### Names in SQL are scoped
+
+Database.Table , Table.Column
+
+#### Creating a Database
+
+CREATE DATABASE Products;  
+USE DATABASE Products;
+
+Creates a database and switches the context to it, so for example a SELECT statement is run against that database.
+
+CREATE TABLE Products.Game (...);
+
+Creates a table Game under the Products database, with column definitions in parentheses.
