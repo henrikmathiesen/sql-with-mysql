@@ -4,7 +4,7 @@ We want to get better at SQL. Structured Query Language (SQL) is the common fact
 
 ## Does SQL differ from database to database?
 
-To my understanding as of right know (as a beginner), SQL for the most part is the same from database to database, but there are differences here and there. Read more about it here: http://troels.arvin.dk/db/rdbms/
+To my understanding as of right know (as a beginner), SQL for the most part is the same from database to database (ANSI SQL), but there are differences here and there. Read more about it here: http://troels.arvin.dk/db/rdbms/
 
 ## This project
 
@@ -19,7 +19,7 @@ We are going to start here: https://dev.mysql.com/doc/mysql-getting-started/en/
 
 I installed the server, workbench and shell as a custom installation. There were alot of other things, like connectors, but those can be installed later if needed. https://dev.mysql.com/downloads/
 
-The syntax to connect with the shell I downloaded (https://dev.mysql.com/downloads/shell/) was a little bit different than whats described in the getting started. There is also a GUI application, the so called Workbench.
+The syntax to connect with the shell I downloaded (https://dev.mysql.com/downloads/shell/) was a little bit different than whats described in the getting started. There is also a GUI application, the so called Workbench, a RDMS (Relational Database Management System).
 
 ## Overview
 
@@ -68,3 +68,5 @@ Creates a database and switches the context to it, so for example a SELECT state
 CREATE TABLE Products.Game (...);
 
 Creates a table Game under the Products database, with column definitions in parentheses.
+
+##### Column definitions
