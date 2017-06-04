@@ -42,7 +42,7 @@ EmailTable: Id, Contact_Key, Email_Address
 
 ### SQL
 
-It is built for manipulating relational databases. SQL is not case sensitive, but it is convention to write SQL specific words (like SELECT) in uppercase and user defined words (like column names) in lower case. We can write comments in SQL, -- is for single line comments, and /* comment */ is for multi line comments.
+It is built for manipulating relational databases. SQL is not case sensitive, but it is convention to write SQL specific words (like SELECT) in all uppercase and user defined words (like column names) in normal case. We can write comments in SQL, -- is for single line comments, and /* comment */ is for multi line comments.
 
 SQL statements start with a command, for example SELECT. SELECT MyColumnName, 'Constant' FROM MyTableName;
 
