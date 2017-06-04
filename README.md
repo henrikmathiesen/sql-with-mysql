@@ -124,6 +124,6 @@ Example (scroll down): https://www.w3schools.com/sql/sql_primarykey.asp
 
 This can sometimes be useful, pericular FOREIGN KEY contraints, since relationships can become much clearer after all tables are created. Example set FOREIGN KEY on ALTER TABLE: https://www.w3schools.com/sql/sql_foreignkey.asp
 
-## Moving on to more hand on practice
+## Moving on to more hands on practice
 
 Since MySQL workbench has good intellisence and because SQL syntax is not hard to Google, Iam not going to note every type of query here. The exception might be important notes on some things. W3Schools has a useful SQL toutorial with lots of examples: https://www.w3schools.com/sql/default.asp
