@@ -56,7 +56,7 @@ Column names will never repeat inside of one database, that includes primary key
 
 #### My naming convention (for now)
 
-Tables and Columns should be PascalCase. Table names in plural form. Column names can repeat across tables, but in queries we can scope them, for example: SELECT g.Name, g.Id FROM Games as g; to avoid naming collisions.
+Tables and Columns should be PascalCase. Table names in plural form. Column names can repeat across tables, but in queries we can scope them, for example: SELECT g.Name, g.Id FROM Games g; to avoid naming collisions.
 
 #### Discussions about naming conventions
 
@@ -132,3 +132,6 @@ This can sometimes be useful, pericular FOREIGN KEY contraints, since relationsh
 ## Moving on to more hands on practice
 
 Since MySQL workbench has good intellisence and because SQL syntax is not hard to Google, Iam not going to note every type of query here. The exception might be important notes on some things. W3Schools has a useful SQL toutorial with lots of examples: https://www.w3schools.com/sql/default.asp
+
+SQL Comparison Operators for WHERE clause:  
+https://www.w3schools.com/sql/sql_operators.asp
