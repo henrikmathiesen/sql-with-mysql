@@ -133,5 +133,20 @@ This can sometimes be useful, pericular FOREIGN KEY contraints, since relationsh
 
 Since MySQL workbench has good intellisence and because SQL syntax is not hard to Google, Iam not going to note every type of query here. The exception might be important notes on some things. W3Schools has a useful SQL toutorial with lots of examples: https://www.w3schools.com/sql/default.asp
 
+### WHERE Clause
+
+SELECT g.id, g.name  
+FROM Games g  
+WHERE g.name = 'Fallout';
+
 SQL Comparison Operators for WHERE clause:  
 https://www.w3schools.com/sql/sql_operators.asp
+
+SQL Logical Operators for WHERE clause:  
+https://www.w3schools.com/sql/sql_operators.asp
+
+Most important to remember (SQL vs other):  
+= , ==  
+<> , !=  
+AND , &&  
+OR , ||
