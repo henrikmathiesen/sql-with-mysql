@@ -119,3 +119,7 @@ ColumnName DATATYPE,
 CONSTRAINT PK_Person PRIMARY KEY (ID,LastName))
 
 Example (scroll down): https://www.w3schools.com/sql/sql_primarykey.asp
+
+##### Adding Constraints after Table is created
+
+This can sometimes be useful, pericular FOREIGN KEY contraints, since relationships can become much clearer after all tables are created. Example set FOREIGN KEY on ALTER TABLE: https://www.w3schools.com/sql/sql_foreignkey.asp
