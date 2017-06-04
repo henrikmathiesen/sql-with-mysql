@@ -54,6 +54,10 @@ Table names will be singular: user, email, phone -- it describes what a row in t
 
 Column names will never repeat inside of one database, that includes primary keys which should be named tablename_id -- useful when joining tables
 
+#### My naming convention (for now)
+
+Tables and Columns should be PascalCase. Table names in plural form.
+
 #### Names in SQL are scoped
 
 Can be relevant if columns have the same name in different tables.
@@ -67,8 +71,51 @@ USE DATABASE Products;
 
 Creates a database and switches the context to it, so for example a SELECT statement is run against that database.
 
-CREATE TABLE Products.Game (...); or just: CREATE TABLE Game (...); If already in the context of Products DB.
+CREATE TABLE Products.Games (...); or just: CREATE TABLE Games (...); If already in the context of Products DB.
 
-Creates a table Game under the Products database, with column definitions in parentheses.
+Creates a table Games under the Products database, with column definitions in parentheses.
 
 ##### Column definitions
+
+(ColumnName DATATYPE,  
+ColumnName DATATYPE)
+
+These are the most common datatypes:
+
+CHARACTER: can hold exactly N  
+CHARACTER VARYING: can hold 0-N characters  
+BINARY: Hexadecimal data, files, 
+SMALLINT: -32 768 to 32 767  
+INTEGER: -2 147 483 648 to 2 147 483 647  
+BIG INT: -9 223 372 036 854 775 808 to 9 223 372 036 854 775 807  
+BOOLEAN: true or false  
+DATE: YYYY-MM-DD  
+TIME: HH:MM:SS  
+TIMESTAMP: Both DATE and TIME
+
+SQL example: https://www.w3schools.com/sql/sql_create_table.asp
+
+##### Column Constraints
+
+(ColumnName DATATYPE CONSTRAINTS,  
+ColumnName DATATYPE CONSTRAINTS)
+
+NOT NULL, by default columns are allowed null value, add NOT NULL contraint to disallow, example:  
+https://www.w3schools.com/sql/sql_notnull.asp
+
+UNIQUE, this constraint ensures that all values in a column are different. A PRIMARY KEY constraint automatically has a UNIQUE constraint. But you can have many UNIQUE constraints per table but only one PRIMARY KEY. Example: https://www.w3schools.com/sql/sql_unique.asp
+
+PRIMARY KEY, this uniquely identifies each row in the table and is always NOT NULL, can be auto incremented. Example:  
+https://www.w3schools.com/sql/sql_primarykey.asp  
+https://www.w3schools.com/sql/sql_autoincrement.asp
+
+FOREIGN KEY, is used to link 2 tables together. A FOREIGN KEY points to a PRIMARY KEY in another table. Example:  
+https://www.w3schools.com/sql/sql_foreignkey.asp
+
+Constraints also can be set after the list of arguments to create table, useful for example naming a PRIMARY KEY that points to two columns.  
+
+(ColumnName DATATYPE,  
+ColumnName DATATYPE,  
+CONSTRAINT PK_Person PRIMARY KEY (ID,LastName))
+
+Example (scroll down): https://www.w3schools.com/sql/sql_primarykey.asp
