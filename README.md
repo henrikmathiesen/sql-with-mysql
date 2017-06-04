@@ -161,7 +161,7 @@ OR , ||
 
 #### IS / IS NOT
 
-Used for checking for null (can not use = or <>)
+Used only for checking for null (can not use = or <>)
 
 SELECT g.id, g.name  
 FROM Games g  
