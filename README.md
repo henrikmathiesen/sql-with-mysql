@@ -56,7 +56,12 @@ Column names will never repeat inside of one database, that includes primary key
 
 #### My naming convention (for now)
 
-Tables and Columns should be PascalCase. Table names in plural form.
+Tables and Columns should be PascalCase. Table names in plural form. Column names can repeat across tables, but in queries we can scope them, for example: SELECT g.Name, g.Id FROM Games as g; to avoid naming collisions.
+
+#### Discussions about naming conventions
+
+https://stackoverflow.com/questions/338156/table-naming-dilemma-singular-vs-plural-names  
+https://stackoverflow.com/questions/7662/database-table-and-column-naming-conventions
 
 #### Names in SQL are scoped
 
