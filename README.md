@@ -181,4 +181,10 @@ https://mariadb.com/kb/en/sql-99/set-functions/
 
 ### Shaping a Result
 
-https://www.w3schools.com/sql/sql_orderby.asp
+https://www.w3schools.com/sql/sql_orderby.asp  
+https://www.w3schools.com/sql/sql_groupby.asp
+
+SELECT COUNT(DISTINCT a.Street),  
+a.Street  
+FROM Address as a  
+GROUP BY a.Street; -- rows with 2 columns: count and value
