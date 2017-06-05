@@ -192,3 +192,29 @@ HAVING COUNT(StreetCount) > 1; -- returning only count > 1
 
 https://www.w3schools.com/sql/sql_having.asp  
 (filter GROUP BY, just like WHERE filters FROM)
+
+### Joins
+
+https://www.w3schools.com/sql/sql_join.asp  
+Create a result set from 2 or more tables  
+All tables must appear in the FROM clause  
+
+#### INNER JOIN
+
+The most common. Find all rows in Table A where key in Table B is equal to a key in Table A.  
+
+SELECT p.Id, p.FirstName, p.LastName, e.PersonId, e.Email  
+FROM Person as p INNER JOIN EmailAddresses as e  
+ON p.Id = e.PersonId;
+
+#### FULL OUTER JOIN
+
+Returns rows including NULL values (no match) in either left or right side table of the FULL OUTER JOIN expression. Not supported in MySQL.
+
+#### LEFT OUTER JOIN
+
+Returns row including NULL values (no match) in right side table of the LEFT OUTER JOIN expression.
+
+#### RIGHT OUTER JOIN
+
+Returns row including NULL values (no match) in left side table of the RIGHT OUTER JOIN expression.
