@@ -169,12 +169,13 @@ WHERE g.foo IS NOT NULL;
 
 ### Functions
 
-SELECT COUNT( * ) FROM Games -- return count (including NULL values)  
-SELECT COUNT( * ) as numberOfPeople from person -- can name result set  
-SELECT COUNT(g.Foo) FROM Games as g -- return count (excluding NULL values)  
-SELECT MAX(g.Rating) FROM Games as g
+SELECT COUNT( * ) FROM Games; -- return count (including NULL values)  
+SELECT COUNT( * ) as numberOfPeople from person; -- can name result set  
+SELECT COUNT(g.Foo) FROM Games as g; -- return count (excluding NULL values)  
+SELECT MAX(g.Rating) FROM Games as g;  
+SELECT COUNT(DISTINCT a.Street) from Address as a; -- 'lorem', 'lorem', 'ipsum' will result in 2
 
-MAX, MIN, AVG, SUM (does not include NULL)
+MAX, MIN, AVG, SUM
 
 https://mariadb.com/kb/en/sql-99/set-functions/
 
