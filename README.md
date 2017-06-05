@@ -184,7 +184,11 @@ https://mariadb.com/kb/en/sql-99/set-functions/
 https://www.w3schools.com/sql/sql_orderby.asp  
 https://www.w3schools.com/sql/sql_groupby.asp
 
-SELECT COUNT(a.Street),  
+SELECT COUNT(a.Street) as StreetCount,  
 a.Street  
 FROM Address as a  
-GROUP BY a.Street; -- rows with 2 columns: count and value
+GROUP BY a.Street -- rows with 2 columns: count and value  
+HAVING COUNT(StreetCount) > 1; -- returning only count > 1
+
+https://www.w3schools.com/sql/sql_having.asp  
+(filter GROUP BY, just like WHERE filters FROM)
