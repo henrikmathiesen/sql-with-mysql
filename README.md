@@ -133,19 +133,19 @@ This can sometimes be useful, pericular FOREIGN KEY contraints, since relationsh
 
 Since MySQL workbench has good intellisence and because SQL syntax is not hard to Google, Iam not going to note every type of query here. The exception might be important notes on some things. W3Schools has a useful SQL toutorial with lots of examples: https://www.w3schools.com/sql/default.asp
 
-### Count
-
-SELECT COUNT(*) FROM Games
-
 ### SELECT Statement with a WHERE Clause
 
-SELECT g.id, g.name  
-FROM Games g  
-WHERE g.name = 'Fallout';
+https://www.w3schools.com/sql/sql_select.asp  
+https://www.w3schools.com/sql/sql_distinct.asp  
+https://www.w3schools.com/sql/sql_where.asp
 
-SELECT g.id, g.name, g.rating  
+SELECT g.Id, g.Name  
 FROM Games g  
-WHERE g.rating BETWEEN 9 AND 10;
+WHERE g.Name = 'Fallout';
+
+SELECT g.Id, g.Name, g.Rating  
+FROM Games g  
+WHERE g.Rating BETWEEN 9 AND 10;
 
 SQL Comparison Operators for WHERE clause:  
 https://www.w3schools.com/sql/sql_operators.asp
@@ -166,3 +166,18 @@ Used only for checking for null (can not use = or <>)
 SELECT g.id, g.name  
 FROM Games g  
 WHERE g.foo IS NOT NULL;
+
+### Functions
+
+SELECT COUNT( * ) FROM Games -- return count (including NULL values)  
+SELECT COUNT( * ) as numberOfPeople from person -- can name result set  
+SELECT COUNT(g.Foo) FROM Games as g -- return count (excluding NULL values)  
+SELECT MAX(g.Rating) FROM Games as g
+
+MAX, MIN, AVG, SUM (does not include NULL)
+
+https://mariadb.com/kb/en/sql-99/set-functions/
+
+### Shaping a Result
+
+https://www.w3schools.com/sql/sql_orderby.asp
