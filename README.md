@@ -69,7 +69,7 @@ Can be relevant if columns have the same name in different tables.
 
 Database.Table , Table.Column
 
-#### Creating a Database
+#### Creating a Database and a Table
 
 CREATE DATABASE Products;  
 USE DATABASE Products;
