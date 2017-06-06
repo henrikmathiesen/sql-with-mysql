@@ -218,3 +218,40 @@ Returns row including NULL values (no match) in right side table of the LEFT OUT
 #### RIGHT OUTER JOIN
 
 Returns row including NULL values (no match) in left side table of the RIGHT OUTER JOIN expression.
+
+### CRUD
+
+Should really be ISUD: INSERT INTO, SELECT, UPDATE, DELETE FROM
+
+#### INSERT INTO
+
+Can only insert into one table per INSERT INTO, NOT NULL columns must recieve data. Can insert multiple rows.
+
+INSERT INTO Games  
+(Name, Rating)  
+VALUES
+('Foo', 10), ('Bar', 9); -- Inserted 2 rows into Games
+
+#### UPDATE
+
+Change 1 or more columns in a table. Without a WHERE caluse, all rows will be affected.
+
+UPDATE Games as g
+SET g.Rating = 9
+WHERE g.id = 1;
+
+#### DELETE FROM
+
+Deletes, permanently, be careful. Only 1 table at a time allowed. Without a WHERE caluse, all rows will be deleted.
+
+Since delete is permanent, it could be useful to use a Transaction (which are reversable).
+
+START TRANSACTION; -- execute this  
+DELETE FROM Games; -- then this  
+COMMIT; or ROLLBACK; -- then this
+
+DELETE FROM Games as g  
+WHERE g.id = 2;
+
+DELETE FROM Games as g  
+WHERE g.id IN(1,2,3,4);
