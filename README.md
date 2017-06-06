@@ -244,6 +244,8 @@ WHERE g.id = 1;
 
 Deletes, permanently, be careful. Only 1 table at a time allowed. Without a WHERE caluse, all rows will be deleted.
 
+We can not delete a row that is referenced as a FOREIGN KEY in another table. For example, can not delete a row in Person table if a row in Email table referenses it with PersonId, we would have to first delete the row in the Email table.
+
 Since delete is permanent, it could be useful to use a Transaction (which are reversable).
 
 START TRANSACTION; -- execute this  
