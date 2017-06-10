@@ -1,3 +1,5 @@
+-- create this table first
+
 create table Users(
 	Id int primary key auto_increment,
     Name varchar(60) not null,

@@ -1,3 +1,5 @@
+-- create this table third
+
 create table Reviews(
 	Id int primary key auto_increment,
     Header varchar(60) not null,
