@@ -72,7 +72,7 @@ Database.Table , Table.Column
 #### Creating a Database and a Table
 
 CREATE DATABASE Products;  
-USE DATABASE Products;
+USE Products;
 
 Creates a database and switches the context to it, so for example a SELECT statement is run against that database.
 
