@@ -1,8 +1,8 @@
 -- create this table first
 
-create table Users(
-	Id int primary key auto_increment,
-    Name varchar(60) not null,
-    Email varchar(60) not null,
-    Registred datetime not null
+CREATE TABLE Users (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(60) NOT NULL,
+    Email VARCHAR(60) NOT NULL,
+    Registred DATETIME NOT NULL
 );

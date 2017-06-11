@@ -1,4 +1,4 @@
 -- run this script before creating the tables
 
-create database Gaming;
-use Gaming;
+CREATE DATABASE Gaming;
+USE Gaming;
