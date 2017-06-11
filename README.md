@@ -257,3 +257,8 @@ WHERE g.id = 2;
 
 DELETE FROM Games as g  
 WHERE g.id IN(1,2,3,4);
+
+## Setting up an API with Node and Express
+
+Of course we want to do that. Lets install Express Web Framework.  
+https://www.npmjs.com/package/express
