@@ -262,3 +262,9 @@ WHERE g.id IN(1,2,3,4);
 
 Of course we want to do that. Lets install Express Web Framework.  
 https://www.npmjs.com/package/express
+
+Now for a connector, it is needed to use MySQL from the Node Server. There are two that pops up  
+https://dev.mysql.com/downloads/connector/nodejs/  
+https://www.npmjs.com/package/mysql
+
+Following this toutorial https://www.youtube.com/watch?v=ZkQeV-znkZk , Iam going to use the last one.
