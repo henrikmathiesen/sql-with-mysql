@@ -263,8 +263,19 @@ WHERE g.id IN(1,2,3,4);
 Of course we want to do that. Lets install Express Web Framework.  
 https://www.npmjs.com/package/express
 
-Now for a connector, it is needed to use MySQL from the Node Server. There are two that pops up  
+Now for a connector, it is needed to use MySQL from the Node Server. There are two that pops up:  
 https://dev.mysql.com/downloads/connector/nodejs/  
 https://www.npmjs.com/package/mysql
 
 Following this toutorial https://www.youtube.com/watch?v=ZkQeV-znkZk , Iam going to use the last one.
+
+### Node 6.10.2 and ES6 syntax
+
+We are also going to use ES6 syntax in Node, without a compiler, since the support seems good:  
+https://kangax.github.io/compat-table/es6/
+
+However ES6 modules are not supported, so we are going to use Common JS modules:  
+https://stackoverflow.com/questions/36901147/es2015-import-not-working-in-node-v6-0-0-with-with-harmony-modules-option
+
+Difference between module.exports and exports:  
+https://stackoverflow.com/questions/7137397/module-exports-vs-exports-in-node-js
