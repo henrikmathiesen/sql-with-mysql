@@ -285,4 +285,5 @@ https://stackoverflow.com/questions/7137397/module-exports-vs-exports-in-node-js
 Users are set up per connection. We need to create a user for our application with the appropriate privileges.
 
 https://dev.mysql.com/doc/workbench/en/wb-mysql-connections-navigator-management-users-and-privileges.html  
+https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql  
 https://dba.stackexchange.com/questions/49803/what-are-reasonable-privileges-to-grant-typical-users
