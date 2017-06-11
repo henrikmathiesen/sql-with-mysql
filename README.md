@@ -279,3 +279,10 @@ https://stackoverflow.com/questions/36901147/es2015-import-not-working-in-node-v
 
 Difference between module.exports and exports:  
 https://stackoverflow.com/questions/7137397/module-exports-vs-exports-in-node-js
+
+#### Setting up a MySQL user for our application
+
+Users are set up per connection. We need to create a user for our application with the appropriate privileges.
+
+https://dev.mysql.com/doc/workbench/en/wb-mysql-connections-navigator-management-users-and-privileges.html  
+https://dba.stackexchange.com/questions/49803/what-are-reasonable-privileges-to-grant-typical-users
