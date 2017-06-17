@@ -295,3 +295,8 @@ FLUSH PRIVILEGES;
 #### We have a working connection!
 
 Lets seed the tables with some test data and then do an API.
+
+#### A minor tweak, TypeScript
+
+Yes, we are going to use TypeScript  
+http://mherman.org/blog/2016/11/05/developing-a-restful-api-with-node-and-typescript/#.WUT9Z-vyhjF
