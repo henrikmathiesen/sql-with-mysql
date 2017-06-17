@@ -8,12 +8,12 @@ export default class SeedUsers {
         const user01 = new User();
         user01.name = 'John Doe';
         user01.email = 'john@foo.bar';
-        user01.registred = new Date();
+        user01.registered = new Date().toISOString();
 
         const user02 = new User();
         user02.name = 'Jane Poe';
         user02.email = 'jane@foo.bar';
-        user02.registred = new Date();
+        user02.registered = new Date().toISOString();
 
         const users = new Array<User>();
         users.push(user01);
@@ -28,13 +28,11 @@ export default class SeedUsers {
         for (var i = 0; i < users.length; i++) {
             const sql = `
                 INSERT INTO ${table}
-                (${columns.name}, ${columns.email}, ${columns.registred})
-                VALUES('${users[i].name}','${users[i].email}','${users[i].registred}')
+                (${columns.name}, ${columns.email}, ${columns.registered})
+                VALUES('${users[i].name}','${users[i].email}','${users[i].registered}')
             `;
 
-            if(i == 0) {
-                console.log(sql);
-            }
+            console.log('ran sql: ', sql);
 
             connection.query(sql, (error, results, fields) => {
                 if(error) {
