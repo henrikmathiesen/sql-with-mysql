@@ -288,6 +288,10 @@ https://dev.mysql.com/doc/workbench/en/wb-mysql-connections-navigator-management
 https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql  
 https://dba.stackexchange.com/questions/49803/what-are-reasonable-privileges-to-grant-typical-users
 
+create user 'foo'@'localhost' identified by 'password';  
+GRANT SELECT, INSERT, UPDATE, DELETE ON gaming.* TO 'foo'@'localhost';  
+FLUSH PRIVILEGES;
+
 #### We have a working connection!
 
 Lets seed the tables with some test data and then do an API.
