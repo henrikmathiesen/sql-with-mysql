@@ -1,8 +1,8 @@
 export default class Review {
-    readonly id: number;
-    header: string;
-    body: string;
-    rating: number;
-    gameId: number;
-    userId: number;
+    public readonly id: number;
+    public header: string;
+    public body: string;
+    public rating: number;
+    public gameId: number;
+    public userId: number;
 }

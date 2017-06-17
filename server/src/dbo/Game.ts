@@ -1,9 +1,9 @@
 export default class Game {
-    readonly id: number;
-    name: string;
-    developer: string;
-    publisher: string;
-    releaseYear: number;
-    avarageRating: number;
-    userId: number;
+    public readonly id: number;
+    public name: string;
+    public developer: string;
+    public publisher: string;
+    public releaseYear: number;
+    public avarageRating: number;
+    public userId: number;
 }
