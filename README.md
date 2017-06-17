@@ -302,3 +302,17 @@ Yes, we are going to use it.
 http://mherman.org/blog/2016/11/05/developing-a-restful-api-with-node-and-typescript/#.WUT9Z-vyhjF
 
 As usual Type definitions are behind the APIs they are supposed to cover. :/
+
+### Changing naming conventions
+
+Tables and columns should be in lower case. MySql actually always makes table names in lower case anyway, and column names will match better with javascript properties (in lower case).
+
+Seems ok: https://stackoverflow.com/questions/2029358/should-i-write-table-and-column-names-always-lower-case
+
+### Changing SQL datetime to string
+
+I knew this would cause trouble ...  
+https://github.com/TryGhost/Ghost/issues/5050  
+https://dba.stackexchange.com/questions/48704/mysql-5-6-datetime-incorrect-datetime-value-2013-08-25t1700000000-with-er  
+https://dev.mysql.com/doc/refman/5.6/en/date-and-time-literals.html
+

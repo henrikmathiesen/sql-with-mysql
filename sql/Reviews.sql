@@ -1,14 +1,14 @@
 -- create this table third
 
-CREATE TABLE Reviews (
-    Id INT PRIMARY KEY AUTO_INCREMENT,
-    Header VARCHAR(60) NOT NULL,
-    Body VARCHAR(255) NULL,
-    Rating INT NOT NULL,
-    GameId INT NOT NULL,
-    UserId INT NOT NULL,
-    FOREIGN KEY (GameId)
-        REFERENCES Games (Id),
-    FOREIGN KEY (UserId)
-        REFERENCES Users (Id)
+CREATE TABLE reviews (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    header VARCHAR(60) NOT NULL,
+    body VARCHAR(255) NULL,
+    rating INT NOT NULL,
+    gameId INT NOT NULL,
+    userId INT NOT NULL,
+    FOREIGN KEY (gameId)
+        REFERENCES games (id),
+    FOREIGN KEY (userId)
+        REFERENCES users (id)
 );

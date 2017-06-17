@@ -1,13 +1,13 @@
 -- create this table second
 
-CREATE TABLE Games (
-    Id INT PRIMARY KEY AUTO_INCREMENT,
-    Name VARCHAR(60) NOT NULL,
-    Developer VARCHAR(60) NOT NULL,
-    Publisher VARCHAR(60) NOT NULL,
-    ReleaseYear INT NOT NULL,
-    AvarageRating INT NOT NULL,
-    UserId INT NOT NULL,
-    FOREIGN KEY (UserId)
-        REFERENCES Users (Id)
+CREATE TABLE games (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(60) NOT NULL,
+    developer VARCHAR(60) NOT NULL,
+    publisher VARCHAR(60) NOT NULL,
+    releaseYear INT NOT NULL,
+    avarageRating INT NOT NULL,
+    userId INT NOT NULL,
+    FOREIGN KEY (userId)
+        REFERENCES users (id)
 );

@@ -8,23 +8,23 @@ export const tables = {
 
 export const columns = {
     games: {
-        name: 'Name',
-        developer: 'Developer',
-        publisher: 'Publisher',
-        releaseYear: 'ReleaseYear',
-        avarageRating: 'AvarageRating',
-        userId: 'UserId'
+        name: 'name',
+        developer: 'developer',
+        publisher: 'publisher',
+        releaseYear: 'releaseYear',
+        avarageRating: 'avarageRating',
+        userId: 'userId'
     },
     reviews: {
-        header: 'Header',
-        body: 'Body',
-        rating: 'Rating',
-        gameId: 'GameId',
-        userId: 'UserId'
+        header: 'header',
+        body: 'body',
+        rating: 'rating',
+        gameId: 'gameId',
+        userId: 'userId'
     },
     users: {
-        name: 'Name',
-        email: 'Email',
-        registred: 'Registred'
+        name: 'name',
+        email: 'email',
+        registered: 'registered'
     }
 };
