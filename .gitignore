@@ -1,3 +1,4 @@
 node_modules
-server/dbConnection.js
+bld
+server/src/dbConnection.ts
 *.log
