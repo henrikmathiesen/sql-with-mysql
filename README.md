@@ -300,3 +300,5 @@ Lets seed the tables with some test data and then do an API.
 
 Yes, we are going to use it.  
 http://mherman.org/blog/2016/11/05/developing-a-restful-api-with-node-and-typescript/#.WUT9Z-vyhjF
+
+As usual Type definitions are behind the APIs they are supposed to cover. :/
