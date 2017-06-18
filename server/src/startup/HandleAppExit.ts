@@ -1,4 +1,4 @@
-import {IError} from 'mysql';
+import { IError } from 'mysql';
 import GetSetDbConnection from '../db/common/GetSetDbConnection';
 
 export default class HandleAppExit {
@@ -9,6 +9,9 @@ export default class HandleAppExit {
         else {
             console.log('Disconnected from database');
         }
+
+        console.log('Exiting Program');
+        process.exit();
     }
 
     public static handle(): void {
@@ -17,9 +20,7 @@ export default class HandleAppExit {
         process.stdin.resume();
 
         process.on('SIGINT', function () {
-            console.log('Exiting Program');
             GetSetDbConnection.get().end(HandleAppExit.disConnectCb);
-            process.exit();
         });
     }
 }
