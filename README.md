@@ -33,6 +33,9 @@ One thing of note is the already created database "sys" (seen in the left panel)
 
 A database is a container that help us organize data, most useful when we have a lot of data. We can query, update, insert and delete the data in the database. A database also provide one source of thruth for our data. There are different types of databases: relational, object oriented, document based. In this project we will focus on relational databases. SQL is the common language for operations on relational databases.
 
+Schema and Database are basicly the same thing:  
+https://stackoverflow.com/questions/1219711/mysql-create-schema-and-create-database-is-there-any-difference
+
 In a relational database data is stored in a table with columns, where the data is stored as rows. The table and columns describe the data, the column also has a restriction on the size and type of data (data type, size, required/not required) that can be stored in that column. Each table should have one key column that can uniquely identify a row, this is called a Primary Key. A table can also have a column called Foreign Key, that is a link to a Primary Key in another table.
 
 When designing tables, think about using relations between tables instead of adding columns to one table.
