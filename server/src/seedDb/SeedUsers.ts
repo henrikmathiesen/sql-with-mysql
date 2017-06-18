@@ -1,7 +1,7 @@
 import * as mySql from 'mysql';
-import * as dbConnection from '../dbConnection';
+import * as dbConnection from '../db/dbConnection';
 import * as environment from '../environment';
-import User from '../dbo/User';
+import User from '../db/dbo/User';
 
 export default class SeedUsers {
     public seed(): void {
