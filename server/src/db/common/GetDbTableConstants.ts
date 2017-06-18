@@ -4,7 +4,7 @@ export enum DbTableEnum {
     users
 }
 
-const getDbTableConstants = (tableName: DbTableEnum): string => {
+export const getDbTableConstants = (tableName: DbTableEnum): string => {
     switch (tableName) {
         case DbTableEnum.games: {
             return 'games';

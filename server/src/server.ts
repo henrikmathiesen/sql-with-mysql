@@ -1,9 +1,22 @@
 import * as express from 'express';
-import * as environment from './environment';
+import { isProduction } from './environment';
+import { initDb } from './db/initDb';
+import { exitProcess } from './exitProcess';
 
-const app = express();
+const server = express();
 
-app.listen('1337', () => {
-    console.log('Listening on port 1337, production mode is: ' + environment.isProduction);
+initDb(() => {
+    console.log('Connected to Database');
+
+    exitProcess(() => {
+        console.log('Disconnected from Database');
+        console.log('Exiting App');
+        process.exit();
+    });
+
+    // set up routing
+
+    server.listen('1337', () => {
+        console.log(`Server is running, production mode is ${isProduction}`);
+    });
 });
-
