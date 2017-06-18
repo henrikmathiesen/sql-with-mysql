@@ -14,6 +14,7 @@ initDb(() => {
         process.exit();
     });
 
+    // seed
     // set up routing
 
     server.listen('1337', () => {
