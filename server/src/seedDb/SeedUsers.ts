@@ -2,7 +2,7 @@ import User from '../db/dbo/UserDbo';
 import CreateUserQuery from '../db/queries/CreateUserQuery';
 
 export default class SeedUsers {
-    public static seed(): void { 
+    public seed(): void { 
         const user01 = new User();
         user01.name = 'John Doe';
         user01.email = 'john@doe.foo';
