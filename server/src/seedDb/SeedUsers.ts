@@ -2,7 +2,7 @@ import User from '../db/dbo/UserDbo';
 import CreateUserQuery from '../db/queries/CreateUserQuery';
 
 export default class SeedUsers {
-    public seed(): void { 
+    public static seed(): void { 
         const user01 = new User();
         user01.name = 'John Doe';
         user01.email = 'john@doe.foo';
@@ -18,8 +18,6 @@ export default class SeedUsers {
         users.push(user02);
 
         const createUserQuery = new CreateUserQuery();
-
-        // TODO: handle async?
 
         for(var user = 0; user < users.length; user++) {
             createUserQuery.query(users[user]);
