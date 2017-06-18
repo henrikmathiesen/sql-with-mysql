@@ -1,13 +1,11 @@
 import { IConnection } from 'mysql';
 
-export default class GetSetDbConnection {
-    private static _connection: IConnection;
+let _dbConnection;
 
-    public static get(): IConnection {
-        return GetSetDbConnection._connection;
-    }
+const getDbConnection = (): IConnection => {
+    return _dbConnection;
+};
 
-    public static set(connection: IConnection): void {
-        GetSetDbConnection._connection = connection;
-    }
-}
+const setDbConnection = (connection: IConnection): void => {
+    _dbConnection = connection;
+};
