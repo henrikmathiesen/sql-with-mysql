@@ -3,7 +3,7 @@ import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstan
 import { getDbConnection } from '../../common/getSetDbConnection';
 import { IGameDbo } from '../../dbo/GameDbo';
 
-export const getGames = (doneCb) => {
+export const getGamesQuery = (doneCb) => {
     const gamesTable = getDbTableConstants(DbTableEnum.games);
 
     const sql = `
