@@ -19,6 +19,8 @@ export default class SeedUsers {
 
         const createUserQuery = new CreateUserQuery();
 
+        // TODO: handle async?
+
         for(var user = 0; user < users.length; user++) {
             createUserQuery.query(users[user]);
         }
