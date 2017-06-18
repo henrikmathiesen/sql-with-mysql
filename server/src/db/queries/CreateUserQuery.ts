@@ -1,6 +1,6 @@
 import * as mySql from 'mysql';
-import * as dbConnection from '../dbConnection';
-import * as tableConstants from '../tableConstants';
+import * as dbConnection from '../common/dbConnection';
+import * as tableConstants from '../common/tableConstants';
 import User from '../dbo/UserDbo';
 
 export default class CreateUserQuery {

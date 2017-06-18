@@ -1,6 +1,5 @@
 import * as express from 'express';
 import * as environment from './environment';
-import SeedUsers from './seedDb/SeedUsers';
 
 const app = express();
 

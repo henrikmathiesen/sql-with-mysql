@@ -1,4 +1,4 @@
 node_modules
 server/bld
-server/src/db/dbConnection.ts
+server/src/db/common/dbConnection.ts
 *.log
