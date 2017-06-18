@@ -1,7 +1,7 @@
 import * as mySql from 'mysql';
 import * as dbConnection from '../db/dbConnection';
-import * as environment from '../environment';
-import User from '../db/dbo/User';
+import * as tableConstants from '../db/tableConstants';
+import User from '../db/dbo/UserDbo';
 
 export default class SeedUsers {
     public seed(): void {
@@ -22,8 +22,8 @@ export default class SeedUsers {
         const connection = mySql.createConnection(dbConnection.config);
         connection.connect();
 
-        const table = environment.tables.users;
-        const columns = environment.columns.users;
+        const table = tableConstants.tables.users;
+        const columns = tableConstants.columns.users;
 
         for (var i = 0; i < users.length; i++) {
             const sql = `
