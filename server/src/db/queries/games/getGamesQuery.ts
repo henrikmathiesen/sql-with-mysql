@@ -1,7 +1,7 @@
 import { IError } from 'mySql';
-import { DbTableEnum, getDbTableConstants } from '../common/getDbTableConstants';
-import { getDbConnection } from '../common/getSetDbConnection';
-import { IGameDbo } from '../dbo/GameDbo';
+import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstants';
+import { getDbConnection } from '../../common/getSetDbConnection';
+import { IGameDbo } from '../../dbo/GameDbo';
 
 export const getGames = (doneCb) => {
     const gamesTable = getDbTableConstants(DbTableEnum.games);

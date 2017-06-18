@@ -1,7 +1,7 @@
 import { IError } from 'mySql';
-import { DbTableEnum, getDbTableConstants } from '../common/getDbTableConstants';
-import { getDbConnection } from '../common/getSetDbConnection';
-import { IReviewDbo } from '../dbo/ReviewDbo';
+import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstants';
+import { getDbConnection } from '../../common/getSetDbConnection';
+import { IReviewDbo } from '../../dbo/ReviewDbo';
 
 export const getReviewsQuery = (doneCb) => {
     const reviewsTable = getDbTableConstants(DbTableEnum.reviews);
