@@ -13,6 +13,7 @@ export default class CreateUserQuery {
         const columns = tableConstants.columns.users;
 
         // TODO: should escape values
+        // https://www.npmjs.com/package/mysql#escaping-query-values
 
         const sql = `
                 INSERT INTO ${table}
@@ -31,6 +32,5 @@ export default class CreateUserQuery {
         });
 
         connection.end();
-
     }
 }
