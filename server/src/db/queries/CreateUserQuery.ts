@@ -1,15 +1,14 @@
 import * as mySql from 'mysql';
-import * as dbConnection from '../common/dbConnection';
-import * as tableConstants from '../common/tableConstants';
+import { DbTableEnum, GetDbTableConstants } from '../common/GetDbTableConstants';
+import { GetDbColumnsConstants, IUsersColumnsConstants } from '../common/GetDbColumnsConstants';
+import GetSetDbConnection from '../common/GetSetDbConnection';
 import User from '../dbo/UserDbo';
 
 export default class CreateUserQuery {
     public query(user: User): mySql.IQuery {
 
-        const connection = mySql.createConnection(dbConnection.config);
-
-        const userTable = tableConstants.tables.users;
-        const userColumns = tableConstants.columns.users;
+        const userTable = GetDbTableConstants.get(DbTableEnum.users);
+        const userColumns = GetDbColumnsConstants.get(DbTableEnum.users) as IUsersColumnsConstants;
 
         // TODO: should escape values
         // https://www.npmjs.com/package/mysql#escaping-query-values
@@ -20,11 +19,8 @@ export default class CreateUserQuery {
             VALUES('${user.name}','${user.email}','${user.registered}')
         `;
 
-        const query = connection.query(sql);
-
-        connection.end();
+        const query = GetSetDbConnection.get().query(sql);
 
         return query;
-
     }
 }

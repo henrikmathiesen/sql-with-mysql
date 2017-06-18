@@ -1,11 +1,14 @@
 import * as express from 'express';
 import * as environment from './environment';
+import SetupDbConnection from './startup/SetupDbConnection';
+import HandleAppExit from './startup/HandleAppExit';
 
 
 const app = express();
 
 
-
+SetupDbConnection.setup();
+HandleAppExit.handle();
 
 
 app.listen('1337', () => {
