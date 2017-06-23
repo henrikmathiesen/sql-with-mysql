@@ -6,11 +6,11 @@ import { exitProcessListener } from './exitProcessListener';
 //import { seedUsers } from './seedDb/seedUsers';
 
 // DEBUG
-// import { getUsersQuery } from './db/queries/users/getUsersQuery';
-// import { getUserByIdQuery } from './db/queries/users/getUserByIdQuery';
-// import { updateUserQuery } from './db/queries/users/updateUserQuery';
-// import { deleteUserByIdQuery } from './db/queries/users/deleteUserByIdQuery';
-// import { UserDbo } from './db/dbo/UserDbo';
+import { getUsersQuery } from './db/queries/users/getUsersQuery';
+import { getUserByIdQuery } from './db/queries/users/getUserByIdQuery';
+import { updateUserQuery } from './db/queries/users/updateUserQuery';
+import { deleteUserByIdQuery } from './db/queries/users/deleteUserByIdQuery';
+import { UserDbo } from './db/dbo/UserDbo';
 
 const server = express();
 
@@ -26,6 +26,22 @@ initDb(() => {
     // seedUsers(() => { 
     //     console.log('users seeded');
     // });
+
+    // getUserByIdQuery(15)
+    //     .then((user: UserDbo) => {
+    //         console.log('user s', user);
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
+    //     });
+
+    // getUsersQuery()
+    //     .then((users: UserDbo[]) => { 
+    //         console.log('users s', users);
+    //     })
+    //     .catch((error) => { 
+    //         console.log(error);
+    //     });
 
     // set up routing
 
