@@ -4,10 +4,10 @@ import { getDbConnection } from '../../common/getSetDbConnection';
 import { UserDbo } from '../../dbo/UserDbo';
 
 export const getUsersQuery = (doneCb) => {
-    const usersTable = getDbTableConstants(DbTableEnum.users);
+    const table = getDbTableConstants(DbTableEnum.users);
 
     const sql = `
-        SELECT * FROM ${usersTable}
+        SELECT * FROM ${table}
     `;
 
     getDbConnection().query(sql, (error: IError, users: UserDbo[]) => {

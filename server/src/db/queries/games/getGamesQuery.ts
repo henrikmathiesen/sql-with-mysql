@@ -4,10 +4,10 @@ import { getDbConnection } from '../../common/getSetDbConnection';
 import { GameDbo } from '../../dbo/GameDbo';
 
 export const getGamesQuery = (doneCb) => {
-    const gamesTable = getDbTableConstants(DbTableEnum.games);
+    const table = getDbTableConstants(DbTableEnum.games);
 
     const sql = `
-        SELECT * FROM ${gamesTable}
+        SELECT * FROM ${table}
     `;
 
     getDbConnection().query(sql, (error: IError, games: GameDbo[]) => { 

@@ -4,9 +4,12 @@ import { getDbConnection } from '../../common/getSetDbConnection';
 import { UserDbo } from '../../dbo/UserDbo';
 
 export const createUserQuery = (user: UserDbo, doneCb) => {
-    const usersTable = getDbTableConstants(DbTableEnum.users);
+    const table = getDbTableConstants(DbTableEnum.users);
 
-    const sql = `INSERT INTO ${usersTable} SET ?`;
+    const sql = `
+        INSERT INTO ${table} 
+        SET ?
+    `;
 
     getDbConnection().query(sql, user, (error: IError) => {
         if (error) {

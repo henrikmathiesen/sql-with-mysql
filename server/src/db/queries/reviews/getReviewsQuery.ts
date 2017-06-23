@@ -4,10 +4,10 @@ import { getDbConnection } from '../../common/getSetDbConnection';
 import { ReviewDbo } from '../../dbo/ReviewDbo';
 
 export const getReviewsQuery = (doneCb) => {
-    const reviewsTable = getDbTableConstants(DbTableEnum.reviews);
+    const table = getDbTableConstants(DbTableEnum.reviews);
 
     const sql = `
-        SELECT * FROM ${reviewsTable}
+        SELECT * FROM ${table}
     `;
 
     getDbConnection().query(sql, (error: IError, reviews: ReviewDbo[]) => {

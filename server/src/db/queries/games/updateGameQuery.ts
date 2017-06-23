@@ -2,23 +2,24 @@ import { IError } from 'mySql';
 import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstants';
 import { getDbColumnsConstants } from '../../common/getDbColumnsConstants';
 import { getDbConnection } from '../../common/getSetDbConnection';
-import { UserDbo } from '../../dbo/UserDbo';
+import { GameDbo } from '../../dbo/GameDbo';
 
-export const getUserByIdQuery = (id: number, doneCb) => {
-    const table = getDbTableConstants(DbTableEnum.users);
-    const columns = getDbColumnsConstants(DbTableEnum.users);
+export const updateGameQuery = (game: GameDbo, doneCb) => { 
+    const table = getDbTableConstants(DbTableEnum.games);
+    const columns = getDbColumnsConstants(DbTableEnum.games);
 
     const sql = `
-        SELECT * FROM ${table}
+        UPDATE ${table}
+        SET ?
         WHERE ${columns.id} = ?
     `;
 
-    getDbConnection().query(sql, id, (error: IError, users: UserDbo[]) => {
+    getDbConnection().query(sql, [game, game.id], (error: IError) => {
         if (error) {
             throw error;
         }
         else {
-            doneCb(users[0]);
+            doneCb();
         }
     });
 };
