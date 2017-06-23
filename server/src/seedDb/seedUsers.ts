@@ -29,5 +29,9 @@ export const seedUsers = (doneCb) => {
     users.push(user03);
     users.push(user04);
 
-    Promise.all(users.map(createUserQuery)).then(doneCb);
+    Promise.all(users.map(createUserQuery))
+        .then(doneCb)
+        .catch((error) => { 
+            console.log('Error seed users', error);
+        });
 };
