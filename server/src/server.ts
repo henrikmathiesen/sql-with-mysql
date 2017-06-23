@@ -7,6 +7,7 @@ import { exitProcess } from './exitProcess';
 import { getUsersQuery } from './db/queries/users/getUsersQuery';
 import { getUserByIdQuery } from './db/queries/users/getUserByIdQuery';
 import { updateUserQuery } from './db/queries/users/updateUserQuery';
+import { deleteUserByIdQuery } from './db/queries/users/deleteUserByIdQuery';
 import { UserDbo } from './db/dbo/UserDbo';
 
 const server = express();
@@ -23,13 +24,21 @@ initDb(() => {
 
     // DEBUG_____________________________________________________________________
 
-    getUserByIdQuery(15, (user: UserDbo) => {
-        user.name = 'Bertil';
+    // deleteUserByIdQuery(15, () => { 
+    //     console.log('user deleted');
+    // });
 
-        updateUserQuery(user, () => { 
-            console.log('user updated');
-        });
-    });
+    // getUserByIdQuery(15, () => { 
+
+    // });
+
+    // getUserByIdQuery(15, (user: UserDbo) => {
+    //     user.name = 'Bertil';
+
+    //     updateUserQuery(user, () => { 
+    //         console.log('user updated');
+    //     });
+    // });
 
     // getUsersQuery((users: any) => { 
     //     console.log(Array.isArray(users[0]));
