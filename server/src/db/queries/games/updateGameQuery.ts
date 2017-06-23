@@ -4,22 +4,24 @@ import { getDbColumnsConstants } from '../../common/getDbColumnsConstants';
 import { getDbConnection } from '../../common/getSetDbConnection';
 import { GameDbo } from '../../dbo/GameDbo';
 
-export const updateGameQuery = (game: GameDbo, doneCb) => { 
-    const table = getDbTableConstants(DbTableEnum.games);
-    const columns = getDbColumnsConstants(DbTableEnum.games);
+export const updateGameQuery = (game: GameDbo) => { 
+    return new Promise((resolve, reject) => { 
+        const table = getDbTableConstants(DbTableEnum.games);
+        const columns = getDbColumnsConstants(DbTableEnum.games);
 
-    const sql = `
-        UPDATE ${table}
-        SET ?
-        WHERE ${columns.id} = ?
-    `;
+        const sql = `
+            UPDATE ${table}
+            SET ?
+            WHERE ${columns.id} = ?
+        `;
 
-    getDbConnection().query(sql, [game, game.id], (error: IError) => {
-        if (error) {
-            throw error;
-        }
-        else {
-            doneCb();
-        }
+        getDbConnection().query(sql, [game, game.id], (error: IError) => {
+            if (error) {
+                reject(error);
+            }
+            else {
+                resolve();
+            }
+        });
     });
 };

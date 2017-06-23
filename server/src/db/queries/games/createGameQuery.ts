@@ -3,20 +3,22 @@ import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstan
 import { getDbConnection } from '../../common/getSetDbConnection';
 import { GameDbo } from '../../dbo/GameDbo';
 
-export const createGameQuery = (game: GameDbo, doneCb) => { 
-    const table = getDbTableConstants(DbTableEnum.games);
+export const createGameQuery = (game: GameDbo) => { 
+    return new Promise((resolve, reject) => { 
+        const table = getDbTableConstants(DbTableEnum.games);
 
-    const sql = `
-        INSERT INTO ${table} 
-        SET ?
-    `;
+        const sql = `
+            INSERT INTO ${table} 
+            SET ?
+        `;
 
-    getDbConnection().query(sql, game, (error: IError) => {
-        if (error) {
-            throw error;
-        }
-        else {
-            doneCb();
-        }
+        getDbConnection().query(sql, game, (error: IError) => {
+            if (error) {
+                reject(error);
+            }
+            else {
+                resolve();
+            }
+        });
     });
 };

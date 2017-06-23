@@ -3,20 +3,22 @@ import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstan
 import { getDbConnection } from '../../common/getSetDbConnection';
 import { ReviewDbo } from '../../dbo/ReviewDbo';
 
-export const createReviewQuery = (review: ReviewDbo, doneCb) => { 
-    const table = getDbTableConstants(DbTableEnum.reviews);
+export const createReviewQuery = (review: ReviewDbo) => {
+    return new Promise((resolve, reject) => { 
+        const table = getDbTableConstants(DbTableEnum.reviews);
 
-    const sql = `
-        INSERT INTO ${table} 
-        SET ?
-    `;
+        const sql = `
+            INSERT INTO ${table} 
+            SET ?
+        `;
 
-    getDbConnection().query(sql, review, (error: IError) => {
-        if (error) {
-            throw error;
-        }
-        else {
-            doneCb();
-        }
+        getDbConnection().query(sql, review, (error: IError) => {
+            if (error) {
+                reject(error);
+            }
+            else {
+                resolve();
+            }
+        });
     });
 };

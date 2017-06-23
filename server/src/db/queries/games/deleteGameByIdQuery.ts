@@ -3,21 +3,23 @@ import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstan
 import { getDbColumnsConstants } from '../../common/getDbColumnsConstants';
 import { getDbConnection } from '../../common/getSetDbConnection';
 
-export const deleteGameByIdQuery = (id: number, doneCb) => { 
-    const table = getDbTableConstants(DbTableEnum.games);
-    const columns = getDbColumnsConstants(DbTableEnum.games);
+export const deleteGameByIdQuery = (id: number) => { 
+    return new Promise((resolve, reject) => { 
+        const table = getDbTableConstants(DbTableEnum.games);
+        const columns = getDbColumnsConstants(DbTableEnum.games);
 
-    const sql = `
-        DELETE FROM ${table}
-        WHERE ${columns.id} = ?
-    `;
+        const sql = `
+            DELETE FROM ${table}
+            WHERE ${columns.id} = ?
+        `;
 
-    getDbConnection().query(sql, id, (error: IError) => {
-        if (error) {
-            throw error;
-        }
-        else {
-            doneCb();
-        }
+        getDbConnection().query(sql, id, (error: IError) => {
+            if (error) {
+                reject(error);
+            }
+            else {
+                resolve();
+            }
+        });
     });
 };

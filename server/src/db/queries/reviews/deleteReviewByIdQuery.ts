@@ -3,21 +3,23 @@ import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstan
 import { getDbColumnsConstants } from '../../common/getDbColumnsConstants';
 import { getDbConnection } from '../../common/getSetDbConnection';
 
-export const deleteReviewByIdQuery = (id: number, doneCb) => { 
-    const table = getDbTableConstants(DbTableEnum.reviews);
-    const columns = getDbColumnsConstants(DbTableEnum.reviews);
+export const deleteReviewByIdQuery = (id: number) => { 
+    return new Promise((resolve, reject) => { 
+        const table = getDbTableConstants(DbTableEnum.reviews);
+        const columns = getDbColumnsConstants(DbTableEnum.reviews);
 
-    const sql = `
-        DELETE FROM ${table}
-        WHERE ${columns.id} = ?
-    `;
+        const sql = `
+            DELETE FROM ${table}
+            WHERE ${columns.id} = ?
+        `;
 
-    getDbConnection().query(sql, id, (error: IError) => {
-        if (error) {
-            throw error;
-        }
-        else {
-            doneCb();
-        }
+        getDbConnection().query(sql, id, (error: IError) => {
+            if (error) {
+                reject(error);
+            }
+            else {
+                resolve();
+            }
+        });
     });
 };

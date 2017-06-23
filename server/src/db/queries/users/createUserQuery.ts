@@ -3,20 +3,22 @@ import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstan
 import { getDbConnection } from '../../common/getSetDbConnection';
 import { UserDbo } from '../../dbo/UserDbo';
 
-export const createUserQuery = (user: UserDbo, doneCb) => {
-    const table = getDbTableConstants(DbTableEnum.users);
+export const createUserQuery = (user: UserDbo) => {
+    return new Promise((resolve, reject) => { 
+        const table = getDbTableConstants(DbTableEnum.users);
 
-    const sql = `
-        INSERT INTO ${table} 
-        SET ?
-    `;
+        const sql = `
+            INSERT INTO ${table} 
+            SET ?
+        `;
 
-    getDbConnection().query(sql, user, (error: IError) => {
-        if (error) {
-            throw error;
-        }
-        else {
-            doneCb();
-        }
+        getDbConnection().query(sql, user, (error: IError) => {
+            if (error) {
+                reject(error);
+            }
+            else {
+                resolve();
+            }
+        });
     });
 };

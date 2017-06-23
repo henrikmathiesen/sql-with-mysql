@@ -3,19 +3,21 @@ import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstan
 import { getDbConnection } from '../../common/getSetDbConnection';
 import { UserDbo } from '../../dbo/UserDbo';
 
-export const getUsersQuery = (doneCb) => {
-    const table = getDbTableConstants(DbTableEnum.users);
+export const getUsersQuery = (): Promise<UserDbo[]> => {
+    return new Promise((resolve, reject) => { 
+        const table = getDbTableConstants(DbTableEnum.users);
 
-    const sql = `
-        SELECT * FROM ${table}
-    `;
+        const sql = `
+            SELECT * FROM ${table}
+        `;
 
-    getDbConnection().query(sql, (error: IError, users: UserDbo[]) => {
-        if (error) {
-            throw error;
-        }
-        else {
-            doneCb(users);
-        }
+        getDbConnection().query(sql, (error: IError, users: UserDbo[]) => {
+            if (error) {
+                reject();
+            }
+            else {
+                resolve(users);
+            }
+        });
     });
 };

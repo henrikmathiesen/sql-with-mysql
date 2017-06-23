@@ -24,25 +24,13 @@ initDb(() => {
 
     // DEBUG_____________________________________________________________________
 
-    // deleteUserByIdQuery(15, () => { 
-    //     console.log('user deleted');
-    // });
-
-    // getUserByIdQuery(15, () => { 
-
-    // });
-
-    // getUserByIdQuery(15, (user: UserDbo) => {
-    //     user.name = 'Bertil';
-
-    //     updateUserQuery(user, () => { 
-    //         console.log('user updated');
-    //     });
-    // });
-
-    // getUsersQuery((users: any) => { 
-    //     console.log(Array.isArray(users[0]));
-    // });
+    getUserByIdQuery(17)
+        .then((user: UserDbo) => { 
+            console.log(user);
+        })
+        .catch((error) => { 
+            console.log(error);
+        });
 
     // /DEBUG_____________________________________________________________________
 
