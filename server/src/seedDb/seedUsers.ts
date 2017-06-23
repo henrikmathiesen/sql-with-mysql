@@ -2,7 +2,6 @@ import { UserDbo } from '../db/dbo/UserDbo';
 import { createUserQuery } from '../db/queries/users/createUserQuery';
 
 export const seedUsers = () => {
-
     return new Promise((resolve, reject) => { 
         const users = new Array<UserDbo>();
 
@@ -34,6 +33,5 @@ export const seedUsers = () => {
         Promise.all(users.map(createUserQuery))
             .then(resolve)
             .catch(reject);
-
     });
 };
