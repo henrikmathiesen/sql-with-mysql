@@ -5,14 +5,13 @@ import { GameDbo } from '../../dbo/GameDbo';
 
 export const getGameById = (id: number, doneCb) => {
     const gamesTable = getDbTableConstants(DbTableEnum.games);
-    const escapedId = getDbConnection().escape(id);
 
     const sql = `
         SELECT * FROM ${gamesTable}
-        WHERE id = ${escapedId}
+        WHERE id = ?
     `;
 
-    getDbConnection().query(sql, (error: IError, game: GameDbo) => {
+    getDbConnection().query(sql, [id], (error: IError, game: GameDbo) => {
         if (error) {
             throw error;
         }

@@ -5,14 +5,13 @@ import { ReviewDbo } from '../../dbo/ReviewDbo';
 
 export const getReviewById = (id: number, doneCb) => {
     const reviewsTable = getDbTableConstants(DbTableEnum.reviews);
-    const escapedId = getDbConnection().escape(id);
 
     const sql = `
         SELECT * FROM ${reviewsTable}
-        WHERE id = ${escapedId}
+        WHERE id = ?
     `;
 
-    getDbConnection().query(sql, (error: IError, review: ReviewDbo) => {
+    getDbConnection().query(sql, [id], (error: IError, review: ReviewDbo) => {
         if (error) {
             throw error;
         }

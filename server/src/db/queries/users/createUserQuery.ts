@@ -8,13 +8,11 @@ export const createUserQuery = (user: UserDbo, doneCb) => {
 
     const sql = `INSERT INTO ${usersTable} SET ?`;
 
-    getDbConnection().query(sql, user, (error: IError, results, fields) => {
+    getDbConnection().query(sql, user, (error: IError) => {
         if (error) {
             throw error;
         }
         else {
-            console.log('results', results);
-            console.log('fields', fields);
             doneCb();
         }
     });
