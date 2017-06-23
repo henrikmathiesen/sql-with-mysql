@@ -6,11 +6,11 @@ import { exitProcessListener } from './exitProcessListener';
 //import { seedUsers } from './seedDb/seedUsers';
 
 // DEBUG
-import { getUsersQuery } from './db/queries/users/getUsersQuery';
-import { getUserByIdQuery } from './db/queries/users/getUserByIdQuery';
-import { updateUserQuery } from './db/queries/users/updateUserQuery';
-import { deleteUserByIdQuery } from './db/queries/users/deleteUserByIdQuery';
-import { UserDbo } from './db/dbo/UserDbo';
+// import { getUsersQuery } from './db/queries/users/getUsersQuery';
+// import { getUserByIdQuery } from './db/queries/users/getUserByIdQuery';
+// import { updateUserQuery } from './db/queries/users/updateUserQuery';
+// import { deleteUserByIdQuery } from './db/queries/users/deleteUserByIdQuery';
+// import { UserDbo } from './db/dbo/UserDbo';
 
 const server = express();
 
