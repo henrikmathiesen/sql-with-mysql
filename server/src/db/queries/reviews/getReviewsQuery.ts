@@ -1,7 +1,7 @@
 import { IError } from 'mySql';
 import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstants';
 import { getDbConnection } from '../../common/getSetDbConnection';
-import { IReviewDbo } from '../../dbo/ReviewDbo';
+import { ReviewDbo } from '../../dbo/ReviewDbo';
 
 export const getReviewsQuery = (doneCb) => {
     const reviewsTable = getDbTableConstants(DbTableEnum.reviews);
@@ -10,7 +10,7 @@ export const getReviewsQuery = (doneCb) => {
         SELECT * FROM ${reviewsTable}
     `;
 
-    getDbConnection().query(sql, (error: IError, reviews: IReviewDbo[]) => {
+    getDbConnection().query(sql, (error: IError, reviews: ReviewDbo[]) => {
         if(error) {
             throw error;
         }

@@ -3,19 +3,19 @@ import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstan
 import { getDbConnection } from '../../common/getSetDbConnection';
 import { UserDbo } from '../../dbo/UserDbo';
 
-export const getUsersQuery = (doneCb) => {
+export const createUserQuery = (user: UserDbo, doneCb) => {
     const usersTable = getDbTableConstants(DbTableEnum.users);
 
-    const sql = `
-        SELECT * FROM ${usersTable}
-    `;
+    const sql = `INSERT INTO ${usersTable} SET ?`;
 
-    getDbConnection().query(sql, (error: IError, users: UserDbo[]) => {
+    getDbConnection().query(sql, user, (error: IError, results, fields) => {
         if (error) {
             throw error;
         }
         else {
-            doneCb(users);
+            console.log('results', results);
+            console.log('fields', fields);
+            doneCb();
         }
     });
 };

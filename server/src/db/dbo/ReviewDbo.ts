@@ -1,4 +1,4 @@
-export interface IReviewDbo {
+export class ReviewDbo {
     readonly id: number;
     header: string;
     body: string;

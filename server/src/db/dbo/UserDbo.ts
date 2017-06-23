@@ -1,4 +1,4 @@
-export interface IUserDbo {
+export class UserDbo {
     readonly id: number;
     name: string;
     email: string;

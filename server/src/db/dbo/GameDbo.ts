@@ -1,4 +1,4 @@
-export interface IGameDbo {
+export class GameDbo {
     readonly id: number;
     name: string;
     developer: string;

@@ -1,7 +1,7 @@
 import { IError } from 'mySql';
 import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstants';
 import { getDbConnection } from '../../common/getSetDbConnection';
-import { IUserDbo } from '../../dbo/UserDbo';
+import { UserDbo } from '../../dbo/UserDbo';
 
 export const getUserByIdQuery = (id: number, doneCb) => {
     const usersTable = getDbTableConstants(DbTableEnum.users);
@@ -12,7 +12,7 @@ export const getUserByIdQuery = (id: number, doneCb) => {
         WHERE id = ${escapedId}
     `;
 
-    getDbConnection().query(sql, (error: IError, user: IUserDbo) => {
+    getDbConnection().query(sql, (error: IError, user: UserDbo) => {
         if (error) {
             throw error;
         }

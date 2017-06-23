@@ -319,3 +319,7 @@ https://github.com/TryGhost/Ghost/issues/5050
 https://dba.stackexchange.com/questions/48704/mysql-5-6-datetime-incorrect-datetime-value-2013-08-25t1700000000-with-er  
 https://dev.mysql.com/doc/refman/5.6/en/date-and-time-literals.html
 
+### Read only
+
+I want the id property in my Dbo:s to be readonly, it doesnt work the way I want with interface and object creation (can set id one time (but no more)). I want a true readonly property that only can be read, so I have to go with a class and use new instead of {}.  
+https://basarat.gitbooks.io/typescript/docs/types/readonly.html
