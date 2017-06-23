@@ -1,7 +1,7 @@
 import { UserDbo } from '../db/dbo/UserDbo';
 import { createUserQuery } from '../db/queries/users/createUserQuery';
 
-export const seed = () => {
+export const seedUsers = (doneCb) => {
     const users = new Array<UserDbo>();
 
     const user01 = new UserDbo();
@@ -29,7 +29,5 @@ export const seed = () => {
     users.push(user03);
     users.push(user04);
 
-    // for (var user = 0; user < users.length; user++) {
-    //     createUserQuery(users[user], () => { });
-    // }
+    Promise.all(users.map(createUserQuery)).then(doneCb);
 };
