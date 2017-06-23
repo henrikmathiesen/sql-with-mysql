@@ -1,19 +1,20 @@
 import { DbTableEnum } from './GetDbTableConstants';
 
-interface IColumnsConstants {
+interface IColumnConstants {
     id: string;
 }
 
-export interface IGamesColumnsConstants extends IColumnsConstants {
+export interface IGamesColumnConstants extends IColumnConstants {
     name: string;
     developer: string;
     publisher: string;
+    genre: string;
     releaseYear: string;
     avarageRating: string;
     userId: string;
 }
 
-export interface IReviewsColumnsConstants extends IColumnsConstants {
+export interface IReviewsColumnConstants extends IColumnConstants {
     header: string;
     body: string;
     rating: string;
@@ -21,27 +22,28 @@ export interface IReviewsColumnsConstants extends IColumnsConstants {
     userId: string;
 }
 
-export interface IUsersColumnsConstants extends IColumnsConstants {
+export interface IUsersColumnConstants extends IColumnConstants {
     name: string;
     email: string;
     registered: string;
 }
 
-export const getDbColumnsConstants = (tableName: DbTableEnum): IColumnsConstants => {
+export const getDbColumnConstants = (tableName: DbTableEnum): IColumnConstants => {
     switch (tableName) {
         case DbTableEnum.games: {
-            return <IGamesColumnsConstants>{
+            return <IGamesColumnConstants>{
                 id: 'id',
                 name: 'name',
                 developer: 'developer',
                 publisher: 'publisher',
+                genre: 'genre',
                 releaseYear: 'releaseYear',
                 avarageRating: 'avarageRating',
                 userId: 'userId'
             };
         }
         case DbTableEnum.reviews: {
-            return <IReviewsColumnsConstants>{
+            return <IReviewsColumnConstants>{
                 id: 'id',
                 header: 'header',
                 body: 'body',
@@ -51,7 +53,7 @@ export const getDbColumnsConstants = (tableName: DbTableEnum): IColumnsConstants
             };
         }
         case DbTableEnum.users: {
-            return <IUsersColumnsConstants>{
+            return <IUsersColumnConstants>{
                 id: 'id',
                 name: 'name',
                 email: 'email',

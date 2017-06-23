@@ -1,13 +1,13 @@
 import { IError } from 'mySql';
 import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstants';
-import { getDbColumnsConstants } from '../../common/getDbColumnsConstants';
+import { getDbColumnConstants } from '../../common/getDbColumnConstants';
 import { getDbConnection } from '../../common/getSetDbConnection';
 import { ReviewDbo } from '../../dbo/ReviewDbo';
 
 export const updateReviewQuery = (review: ReviewDbo) => { 
     return new Promise((resolve, reject) => { 
         const table = getDbTableConstants(DbTableEnum.reviews);
-        const columns = getDbColumnsConstants(DbTableEnum.reviews);
+        const columns = getDbColumnConstants(DbTableEnum.reviews);
 
         const sql = `
             UPDATE ${table}

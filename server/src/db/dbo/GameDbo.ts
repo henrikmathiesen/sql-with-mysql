@@ -3,6 +3,7 @@ export class GameDbo {
     name: string;
     developer: string;
     publisher: string;
+    genre: string;
     releaseYear: number;
     avarageRating: number;
     userId: number;

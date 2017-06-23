@@ -1,12 +1,12 @@
 import { IError } from 'mySql';
 import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstants';
-import { getDbColumnsConstants } from '../../common/getDbColumnsConstants';
+import { getDbColumnConstants } from '../../common/getDbColumnConstants';
 import { getDbConnection } from '../../common/getSetDbConnection';
 
 export const deleteReviewByIdQuery = (id: number) => { 
     return new Promise((resolve, reject) => { 
         const table = getDbTableConstants(DbTableEnum.reviews);
-        const columns = getDbColumnsConstants(DbTableEnum.reviews);
+        const columns = getDbColumnConstants(DbTableEnum.reviews);
 
         const sql = `
             DELETE FROM ${table}

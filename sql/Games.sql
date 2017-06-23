@@ -5,6 +5,7 @@ CREATE TABLE games (
     name VARCHAR(60) NOT NULL,
     developer VARCHAR(60) NOT NULL,
     publisher VARCHAR(60) NOT NULL,
+    genre VARCHAR(60) NOT NULL,
     releaseYear INT NOT NULL,
     avarageRating INT NOT NULL,
     userId INT NOT NULL,
