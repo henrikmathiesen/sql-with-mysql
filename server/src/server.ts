@@ -3,6 +3,7 @@ import { isProduction } from './environment';
 import { initDb } from './db/initDb';
 import { exitProcessListener } from './exitProcessListener';
 import { seeder } from './seedDb/seeder';
+import { routing } from './routing';
 
 const server = express();
 const serverListener = () => {
@@ -23,12 +24,12 @@ initDb(() => {
     if (!isProduction) {
         seeder(() => { 
             console.log('Database seeded');
-            // set up routing
+            routing(server);
             serverListener();
         });
     }
     else {
-        // set up routing
+        routing(server);
         serverListener();
     }
 });

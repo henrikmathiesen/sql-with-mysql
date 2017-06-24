@@ -366,3 +366,6 @@ We need body-parser
 https://www.npmjs.com/package/body-parser  
 https://stackoverflow.com/questions/39870867/what-does-app-usebodyparser-json-do
 
+server.get vs router.get  
+https://stackoverflow.com/questions/28305120/differences-between-express-router-and-app-get
+
