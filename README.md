@@ -339,3 +339,10 @@ http://www.madhur.co.in/blog/2016/09/05/nodejs-connection-pooling.html
 Docs: https://www.npmjs.com/package/mysql#establishing-connections
 
 #### For my simple needs, I do not use connection pooling at this moment
+
+### My constants
+
+Maybe the way I use constant could be made simpler, like an object with properties with string values, like this:  
+https://github.com/henrikmathiesen/learning-react-with-create-react-app/blob/master/src/tests-misc/js-object-map.test.js
+
+But I kind of like the way getDbColumnConstants takes an enum for the table and returns the columns for it ...
