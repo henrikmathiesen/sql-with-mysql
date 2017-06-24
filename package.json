@@ -9,6 +9,7 @@
     "serve:prod": "cross-env NODE_ENV=production node server/bld/server.js"
   },
   "dependencies": {
+    "body-parser": "1.17.2",
     "cross-env": "5.0.1",
     "express": "4.15.3",
     "mysql": "2.13.0"

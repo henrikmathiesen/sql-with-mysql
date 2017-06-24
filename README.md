@@ -360,3 +360,9 @@ https://www.youtube.com/watch?v=ImwrezYhw4w
 "Export a singleton when you want all users of your module to share the state and behavior of a single class instance."  
 https://team.goodeggs.com/export-this-interface-design-patterns-for-node-js-modules-b48a3b1f8f40
 
+### Lets build the API
+
+We need body-parser  
+https://www.npmjs.com/package/body-parser  
+https://stackoverflow.com/questions/39870867/what-does-app-usebodyparser-json-do
+
