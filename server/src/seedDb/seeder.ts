@@ -6,8 +6,6 @@ import { seedGames } from './seedGames';
 import { seedUsers } from './seedUsers';
 
 export const seeder = () => {
-    console.log('seeder')
-
     Promise.all([deleteAllReviews(), deleteAllGames(), deleteAllUsers()])
         .then((values) => { 
             console.log('all deleted', values);

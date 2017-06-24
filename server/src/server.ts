@@ -24,7 +24,7 @@ initDb(() => {
         process.exit();
     });
 
-    seeder();
+    //seeder();
 
     // deleteUserByIdQuery(999)
     //     .then(() => {
