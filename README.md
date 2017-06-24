@@ -346,3 +346,10 @@ Maybe the way I use constant could be made simpler, like an object with properti
 https://github.com/henrikmathiesen/learning-react-with-create-react-app/blob/master/src/tests-misc/js-object-map.test.js
 
 But I kind of like the way getDbColumnConstants takes an enum for the table and returns the columns for it ...
+
+### Global variables
+
+Can be used, but I prefer getter/setter.  
+https://stackoverflow.com/questions/5447771/node-js-global-variables
+
+
