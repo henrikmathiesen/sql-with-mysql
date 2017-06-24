@@ -19,7 +19,7 @@ export const getGameById = (id: number): Promise<GameDbo> => {
                 reject(error);
             }
             else {
-                resolve(games[0]);
+                resolve(games.length ? games[0] : {});
             }
         });
     });

@@ -19,7 +19,7 @@ export const getUserByIdQuery = (id: number): Promise<UserDbo> => {
                 reject(error);
             }
             else {
-                resolve(users[0]);
+                resolve(users.length ? users[0] : {});
             }
         });
     });
