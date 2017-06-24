@@ -352,4 +352,11 @@ But I kind of like the way getDbColumnConstants takes an enum for the table and 
 Can be used, but I prefer getter/setter.  
 https://stackoverflow.com/questions/5447771/node-js-global-variables
 
+### Classes vs Functions vs Factory Functions
+
+Since Iam using TypeScript, I thought it would feel natural to use a class based design pattern. But a lot of the data is static, like the one shared connection, the table and column names. Also the queries, do I need a class that keep a state between instances? I use class for Dbo:s, see header "Read only" above. For the rest Iam using just single functions. If I would need class like behavior I can use factory functions.  
+https://www.youtube.com/watch?v=ImwrezYhw4w
+
+"Export a singleton when you want all users of your module to share the state and behavior of a single class instance."  
+https://team.goodeggs.com/export-this-interface-design-patterns-for-node-js-modules-b48a3b1f8f40
 

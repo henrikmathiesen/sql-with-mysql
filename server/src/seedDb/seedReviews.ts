@@ -9,7 +9,7 @@ export const seedReviews = (addedByUser: UserDbo, addedToGame: GameDbo) => {
 
         const review01 = new ReviewDbo();
         review01.header = 'Great RPG';
-        review01.body = 'Explore the Wasteland and enjoy.';
+        review01.body = 'Explore the lands and enjoy.';
         review01.rating = 10;
         review01.gameId = addedToGame.id;
         review01.userId = addedByUser.id;
