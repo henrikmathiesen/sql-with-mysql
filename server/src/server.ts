@@ -5,6 +5,8 @@ import { exitProcessListener } from './exitProcessListener';
 import { seeder } from './seedDb/seeder';
 import { routing } from './routing';
 
+const shouldSeed = false;
+
 const server = express();
 const serverListener = () => {
     server.listen('1337', () => {
@@ -21,7 +23,7 @@ initDb(() => {
         process.exit();
     });
 
-    if (!isProduction) {
+    if (!isProduction && shouldSeed) {
         seeder(() => { 
             console.log('Database seeded');
             routing(server);

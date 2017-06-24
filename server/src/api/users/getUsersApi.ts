@@ -1,18 +1,19 @@
 import * as express from 'express';
 import { getUsersQuery } from '../../db/queries/users/getUsersQuery';
 import { UserDbo } from '../../db/dbo/UserDbo';
+import { apiErrorMessage } from '../common/apiErrorMessage';
 
 const router = express.Router();
 
 router.get('/api/users', (req, res) => {
     getUsersQuery()
-        .then((users: UserDbo[]) => { 
+        .then((users: UserDbo[]) => {
             res.json(users);
             res.end();
         })
-        .catch((error) => { 
+        .catch((error) => {
             console.log(error);
-            res.json('Error in ' + req.route);
+            res.json(apiErrorMessage(req));
         });
 });
 
