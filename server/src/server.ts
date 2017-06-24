@@ -31,6 +31,7 @@ initDb(() => {
 
     if (!isProduction) {
         seeder(() => { 
+            console.log('Database seeded');
             // set up routing
             serverListener();
         });
