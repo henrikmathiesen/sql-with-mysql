@@ -14,6 +14,11 @@ import { seeder } from './seedDb/seeder';
 // import { UserDbo } from './db/dbo/UserDbo';
 
 const server = express();
+const serverListener = () => {
+    server.listen('1337', () => {
+        console.log(`Server is running, production mode is ${isProduction}`);
+    });
+};
 
 initDb(() => {
     console.log('Connected to Database');
@@ -24,39 +29,14 @@ initDb(() => {
         process.exit();
     });
 
-    //seeder();
-
-    // deleteUserByIdQuery(999)
-    //     .then(() => {
-    //         console.log('user deleted');
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //     });
-
-    // seedUsers(() => { 
-    //     console.log('users seeded');
-    // });
-
-    // getUserByIdQuery(15)
-    //     .then((user: UserDbo) => {
-    //         console.log('user s', user);
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //     });
-
-    // getUsersQuery()
-    //     .then((users: UserDbo[]) => { 
-    //         console.log('users s', users);
-    //     })
-    //     .catch((error) => { 
-    //         console.log(error);
-    //     });
-
-    // set up routing
-
-    server.listen('1337', () => {
-        console.log(`Server is running, production mode is ${isProduction}`);
-    });
+    if (!isProduction) {
+        seeder(() => { 
+            // set up routing
+            serverListener();
+        });
+    }
+    else {
+        // set up routing
+        serverListener();
+    }
 });

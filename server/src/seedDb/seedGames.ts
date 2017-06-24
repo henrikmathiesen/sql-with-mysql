@@ -20,7 +20,7 @@ export const seedGames = (addedByUser: UserDbo) => {
         game02.name = 'Witcher 3';
         game02.developer = 'CD Project';
         game02.publisher = 'CD Project';
-        game01.genre = getGameGenreConstants(GameGenresEnum.roleplaying);
+        game02.genre = getGameGenreConstants(GameGenresEnum.roleplaying);
         game02.releaseYear = 2015;
         game02.avarageRating = 10;
         game02.userId = addedByUser.id;
