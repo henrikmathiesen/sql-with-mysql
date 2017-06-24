@@ -323,3 +323,19 @@ https://dev.mysql.com/doc/refman/5.6/en/date-and-time-literals.html
 
 I want the id property in my Dbo:s to be readonly, it doesnt work the way I want with interface and object creation (can set id one time (but no more)). I want a true readonly property that only can be read, so I have to go with a class and use new instead of {}.  
 https://basarat.gitbooks.io/typescript/docs/types/readonly.html
+
+### connection.connect / connection.end
+
+We connect at startup and end connection at app exit.  
+https://stackoverflow.com/questions/20692989/node-mysql-where-does-connection-end-go
+
+All users share the same connection. "A single connection can be a limit in throughput since only one sql command can be executed at a time."  
+https://stackoverflow.com/questions/6608123/when-to-open-the-connection-using-node-mysql-module
+
+"If you expect long queries, use a connection pool (that is the idea behind a pool, that there is already a connection, ready for use"  
+https://stackoverflow.com/questions/13266013/when-to-close-mysql-connection-using-node-mysql  
+http://www.madhur.co.in/blog/2016/09/05/nodejs-connection-pooling.html
+
+Docs: https://www.npmjs.com/package/mysql#establishing-connections
+
+#### For my simple needs, I do not use connection pooling at this moment
