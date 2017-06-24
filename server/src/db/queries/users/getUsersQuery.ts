@@ -13,7 +13,7 @@ export const getUsersQuery = (): Promise<UserDbo[]> => {
 
         getDbConnection().query(sql, (error: IError, users: UserDbo[]) => {
             if (error) {
-                reject();
+                reject(error);
             }
             else {
                 resolve(users);

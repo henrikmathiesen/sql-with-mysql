@@ -2,8 +2,9 @@ import * as express from 'express';
 import { isProduction } from './environment';
 import { initDb } from './db/initDb';
 import { exitProcessListener } from './exitProcessListener';
+import { seeder } from './seedDb/seeder';
 
-//import { seedUsers } from './seedDb/seedUsers';
+
 
 // DEBUG
 // import { getUsersQuery } from './db/queries/users/getUsersQuery';
@@ -22,6 +23,16 @@ initDb(() => {
         console.log('Exiting App');
         process.exit();
     });
+
+    seeder();
+
+    // deleteUserByIdQuery(999)
+    //     .then(() => {
+    //         console.log('user deleted');
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
+    //     });
 
     // seedUsers(() => { 
     //     console.log('users seeded');
