@@ -16,7 +16,7 @@ export const getReviewsQuery = (): Promise<ReviewDbo[]> => {
                 reject(error);
             }
             else {
-                resolve(reviews);
+                resolve(reviews.length ? reviews : null);
             }
         });
     });

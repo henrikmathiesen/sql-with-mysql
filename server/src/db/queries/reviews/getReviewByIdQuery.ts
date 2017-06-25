@@ -19,7 +19,7 @@ export const getReviewById = (id: number): Promise<ReviewDbo> => {
                 reject(error);
             }
             else {
-                resolve(reviews.length ? reviews[0] : {});
+                resolve(reviews.length ? reviews[0] : null);
             }
         });
     });

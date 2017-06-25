@@ -16,7 +16,7 @@ export const getGamesQuery = (): Promise<GameDbo[]> => {
                 reject(error);
             }
             else {
-                resolve(games);
+                resolve(games.length ? games : null);
             }
         });
     });

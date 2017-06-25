@@ -16,7 +16,7 @@ export const getUsersQuery = (): Promise<UserDbo[]> => {
                 reject(error);
             }
             else {
-                resolve(users);
+                resolve(users.length ? users : null);
             }
         });
     });
