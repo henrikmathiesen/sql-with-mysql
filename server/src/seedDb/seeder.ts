@@ -35,7 +35,9 @@ const getUsersAndSeedGamesForUser01 = (doneCb) => {
         .then((users: UserDbo[]) => {
             _addedByUser = users[0];
             seedGames(_addedByUser)
-                .then(() => { getGamesAndSeedReviewsForGame01AndUser01(doneCb) })
+                .then(() => {
+                    getGamesAndSeedReviewsForGame01AndUser01(doneCb);
+                })
                 .catch((error) => {
                     console.log(error);
                 });
@@ -45,16 +47,22 @@ const getUsersAndSeedGamesForUser01 = (doneCb) => {
         });
 };
 
-export const seeder = (doneCb) => {
+export const deleter = (doneCb) => {
     Promise.all([deleteAllReviews(), deleteAllGames(), deleteAllUsers()])
-        .then(() => {
-            seedUsers()
-                .then(() => { getUsersAndSeedGamesForUser01(doneCb) })
-                .catch((error) => {
-                    console.log(error);
-                })
-        })
+        .then(doneCb)
         .catch((error) => {
             console.log(error);
         });
+};
+
+export const seeder = (doneCb) => {
+    deleter(() => {
+        seedUsers()
+            .then(() => {
+                getUsersAndSeedGamesForUser01(doneCb);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    });
 };

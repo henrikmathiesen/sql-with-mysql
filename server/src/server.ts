@@ -1,14 +1,14 @@
 import * as express from 'express';
-import { isProduction, shouldSeed } from './environment';
+import { isProduction, shouldSeed, shouldDelete } from './environment';
 import { initDb } from './db/initDb';
 import { exitProcessListener } from './exitProcessListener';
-import { seeder } from './seedDb/seeder';
+import { seeder, deleter } from './seedDb/seeder';
 import { routing } from './routing';
 
 const server = express();
 const serverListener = () => {
     server.listen('1337', () => {
-        console.log(`Server is running, production mode is ${isProduction}, should seed is ${shouldSeed}`);
+        console.log(`Server is running, production mode is ${isProduction}, should seed is ${shouldSeed}, should delete is ${shouldDelete}`);
     });
 };
 
@@ -22,8 +22,15 @@ initDb(() => {
     });
 
     if (shouldSeed) {
-        seeder(() => { 
+        seeder(() => {
             console.log('Database seeded');
+            routing(server);
+            serverListener();
+        });
+    }
+    else if (shouldDelete) {
+        deleter(() => { 
+            console.log('Database table rows deleted');
             routing(server);
             serverListener();
         });
