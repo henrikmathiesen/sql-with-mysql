@@ -29,7 +29,7 @@ router.put('/api/user/:id', (req, res) => {
 
                 updateUserByIdQuery(id, updatedUser)
                     .then(() => {
-                        res.json(updatedUser);
+                        res.end();
                     })
                     .catch((error) => {
                         handleApiError(req, res, error);
