@@ -369,3 +369,9 @@ https://stackoverflow.com/questions/39870867/what-does-app-usebodyparser-json-do
 server.get vs router.get  
 https://stackoverflow.com/questions/28305120/differences-between-express-router-and-app-get
 
+### Valid JSON
+
+A string is valid JSON, for example res.json('Error in route: ...');  
+https://jsonlint.com/ (if validating here, use double quotes)  
+http://expressjs.com/en/4x/api.html#res.json  
+https://stackoverflow.com/questions/24184296/is-a-plain-string-valid-json
