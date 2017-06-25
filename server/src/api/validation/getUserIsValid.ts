@@ -1,4 +1,4 @@
-import { UserDbo } from '../db/dbo/UserDbo';
+import { UserDbo } from '../../db/dbo/UserDbo';
 import * as moment from 'moment';
 
 export const getUserIsInValidMessage = 'Invalid user';
