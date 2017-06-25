@@ -5,6 +5,8 @@ import { updateUserByIdApi } from './api/users/updateUserByIdApi';
 import { deleteUserByIdApi } from './api/users/deleteUserByIdApi';
 
 import { getGamesApi } from './api/games/getGamesApi';
+import { getGameByIdApi } from './api/games/getGameByIdApi';
+import { createGameApi } from './api/games/createGameApi';
 
 export const routing = (server) => { 
 
@@ -17,5 +19,6 @@ export const routing = (server) => {
 
     // games
     server.use(getGamesApi);
-
+    server.use(getGameByIdApi);
+    server.use(createGameApi);
 };
