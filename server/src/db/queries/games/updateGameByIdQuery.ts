@@ -2,12 +2,12 @@ import { IError } from 'mySql';
 import { DbTableEnum, getDbTableConstants } from '../../common/getDbTableConstants';
 import { getDbColumnConstants } from '../../common/getDbColumnConstants';
 import { getDbConnection } from '../../common/getSetDbConnection';
-import { ReviewDbo } from '../../dbo/ReviewDbo';
+import { GameDbo } from '../../dbo/GameDbo';
 
-export const updateReviewQuery = (review: ReviewDbo) => { 
+export const updateGameByIdQuery = (id: number, game: GameDbo) => { 
     return new Promise((resolve, reject) => { 
-        const table = getDbTableConstants(DbTableEnum.reviews);
-        const columns = getDbColumnConstants(DbTableEnum.reviews);
+        const table = getDbTableConstants(DbTableEnum.games);
+        const columns = getDbColumnConstants(DbTableEnum.games);
 
         const sql = `
             UPDATE ${table}
@@ -15,7 +15,7 @@ export const updateReviewQuery = (review: ReviewDbo) => {
             WHERE ${columns.id} = ?
         `;
 
-        getDbConnection().query(sql, [review, review.id], (error: IError) => {
+        getDbConnection().query(sql, [game, id], (error: IError) => {
             if (error) {
                 reject(error);
             }
