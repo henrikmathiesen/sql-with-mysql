@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "outDir": "server/bld"
+    "outDir": "server/bld",
+    "sourceMap": true
   },
   "include": [
     "server/src/**/*.ts"
