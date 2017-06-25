@@ -10,7 +10,6 @@ export const getUserIsValid = (user: UserDbo) => {
 
     const nameIsNotEmpty = user.name;
     const emailIsNotEmpty = user.email;
-    
 
     return nameIsAString &&
         emailIsAString &&
