@@ -6,10 +6,15 @@ export const deleteAllGames = () => {
     return new Promise((resolve, reject) => {
         getGamesQuery()
             .then((games: GameDbo[]) => {
-                return Promise.all(games.map((game) => {
-                    return deleteGameByIdQuery(game.id)
-                }))
-                    .then(resolve);
+                if (!games) {
+                    resolve();
+                }
+                else {
+                    return Promise.all(games.map((game) => {
+                        return deleteGameByIdQuery(game.id)
+                    }))
+                        .then(resolve);
+                }
             })
             .catch(reject);
     });

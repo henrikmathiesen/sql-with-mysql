@@ -6,10 +6,15 @@ export const deleteAllUsers = () => {
     return new Promise((resolve, reject) => {
         getUsersQuery()
             .then((users: UserDbo[]) => {
-                return Promise.all(users.map((user) => {
-                    return deleteUserByIdQuery(user.id);
-                }))
-                    .then(resolve)
+                if (!users) {
+                    resolve();
+                }
+                else {
+                    return Promise.all(users.map((user) => {
+                        return deleteUserByIdQuery(user.id);
+                    }))
+                        .then(resolve)
+                }
             })
             .catch(reject);
     });
