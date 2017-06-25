@@ -3,7 +3,7 @@ import * as bodyParser from 'body-parser';
 import { UserDbo } from '../../db/dbo/UserDbo';
 import { handleApiError } from '../common/handleApiError';
 import { getUserIsValid, getUserIsInValidMessage } from '../validation/getUserIsValid';
-import { getUserExist, getUserExistInvalidMessage } from '../validation/getUserExists';
+import { getUserExists, getUserExistInvalidMessage } from '../validation/getUserExists';
 import { updateUserByIdQuery } from '../../db/queries/users/updateUserByIdQuery';
 import { userBodyToUserMapping } from '../mapping/userBodyToUserMapping';
 
@@ -19,7 +19,7 @@ router.put('/api/user/:id', (req, res) => {
         return;
     }
 
-    getUserExist(id)
+    getUserExists(id)
         .then((userExists: boolean) => {
             if (!userExists) {
                 handleApiError(req, res, getUserExistInvalidMessage);
