@@ -20,8 +20,8 @@ router.put('/api/user/:id', (req, res) => {
     }
 
     getUserExist(id)
-        .then((userExist: boolean) => {
-            if (!userExist) {
+        .then((userExists: boolean) => {
+            if (!userExists) {
                 handleApiError(req, res, getUserExistInvalidMessage);
             }
             else {
