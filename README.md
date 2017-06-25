@@ -384,4 +384,6 @@ Express automaticly returns status 200(ok) in a response. If we set it like this
 
 Setting other status codes are fine though: res.status(201).json(newUser);
 
+Remember that if we only send status, we need to use send, res.sendStatus(201); as opposed to res.status(201).json(newUser) where .json will call send()
+
 
