@@ -375,3 +375,11 @@ A string is valid JSON, for example res.json('Error in route: ...');
 https://jsonlint.com/ (if validating here, use double quotes)  
 http://expressjs.com/en/4x/api.html#res.json  
 https://stackoverflow.com/questions/24184296/is-a-plain-string-valid-json
+
+### Dont explicitly return 200 from response
+
+Express automaticly returns status 200(ok) in a response. If we set it like this explicitly res.status(200).res.json(users); , then we will get an error "Can't set headers after they are sent".
+
+Setting other status codes are fine though: res.status(201).json(newUser);
+
+

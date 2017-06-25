@@ -10,7 +10,7 @@ router.get('/api/user/:id', (req, res) => {
 
     getUserByIdQuery(id)
         .then((user: UserDbo) => {
-            res.sendStatus(200).json(user);
+            res.json(user);
         })
         .catch((error) => { 
             handleApiError(req, res, error);

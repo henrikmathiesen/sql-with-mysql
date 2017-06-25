@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/api/users', (req, res) => {
     getUsersQuery()
         .then((users: UserDbo[]) => {
-            res.sendStatus(200).json(users);
+            res.json(users);
         })
         .catch((error) => {
             handleApiError(req, res, error);

@@ -21,7 +21,6 @@ router.post('/api/user', (req, res) => {
 
     createUserQuery(newUser)
         .then(() => { 
-            res.json(newUser);
             res.status(201).json(newUser);
         })
         .catch((error) => { 
