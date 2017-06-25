@@ -1,16 +1,14 @@
 import * as express from 'express';
-import { isProduction } from './environment';
+import { isProduction, shouldSeed } from './environment';
 import { initDb } from './db/initDb';
 import { exitProcessListener } from './exitProcessListener';
 import { seeder } from './seedDb/seeder';
 import { routing } from './routing';
 
-const shouldSeed = false;
-
 const server = express();
 const serverListener = () => {
     server.listen('1337', () => {
-        console.log(`Server is running, production mode is ${isProduction}`);
+        console.log(`Server is running, production mode is ${isProduction}, should seed is ${shouldSeed}`);
     });
 };
 
@@ -23,7 +21,7 @@ initDb(() => {
         process.exit();
     });
 
-    if (!isProduction && shouldSeed) {
+    if (shouldSeed) {
         seeder(() => { 
             console.log('Database seeded');
             routing(server);

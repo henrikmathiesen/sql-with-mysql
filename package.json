@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "scripts": {
     "start": "npm run ts && npm run serve:dev",
+    "start:seed": "npm run ts && npm run serve:dev:seed",
     "start:prod": "npm run ts && npm run serve:prod",
     "ts": "tsc",
     "serve:dev": "node server/bld/server.js",
+    "serve:dev:seed": "cross-env NODE_ENV=seed node server/bld/server.js",
     "serve:prod": "cross-env NODE_ENV=production node server/bld/server.js"
   },
   "dependencies": {
