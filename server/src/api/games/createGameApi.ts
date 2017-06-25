@@ -28,7 +28,7 @@ router.post('/api/game', (req, res) => {
 
                 createGameQuery(newGame)
                     .then(() => {
-                        res.status(201);
+                        res.sendStatus(201);
                     })
                     .catch((error) => {
                         handleApiError(req, res, error);
