@@ -1,21 +1,20 @@
 import * as express from 'express';
-import { getUserByIdQuery } from '../../db/queries/users/getUserByIdQuery';
+import { deleteUserByIdQuery } from '../../db/queries/users/deleteUserByIdQuery';
 import { UserDbo } from '../../db/dbo/UserDbo';
 import { handleApiError } from '../common/handleApiError';
 
 const router = express.Router();
 
-router.get('/api/user/:id', (req, res) => {
+router.delete('/api/user/:id', (req, res) => {
     const id: number = parseInt(req.params.id);
 
-    getUserByIdQuery(id)
-        .then((user: UserDbo) => {
-            res.sendStatus(200).json(user);
+    deleteUserByIdQuery(id)
+        .then(() => {
+            res.sendStatus(204);
         })
-        .catch((error) => { 
+        .catch((error) => {
             handleApiError(req, res, error);
         });
-
 });
 
-export const getUserByIdApi = router;
+export const deleteUserByIdApi = router;
