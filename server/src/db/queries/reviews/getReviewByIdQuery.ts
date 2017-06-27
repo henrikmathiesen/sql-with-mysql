@@ -4,7 +4,7 @@ import { getDbColumnConstants } from '../../common/getDbColumnConstants';
 import { getDbConnection } from '../../common/getSetDbConnection';
 import { ReviewDbo } from '../../dbo/ReviewDbo';
 
-export const getReviewById = (id: number): Promise<ReviewDbo> => {
+export const getReviewByIdQuery = (id: number): Promise<ReviewDbo> => {
     return new Promise((resolve, reject) => { 
         const table = getDbTableConstants(DbTableEnum.reviews);
         const columns = getDbColumnConstants(DbTableEnum.reviews);
