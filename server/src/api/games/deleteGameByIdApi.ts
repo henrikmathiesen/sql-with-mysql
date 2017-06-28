@@ -1,13 +1,13 @@
 import * as express from 'express';
-import { deleteUserByIdQuery } from '../../db/queries/users/deleteUserByIdQuery';
+import { deleteGameByIdQuery } from '../../db/queries/games/deleteGameByIdQuery';
 import { handleApiError } from '../common/handleApiError';
 
 const router = express.Router();
 
-router.delete('/api/user/:id', (req, res) => {
+router.delete('/api/game/:id', (req, res) => {
     const id: number = parseInt(req.params.id);
 
-    deleteUserByIdQuery(id)
+    deleteGameByIdQuery(id)
         .then(() => {
             res.sendStatus(204);
         })
@@ -16,4 +16,4 @@ router.delete('/api/user/:id', (req, res) => {
         });
 });
 
-export const deleteUserByIdApi = router;
+export const deleteGameByIdApi = router;
