@@ -1,16 +1,17 @@
 import * as express from 'express';
-import { getUsersQuery } from '../../db/queries/users/getUsersQuery';
+import { getEntitiesQuery } from '../../db/queries/getEntitiesQuery';
+import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { UserDbo } from '../../db/dbo/UserDbo';
 import { handleApiError } from '../common/handleApiError';
 
 const router = express.Router();
 
 router.get('/api/users', (req, res) => {
-    getUsersQuery()
-        .then((users: UserDbo[]) => {
+    getEntitiesQuery(DbTableEnum.users)
+        .then((users: UserDbo[]) => { 
             res.json(users);
         })
-        .catch((error) => {
+        .catch((error) => { 
             handleApiError(req, res, error);
         });
 });
