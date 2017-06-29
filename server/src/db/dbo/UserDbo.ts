@@ -1,5 +1,6 @@
-export class UserDbo {
-    readonly id: number;
+import { EntityDbo } from './EntityDbo';
+
+export class UserDbo extends EntityDbo {
     name: string;
     email: string;
     registered: string;

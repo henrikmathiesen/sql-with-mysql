@@ -1,5 +1,6 @@
-export class ReviewDbo {
-    readonly id: number;
+import { EntityDbo } from './EntityDbo';
+
+export class ReviewDbo extends EntityDbo {
     header: string;
     body: string;
     rating: number;

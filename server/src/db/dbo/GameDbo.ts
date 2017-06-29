@@ -1,5 +1,6 @@
-export class GameDbo {
-    readonly id: number;
+import { EntityDbo } from './EntityDbo';
+
+export class GameDbo extends EntityDbo {
     name: string;
     developer: string;
     publisher: string;
