@@ -11,9 +11,12 @@ export const getUserIsValid = (user: UserDbo) => {
     const nameIsNotEmpty = user.name;
     const emailIsNotEmpty = user.email;
 
-    return nameIsAString &&
+    const hasValidTypes = nameIsAString &&
         emailIsAString &&
-        registeredIsAnIso8601Date &&
-        nameIsNotEmpty &&
+        registeredIsAnIso8601Date;
+
+    const hasNoEmptyValues = nameIsNotEmpty &&
         emailIsNotEmpty;
+
+    return hasValidTypes && hasNoEmptyValues;
 };
