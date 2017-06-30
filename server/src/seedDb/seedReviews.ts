@@ -11,6 +11,7 @@ export const seedReviews = (addedByUser: UserDbo, addedToGame: GameDbo) => {
         review01.header = 'Great RPG';
         review01.body = 'Explore the lands and enjoy.';
         review01.rating = 10;
+        review01.deleted = false;
         review01.gameId = addedToGame.id;
         review01.userId = addedByUser.id;
 
@@ -18,6 +19,7 @@ export const seedReviews = (addedByUser: UserDbo, addedToGame: GameDbo) => {
         review02.header = 'Great RPG and Great developer';
         review02.body = 'A fantastic world and characters.';
         review02.rating = 10;
+        review02.deleted = false;
         review02.gameId = addedToGame.id;
         review02.userId = addedByUser.id;
 

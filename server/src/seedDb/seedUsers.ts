@@ -9,11 +9,13 @@ export const seedUsers = () => {
         user01.name = 'Adam Adamsson';
         user01.email = 'adam@adamsson.foo';
         user01.registered = new Date().toISOString();
+        user01.deleted = false;
 
         const user02 = new UserDbo();
         user02.name = 'Bertil Bertilsson';
         user02.email = 'bertil@bertilsson.foo';
         user02.registered = new Date().toISOString();
+        user02.deleted = false;
 
         users.push(user01);
         users.push(user02);
