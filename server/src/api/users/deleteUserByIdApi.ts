@@ -1,5 +1,6 @@
 import * as express from 'express';
-import { deleteUserByIdQuery } from '../../db/queries/users/deleteUserByIdQuery';
+import { setAsDeletedEntityByIdQuery } from '../../db/queries/setAsDeletedEntityByIdQuery';
+import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { handleApiError } from '../common/handleApiError';
 
 const router = express.Router();
@@ -7,13 +8,13 @@ const router = express.Router();
 router.delete('/api/user/:id', (req, res) => {
     const id: number = parseInt(req.params.id);
 
-    deleteUserByIdQuery(id)
-        .then(() => {
+    setAsDeletedEntityByIdQuery(DbTableEnum.users, id)
+        .then(() => { 
             res.sendStatus(204);
         })
-        .catch((error) => {
+        .catch((error) => { 
             handleApiError(req, res, error);
-        });
+        })
 });
 
 export const deleteUserByIdApi = router;
