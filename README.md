@@ -83,6 +83,11 @@ CREATE TABLE Products.Games (...); or just: CREATE TABLE Games (...); If already
 
 Creates a table Games under the Products database, with column definitions in parentheses.
 
+#### Deleting a Table
+
+DROP TABLE dbname.tablename;  
+https://www.w3schools.com/sql/sql_drop_table.asp
+
 ##### Column definitions
 
 (ColumnName DATATYPE,  
