@@ -11,10 +11,10 @@ export const getEntityByIdQuery = (tableName: DbTableEnum, id: number): Promise<
 
         const sql = `
             SELECT * FROM ${table}
-            WHERE ${columns.id} = ?
+            WHERE ${columns.id} = ? AND ${columns.deleted} = ?
         `;
 
-        getDbConnection().query(sql, id, (error: IError, entity: EntityDbo[]) => {
+        getDbConnection().query(sql, [id, false], (error: IError, entity: EntityDbo[]) => {
             if (error) {
                 reject(error);
             }
