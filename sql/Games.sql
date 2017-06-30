@@ -8,6 +8,7 @@ CREATE TABLE games (
     genre VARCHAR(60) NOT NULL,
     releaseYear INT NOT NULL,
     avarageRating INT NOT NULL,
+    deleted BOOLEAN NOT NULL,
     userId INT NOT NULL,
     FOREIGN KEY (userId)
         REFERENCES users (id)

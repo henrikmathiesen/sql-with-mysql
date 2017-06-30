@@ -2,6 +2,7 @@ import { DbTableEnum } from './GetDbTableConstants';
 
 interface IColumnConstants {
     id: string;
+    deleted: string;
 }
 
 export interface IGamesColumnConstants extends IColumnConstants {
@@ -39,6 +40,7 @@ export const getDbColumnConstants = (tableName: DbTableEnum): IColumnConstants =
                 genre: 'genre',
                 releaseYear: 'releaseYear',
                 avarageRating: 'avarageRating',
+                deleted: 'deleted',
                 userId: 'userId'
             };
         }
@@ -48,6 +50,7 @@ export const getDbColumnConstants = (tableName: DbTableEnum): IColumnConstants =
                 header: 'header',
                 body: 'body',
                 rating: 'rating',
+                deleted: 'deleted',
                 gameId: 'gameId',
                 userId: 'userId'
             };
@@ -57,7 +60,8 @@ export const getDbColumnConstants = (tableName: DbTableEnum): IColumnConstants =
                 id: 'id',
                 name: 'name',
                 email: 'email',
-                registered: 'registered'
+                registered: 'registered',
+                deleted: 'deleted'
             };
         }
     }

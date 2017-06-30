@@ -5,6 +5,7 @@ CREATE TABLE reviews (
     header VARCHAR(60) NOT NULL,
     body VARCHAR(255) NULL,
     rating INT NOT NULL,
+    deleted BOOLEAN NOT NULL,
     gameId INT NOT NULL,
     userId INT NOT NULL,
     FOREIGN KEY (gameId)
