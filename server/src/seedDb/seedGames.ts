@@ -14,8 +14,8 @@ export const seedGames = (addedByUser: UserDbo) => {
         game01.genre = getGameGenreConstants(GameGenresEnum.roleplaying);
         game01.releaseYear = 2010;
         game01.avarageRating = 10;
-        game01.deleted = false;
         game01.userId = addedByUser.id;
+        game01.deleted = false;
 
         const game02 = new GameDbo();
         game02.name = 'Witcher 3';
@@ -24,8 +24,8 @@ export const seedGames = (addedByUser: UserDbo) => {
         game02.genre = getGameGenreConstants(GameGenresEnum.roleplaying);
         game02.releaseYear = 2015;
         game02.avarageRating = 10;
-        game02.deleted = false;
         game02.userId = addedByUser.id;
+        game02.deleted = false;
 
         games.push(game01);
         games.push(game02);

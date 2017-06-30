@@ -40,8 +40,8 @@ export const getDbColumnConstants = (tableName: DbTableEnum): IColumnConstants =
                 genre: 'genre',
                 releaseYear: 'releaseYear',
                 avarageRating: 'avarageRating',
-                deleted: 'deleted',
-                userId: 'userId'
+                userId: 'userId',
+                deleted: 'deleted'
             };
         }
         case DbTableEnum.reviews: {
@@ -50,9 +50,9 @@ export const getDbColumnConstants = (tableName: DbTableEnum): IColumnConstants =
                 header: 'header',
                 body: 'body',
                 rating: 'rating',
-                deleted: 'deleted',
                 gameId: 'gameId',
-                userId: 'userId'
+                userId: 'userId',
+                deleted: 'deleted'
             };
         }
         case DbTableEnum.users: {
