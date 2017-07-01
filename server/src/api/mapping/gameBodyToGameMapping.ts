@@ -1,6 +1,6 @@
 import { GameDbo } from '../../db/dbo/GameDbo';
 
-export const gameBodyToUserMapping = (gameBody: GameDbo) => { 
+export const gameBodyToUserMapping = (gameBody: GameDbo, isPost: boolean) => { 
     const game = new GameDbo();
     game.name = gameBody.name;
     game.developer = gameBody.developer;
@@ -8,7 +8,11 @@ export const gameBodyToUserMapping = (gameBody: GameDbo) => {
     game.genre = gameBody.genre;
     game.releaseYear = gameBody.releaseYear;
     game.avarageRating = 0;
-    game.userId = gameBody.userId;
+
+    if(isPost) {
+        game.userId = gameBody.userId;
+    }
+
     game.deleted = false;
 
     return game;

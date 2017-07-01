@@ -18,7 +18,7 @@ router.post('/api/user', (req, res) => {
         return;
     }
 
-    const newUser = userBodyToUserMapping(user);
+    const newUser = userBodyToUserMapping(user, true);
 
     createEntityQuery(DbTableEnum.users, newUser)
         .then(() => {

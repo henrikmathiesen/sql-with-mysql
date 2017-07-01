@@ -26,7 +26,7 @@ router.put('/api/user/:id', (req, res) => {
                 handleApiError(req, res, getEntityExistsInvalidMessage);
             }
             else {
-                const updatedUser = userBodyToUserMapping(user);
+                const updatedUser = userBodyToUserMapping(user, false);
 
                 updateEntityByIdQuery(DbTableEnum.users, updatedUser, id)
                     .then(() => {

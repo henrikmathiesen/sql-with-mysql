@@ -4,14 +4,15 @@ import { GameDbo } from '../../db/dbo/GameDbo';
 import { handleApiError } from '../common/handleApiError';
 import { getGameIsValid, getGameIsInvalidMessage } from '../validation/getGameIsValid';
 import { getEntityExists, getEntityExistsInvalidMessage } from '../validation/getEntityExists';
-import { createEntityQuery } from '../../db/queries/createEntityQuery';
+import { updateEntityByIdQuery } from '../../db/queries/updateEntityByIdQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { gameBodyToUserMapping } from '../mapping/gameBodyToGameMapping';
 
 const router = express.Router();
 router.use(bodyParser.json());
 
-router.post('/api/game', (req, res) => {
+router.put('/api/game/:id', (req, res) => {
+    const id: number = parseInt(req.params.id);
     const game: GameDbo = req.body;
 
     if (!getGameIsValid(game)) {
@@ -19,20 +20,20 @@ router.post('/api/game', (req, res) => {
         return;
     }
 
-    const newGame = gameBodyToUserMapping(game, true);
-
-    getEntityExists(DbTableEnum.users, newGame.userId)
-        .then((userExists: boolean) => {
-            if (!userExists) {
+    getEntityExists(DbTableEnum.games, id)
+        .then((gameExists: boolean) => {
+            if (!gameExists) {
                 handleApiError(req, res, getEntityExistsInvalidMessage);
             }
             else {
-                createEntityQuery(DbTableEnum.games, newGame)
-                    .then(() => { 
-                        res.sendStatus(201);
+                const updatedGame = gameBodyToUserMapping(game, false);
+
+                updateEntityByIdQuery(DbTableEnum.games, updatedGame, id)
+                    .then(() => {
+                        res.end();
                     })
-                    .catch((error) => { 
-                        handleApiError(req, res, error);            
+                    .catch((error) => {
+                        handleApiError(req, res, error);
                     });
             }
         })
@@ -41,4 +42,4 @@ router.post('/api/game', (req, res) => {
         });
 });
 
-export const createGameApi = router;
+export const updateGameByIdApi = router;
