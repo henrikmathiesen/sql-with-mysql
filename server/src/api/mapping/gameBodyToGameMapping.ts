@@ -9,6 +9,7 @@ export const gameBodyToUserMapping = (gameBody: GameDbo) => {
     game.releaseYear = gameBody.releaseYear;
     game.avarageRating = 0;
     game.userId = gameBody.userId;
+    game.deleted = false;
 
     return game;
 };

@@ -1,5 +1,6 @@
 import * as express from 'express';
-import { deleteGameByIdQuery } from '../../db/queries/games/deleteGameByIdQuery';
+import { setAsDeletedEntityByIdQuery } from '../../db/queries/setAsDeletedEntityByIdQuery';
+import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { handleApiError } from '../common/handleApiError';
 
 const router = express.Router();
@@ -7,7 +8,7 @@ const router = express.Router();
 router.delete('/api/game/:id', (req, res) => {
     const id: number = parseInt(req.params.id);
 
-    deleteGameByIdQuery(id)
+    setAsDeletedEntityByIdQuery(DbTableEnum.games, id)
         .then(() => {
             res.sendStatus(204);
         })
