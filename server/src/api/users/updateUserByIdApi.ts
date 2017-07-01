@@ -3,8 +3,9 @@ import * as bodyParser from 'body-parser';
 import { UserDbo } from '../../db/dbo/UserDbo';
 import { handleApiError } from '../common/handleApiError';
 import { getUserIsValid, getUserIsInValidMessage } from '../validation/getUserIsValid';
-import { getUserExists, getUserExistInvalidMessage } from '../validation/getUserExists';
-import { updateUserByIdQuery } from '../../db/queries/users/updateUserByIdQuery';
+import { getEntityExists, getEntityExistsInvalidMessage } from '../validation/getEntityExists';
+import { updateEntityByIdQuery } from '../../db/queries/updateEntityByIdQuery';
+import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { userBodyToUserMapping } from '../mapping/userBodyToUserMapping';
 
 const router = express.Router();
@@ -19,15 +20,15 @@ router.put('/api/user/:id', (req, res) => {
         return;
     }
 
-    getUserExists(id)
+    getEntityExists(DbTableEnum.users, id)
         .then((userExists: boolean) => {
             if (!userExists) {
-                handleApiError(req, res, getUserExistInvalidMessage);
+                handleApiError(req, res, getEntityExistsInvalidMessage);
             }
             else {
                 const updatedUser = userBodyToUserMapping(user);
 
-                updateUserByIdQuery(id, updatedUser)
+                updateEntityByIdQuery(DbTableEnum.users, updatedUser, id)
                     .then(() => {
                         res.end();
                     })
