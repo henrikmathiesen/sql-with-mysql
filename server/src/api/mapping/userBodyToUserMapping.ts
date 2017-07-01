@@ -5,6 +5,7 @@ export const userBodyToUserMapping = (userBody: UserDbo) => {
     user.name = userBody.name;
     user.email = userBody.email;
     user.registered = new Date(userBody.registered).toISOString();
+    user.deleted = false;
 
     return user;
 };

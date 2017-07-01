@@ -3,7 +3,8 @@ import * as bodyParser from 'body-parser';
 import { UserDbo } from '../../db/dbo/UserDbo';
 import { handleApiError } from '../common/handleApiError';
 import { getUserIsValid, getUserIsInValidMessage } from '../validation/getUserIsValid';
-import { createUserQuery } from '../../db/queries/users/createUserQuery';
+import { createEntityQuery } from '../../db/queries/createEntityQuery';
+import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { userBodyToUserMapping } from '../mapping/userBodyToUserMapping';
 
 const router = express.Router();
@@ -19,11 +20,11 @@ router.post('/api/user', (req, res) => {
 
     const newUser = userBodyToUserMapping(user);
 
-    createUserQuery(newUser)
-        .then(() => { 
+    createEntityQuery(DbTableEnum.users, newUser)
+        .then(() => {
             res.sendStatus(201);
         })
-        .catch((error) => { 
+        .catch((error) => {
             handleApiError(req, res, error);
         });
 });
