@@ -1,5 +1,6 @@
 import * as express from 'express';
-import { deleteReviewByIdQuery } from '../../db/queries/reviews/deleteReviewByIdQuery';
+import { setAsDeletedEntityByIdQuery } from '../../db/queries/setAsDeletedEntityByIdQuery';
+import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { handleApiError } from '../common/handleApiError';
 
 const router = express.Router();
@@ -7,7 +8,7 @@ const router = express.Router();
 router.delete('/api/review/:id', (req, res) => {
     const id: number = parseInt(req.params.id);
 
-    deleteReviewByIdQuery(id)
+    setAsDeletedEntityByIdQuery(DbTableEnum.reviews, id)
         .then(() => {
             res.sendStatus(204);
         })

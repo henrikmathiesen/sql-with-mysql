@@ -1,12 +1,13 @@
 import * as express from 'express';
-import { getReviewsQuery } from '../../db/queries/reviews/getReviewsQuery';
+import { getEntitiesQuery } from '../../db/queries/getEntitiesQuery';
+import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { ReviewDbo } from '../../db/dbo/ReviewDbo';
 import { handleApiError } from '../common/handleApiError';
 
 const router = express.Router();
 
 router.get('/api/reviews', (req, res) => {
-    getReviewsQuery()
+    getEntitiesQuery(DbTableEnum.reviews)
         .then((reviews: ReviewDbo[]) => {
             res.json(reviews);
         })
