@@ -1,12 +1,12 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import { ReviewDbo } from '../../db/dbo/ReviewDbo';
 import { handleApiError } from '../common/handleApiError';
 import { getReviewIsValid, reviewIsInvalidMessage } from '../validation/getReviewIsValid';
 import { getEntityExists, entityExistsInvalidMessage } from '../validation/getEntityExists';
 import { createEntityQuery } from '../../db/queries/createEntityQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { createdReviewBodyToReviewMapping, IReviewBody } from '../mapping/reviewBodyToReviewMapping';
+import { calculateGameAvarageRatingBasedOnReviews } from '../calculation/calculateGameAvarageRatingBasedOnReviews';
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -33,8 +33,13 @@ router.post('/api/review', (req, res) => {
             else {
                 createEntityQuery(DbTableEnum.reviews, newReview)
                     .then(() => {
-                        // TODO: calculate game avarage rating
-                        res.sendStatus(201);
+                        calculateGameAvarageRatingBasedOnReviews(newReview.gameId)
+                            .then(() => {
+                                res.sendStatus(201);
+                            })
+                            .catch((error) => { 
+                                handleApiError(req, res, error);
+                            });
                     })
                     .catch((error) => {
                         handleApiError(req, res, error);

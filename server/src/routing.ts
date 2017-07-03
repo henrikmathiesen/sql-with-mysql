@@ -15,6 +15,7 @@ import { getReviewsForGameByIdApi } from './api/games/getReviewsForGameByIdApi';
 
 import { getReviewsApi } from './api/reviews/getReviewsApi';
 import { getReviewByIdApi } from './api/reviews/getReviewByIdApi';
+import { createReviewApi } from './api/reviews/createReviewApi';
 
 import { deleteReviewByIdApi } from './api/reviews/deleteReviewByIdApi';
 
@@ -40,5 +41,6 @@ export const routing = (server) => {
     // reviews
     server.use(getReviewsApi);
     server.use(getReviewByIdApi);
+    server.use(createReviewApi);
     server.use(deleteReviewByIdApi);
 };
