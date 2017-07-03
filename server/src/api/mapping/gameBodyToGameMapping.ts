@@ -1,6 +1,15 @@
 import { GameDbo } from '../../db/dbo/GameDbo';
 
-const gameBodyToGameMapping = (gameBody: GameDbo, isCreated: boolean) => {
+export interface IGameBody {
+    name:string;
+    developer:string;
+    publisher: string;
+    genre:string;
+    releaseYear:number;
+    userId:number;
+}
+
+const gameBodyToGameMapping = (gameBody: IGameBody, isCreated: boolean) => {
     const game = new GameDbo();
     game.name = gameBody.name;
     game.developer = gameBody.developer;
@@ -18,10 +27,10 @@ const gameBodyToGameMapping = (gameBody: GameDbo, isCreated: boolean) => {
     return game;
 };
 
-export const createdGameBodyToGameMapping = (gameBody: GameDbo) => {
+export const createdGameBodyToGameMapping = (gameBody: IGameBody) => {
     return gameBodyToGameMapping(gameBody, true);
 };
 
-export const updatedGameBodyToGameMapping = (gameBody: GameDbo) => {
+export const updatedGameBodyToGameMapping = (gameBody: IGameBody) => {
     return gameBodyToGameMapping(gameBody, false);
 };

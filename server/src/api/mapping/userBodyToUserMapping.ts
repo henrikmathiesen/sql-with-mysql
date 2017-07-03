@@ -1,6 +1,11 @@
 import { UserDbo } from '../../db/dbo/UserDbo';
 
-const userBodyToUserMapping = (userBody: UserDbo, isCreated: boolean) => {
+export interface IUserBody {
+    name:string;
+    email:string;
+}
+
+const userBodyToUserMapping = (userBody: IUserBody, isCreated: boolean) => {
     const user = new UserDbo();
     user.name = userBody.name;
     user.email = userBody.email;
@@ -14,10 +19,10 @@ const userBodyToUserMapping = (userBody: UserDbo, isCreated: boolean) => {
     return user;
 }; 
 
-export const createdUserBodyToUserMapping = (userBody: UserDbo) => { 
+export const createdUserBodyToUserMapping = (userBody: IUserBody) => { 
     return userBodyToUserMapping(userBody, true);
 };
 
-export const updatedUserBodyToUserMapping = (userBody: UserDbo) => { 
+export const updatedUserBodyToUserMapping = (userBody: IUserBody) => { 
     return userBodyToUserMapping(userBody, false);
 };

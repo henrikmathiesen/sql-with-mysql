@@ -6,14 +6,14 @@ import { getUserIsValid, getUserIsInValidMessage } from '../validation/getUserIs
 import { getEntityExists, getEntityExistsInvalidMessage } from '../validation/getEntityExists';
 import { updateEntityByIdQuery } from '../../db/queries/updateEntityByIdQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
-import { updatedUserBodyToUserMapping } from '../mapping/userBodyToUserMapping';
+import { updatedUserBodyToUserMapping, IUserBody } from '../mapping/userBodyToUserMapping';
 
 const router = express.Router();
 router.use(bodyParser.json());
 
 router.put('/api/user/:id', (req, res) => {
     const id: number = parseInt(req.params.id);
-    const user: UserDbo = req.body;
+    const user: IUserBody = req.body;
 
     if (!getUserIsValid(user)) {
         handleApiError(req, res, getUserIsInValidMessage);

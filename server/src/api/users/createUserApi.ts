@@ -5,13 +5,13 @@ import { handleApiError } from '../common/handleApiError';
 import { getUserIsValid, getUserIsInValidMessage } from '../validation/getUserIsValid';
 import { createEntityQuery } from '../../db/queries/createEntityQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
-import { createdUserBodyToUserMapping } from '../mapping/userBodyToUserMapping';
+import { createdUserBodyToUserMapping, IUserBody } from '../mapping/userBodyToUserMapping';
 
 const router = express.Router();
 router.use(bodyParser.json());
 
 router.post('/api/user', (req, res) => {
-    const user: UserDbo = req.body;
+    const user: IUserBody = req.body;
 
     if (!getUserIsValid(user)) {
         handleApiError(req, res, getUserIsInValidMessage);

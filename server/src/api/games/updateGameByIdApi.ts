@@ -6,14 +6,14 @@ import { getGameIsValid, getGameIsInvalidMessage } from '../validation/getGameIs
 import { getEntityExists, getEntityExistsInvalidMessage } from '../validation/getEntityExists';
 import { updateEntityByIdQuery } from '../../db/queries/updateEntityByIdQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
-import { updatedGameBodyToGameMapping } from '../mapping/gameBodyToGameMapping';
+import { updatedGameBodyToGameMapping, IGameBody } from '../mapping/gameBodyToGameMapping';
 
 const router = express.Router();
 router.use(bodyParser.json());
 
 router.put('/api/game/:id', (req, res) => {
     const id: number = parseInt(req.params.id);
-    const game: GameDbo = req.body;
+    const game: IGameBody = req.body;
 
     if (!getGameIsValid(game)) {
         handleApiError(req, res, getGameIsInvalidMessage);

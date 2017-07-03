@@ -1,9 +1,9 @@
-import { GameDbo } from '../../db/dbo/GameDbo';
+import { IGameBody } from '../mapping/gameBodyToGameMapping';
 import { getGameGenreConstants, GameGenresEnum } from '../../common/getGameGenreConstants';
 
 export const getGameIsInvalidMessage = 'Invalid game';
 
-export const getGameIsValid = (game: GameDbo) => {
+export const getGameIsValid = (game: IGameBody) => {
     const nameIsAString = typeof game.name === 'string';
     const developerIsAString = typeof game.developer === 'string';
     const publisherIsAString = typeof game.publisher === 'string';
