@@ -396,4 +396,7 @@ Remember that if we only send status, we need to use send, res.sendStatus(201); 
 I handled it with a BOOLEAN column in each table named deleted. It is stored as 0/1.   
 https://stackoverflow.com/questions/289727/which-mysql-data-type-to-use-for-storing-boolean-values?rq=1
 
+### Validating a string is a valid ISO date
 
+Using moment.js  
+const registeredIsAnIso8601Date = moment(user.registered, moment.ISO_8601, true).isValid();
