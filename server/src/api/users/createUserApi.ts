@@ -5,7 +5,7 @@ import { handleApiError } from '../common/handleApiError';
 import { getUserIsValid, getUserIsInValidMessage } from '../validation/getUserIsValid';
 import { createEntityQuery } from '../../db/queries/createEntityQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
-import { userBodyToUserMapping } from '../mapping/userBodyToUserMapping';
+import { createdUserBodyToUserMapping } from '../mapping/userBodyToUserMapping';
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -18,7 +18,7 @@ router.post('/api/user', (req, res) => {
         return;
     }
 
-    const newUser = userBodyToUserMapping(user, true);
+    const newUser = createdUserBodyToUserMapping(user);
 
     createEntityQuery(DbTableEnum.users, newUser)
         .then(() => {

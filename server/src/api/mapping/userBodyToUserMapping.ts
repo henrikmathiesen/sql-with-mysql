@@ -1,15 +1,23 @@
 import { UserDbo } from '../../db/dbo/UserDbo';
 
-export const userBodyToUserMapping = (userBody: UserDbo, isPost: boolean) => { 
+const userBodyToUserMapping = (userBody: UserDbo, isCreated: boolean) => {
     const user = new UserDbo();
     user.name = userBody.name;
     user.email = userBody.email;
 
-    if(isPost) {
+    if(isCreated) {
         user.registered = new Date().toISOString();
     }
 
     user.deleted = false;
 
     return user;
+}; 
+
+export const createdUserBodyToUserMapping = (userBody: UserDbo) => { 
+    return userBodyToUserMapping(userBody, true);
+};
+
+export const updatedUserBodyToUserMapping = (userBody: UserDbo) => { 
+    return userBodyToUserMapping(userBody, false);
 };

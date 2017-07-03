@@ -10,7 +10,7 @@ export const getEntityExists = (tableName: DbTableEnum, id: number): Promise<boo
         getEntityByIdQuery(tableName, id)
             .then((entity: EntityDbo) => { 
                 const entityExists = entity ? true : false;
-                resolve(entity);
+                resolve(entityExists);
             })
             .catch((error) => { 
                 reject(error);

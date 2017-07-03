@@ -6,7 +6,7 @@ import { getUserIsValid, getUserIsInValidMessage } from '../validation/getUserIs
 import { getEntityExists, getEntityExistsInvalidMessage } from '../validation/getEntityExists';
 import { updateEntityByIdQuery } from '../../db/queries/updateEntityByIdQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
-import { userBodyToUserMapping } from '../mapping/userBodyToUserMapping';
+import { updatedUserBodyToUserMapping } from '../mapping/userBodyToUserMapping';
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -26,7 +26,7 @@ router.put('/api/user/:id', (req, res) => {
                 handleApiError(req, res, getEntityExistsInvalidMessage);
             }
             else {
-                const updatedUser = userBodyToUserMapping(user, false);
+                const updatedUser = updatedUserBodyToUserMapping(user);
 
                 updateEntityByIdQuery(DbTableEnum.users, updatedUser, id)
                     .then(() => {
