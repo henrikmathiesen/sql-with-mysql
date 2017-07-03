@@ -11,6 +11,7 @@ import { getGameByIdApi } from './api/games/getGameByIdApi';
 import { createGameApi } from './api/games/createGameApi';
 import { updateGameByIdApi } from './api/games/updateGameByIdApi';
 import { deleteGameByIdApi } from './api/games/deleteGameByIdApi';
+import { getReviewsForGameByIdApi } from './api/games/getReviewsForGameByIdApi';
 
 import { getReviewsApi } from './api/reviews/getReviewsApi';
 import { getReviewByIdApi } from './api/reviews/getReviewByIdApi';
@@ -34,6 +35,7 @@ export const routing = (server) => {
     server.use(createGameApi);
     server.use(updateGameByIdApi);
     server.use(deleteGameByIdApi);
+    server.use(getReviewsForGameByIdApi);
 
     // reviews
     server.use(getReviewsApi);
