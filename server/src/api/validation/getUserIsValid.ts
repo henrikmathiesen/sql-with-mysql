@@ -1,6 +1,6 @@
 import { IUserBody } from '../mapping/userBodyToUserMapping';
 
-export const getUserIsInValidMessage = 'Invalid user';
+export const userIsInValidMessage = 'Invalid user';
 
 export const getUserIsValid = (user: IUserBody) => {
     const nameIsAString = typeof user.name === 'string';

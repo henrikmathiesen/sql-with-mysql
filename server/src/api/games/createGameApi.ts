@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { GameDbo } from '../../db/dbo/GameDbo';
 import { handleApiError } from '../common/handleApiError';
-import { getGameIsValid, getGameIsInvalidMessage } from '../validation/getGameIsValid';
+import { getGameIsValid, gameIsInvalidMessage } from '../validation/getGameIsValid';
 import { getEntityExists, getEntityExistsInvalidMessage } from '../validation/getEntityExists';
 import { createEntityQuery } from '../../db/queries/createEntityQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
@@ -15,7 +15,7 @@ router.post('/api/game', (req, res) => {
     const game: IGameBody = req.body;
 
     if (!getGameIsValid(game)) {
-        handleApiError(req, res, getGameIsInvalidMessage);
+        handleApiError(req, res, gameIsInvalidMessage);
         return;
     }
 

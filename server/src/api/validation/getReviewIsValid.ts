@@ -1,1 +1,3 @@
-import { ReviewDbo } from '../../db/dbo/ReviewDbo';
+import { IReviewBody } from '../mapping/reviewBodyToReviewMapping';
+
+export const reviewIsInvalidMessage = 'Invalid review';

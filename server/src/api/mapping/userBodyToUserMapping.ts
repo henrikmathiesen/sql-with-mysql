@@ -12,9 +12,8 @@ const userBodyToUserMapping = (userBody: IUserBody, isCreated: boolean) => {
 
     if(isCreated) {
         user.registered = new Date().toISOString();
+        user.deleted = false;
     }
-
-    user.deleted = false;
 
     return user;
 }; 

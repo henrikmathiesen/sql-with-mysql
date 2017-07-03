@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { UserDbo } from '../../db/dbo/UserDbo';
 import { handleApiError } from '../common/handleApiError';
-import { getUserIsValid, getUserIsInValidMessage } from '../validation/getUserIsValid';
+import { getUserIsValid, userIsInValidMessage } from '../validation/getUserIsValid';
 import { getEntityExists, getEntityExistsInvalidMessage } from '../validation/getEntityExists';
 import { updateEntityByIdQuery } from '../../db/queries/updateEntityByIdQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
@@ -16,7 +16,7 @@ router.put('/api/user/:id', (req, res) => {
     const user: IUserBody = req.body;
 
     if (!getUserIsValid(user)) {
-        handleApiError(req, res, getUserIsInValidMessage);
+        handleApiError(req, res, userIsInValidMessage);
         return;
     }
 

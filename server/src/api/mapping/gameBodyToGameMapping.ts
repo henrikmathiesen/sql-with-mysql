@@ -20,9 +20,8 @@ const gameBodyToGameMapping = (gameBody: IGameBody, isCreated: boolean) => {
 
     if (isCreated) {
         game.userId = gameBody.userId;
+        game.deleted = false;
     }
-
-    game.deleted = false;
 
     return game;
 };

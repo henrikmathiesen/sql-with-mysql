@@ -1,7 +1,7 @@
 import { IGameBody } from '../mapping/gameBodyToGameMapping';
 import { getGameGenreConstants, GameGenresEnum } from '../../common/getGameGenreConstants';
 
-export const getGameIsInvalidMessage = 'Invalid game';
+export const gameIsInvalidMessage = 'Invalid game';
 
 export const getGameIsValid = (game: IGameBody) => {
     const nameIsAString = typeof game.name === 'string';
