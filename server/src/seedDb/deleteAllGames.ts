@@ -1,17 +1,18 @@
 import { GameDbo } from '../db/dbo/GameDbo';
-import { getGamesQuery } from '../db/queries/games/getGamesQuery';
-import { deleteGameByIdQuery } from '../db/queries/games/deleteGameByIdQuery';
+import { getEntitiesIncludeSetDeletedQuery } from '../db/queries/getEntitiesIncludeSetDeletedQuery';
+import { deleteEntityByIdQuery } from '../db/queries/deleteEntityByIdQuery';
+import { DbTableEnum } from '../db/common/getDbTableConstants';
 
 export const deleteAllGames = () => {
     return new Promise((resolve, reject) => {
-        getGamesQuery()
+        getEntitiesIncludeSetDeletedQuery(DbTableEnum.games)
             .then((games: GameDbo[]) => {
                 if (!games) {
                     resolve();
                 }
                 else {
                     return Promise.all(games.map((game) => {
-                        return deleteGameByIdQuery(game.id)
+                        return deleteEntityByIdQuery(DbTableEnum.games, game.id)
                     }))
                         .then(resolve);
                 }

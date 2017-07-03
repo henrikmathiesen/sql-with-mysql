@@ -6,17 +6,17 @@ import { seedReviews } from './seedReviews';
 import { seedGames } from './seedGames';
 import { seedUsers } from './seedUsers';
 
-import { getUsersQuery } from '../db/queries/users/getUsersQuery';
-import { UserDbo } from '../db/dbo/UserDbo';
+import { getEntitiesQuery } from '../db/queries/getEntitiesQuery';
+import { DbTableEnum } from '../db/common/getDbTableConstants';
 
-import { getGamesQuery } from '../db/queries/games/getGamesQuery';
+import { UserDbo } from '../db/dbo/UserDbo';
 import { GameDbo } from '../db/dbo/GameDbo';
 
 let _addedByUser: UserDbo;
 let _addedToGame: GameDbo;
 
 const getGamesAndSeedReviewsForGame01AndUser01 = (doneCb) => {
-    getGamesQuery()
+    getEntitiesQuery(DbTableEnum.games)
         .then((games: GameDbo[]) => {
             _addedToGame = games[0];
             seedReviews(_addedByUser, _addedToGame)
@@ -31,7 +31,7 @@ const getGamesAndSeedReviewsForGame01AndUser01 = (doneCb) => {
 };
 
 const getUsersAndSeedGamesForUser01 = (doneCb) => {
-    getUsersQuery()
+    getEntitiesQuery(DbTableEnum.users)
         .then((users: UserDbo[]) => {
             _addedByUser = users[0];
             seedGames(_addedByUser)

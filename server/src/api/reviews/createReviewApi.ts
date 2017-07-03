@@ -33,6 +33,7 @@ router.post('/api/review', (req, res) => {
             else {
                 createEntityQuery(DbTableEnum.reviews, newReview)
                     .then(() => {
+                        // TODO: calculate game avarage rating
                         res.sendStatus(201);
                     })
                     .catch((error) => {

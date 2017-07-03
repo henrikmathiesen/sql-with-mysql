@@ -1,17 +1,18 @@
 import { UserDbo } from '../db/dbo/UserDbo';
-import { getUsersQuery } from '../db/queries/users/getUsersQuery';
-import { deleteUserByIdQuery } from '../db/queries/users/deleteUserByIdQuery';
+import { getEntitiesIncludeSetDeletedQuery } from '../db/queries/getEntitiesIncludeSetDeletedQuery';
+import { deleteEntityByIdQuery } from '../db/queries/deleteEntityByIdQuery';
+import { DbTableEnum } from '../db/common/getDbTableConstants';
 
 export const deleteAllUsers = () => {
     return new Promise((resolve, reject) => {
-        getUsersQuery()
+        getEntitiesIncludeSetDeletedQuery(DbTableEnum.users)
             .then((users: UserDbo[]) => {
                 if (!users) {
                     resolve();
                 }
                 else {
                     return Promise.all(users.map((user) => {
-                        return deleteUserByIdQuery(user.id);
+                        return deleteEntityByIdQuery(DbTableEnum.users, user.id);
                     }))
                         .then(resolve)
                 }

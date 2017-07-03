@@ -1,8 +1,9 @@
 import { UserDbo } from '../db/dbo/UserDbo';
-import { createUserQuery } from '../db/queries/users/createUserQuery';
+import { createEntityQuery } from '../db/queries/createEntityQuery';
+import { DbTableEnum } from '../db/common/getDbTableConstants';
 
 export const seedUsers = () => {
-    return new Promise((resolve, reject) => { 
+    return new Promise((resolve, reject) => {
         const users = new Array<UserDbo>();
 
         const user01 = new UserDbo();
@@ -20,7 +21,9 @@ export const seedUsers = () => {
         users.push(user01);
         users.push(user02);
 
-        Promise.all(users.map(createUserQuery))
+        Promise.all(users.map((user) => { 
+            createEntityQuery(DbTableEnum.users, user);
+        }))
             .then(resolve)
             .catch(reject);
     });

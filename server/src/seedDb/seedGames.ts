@@ -1,10 +1,11 @@
 import { GameDbo } from '../db/dbo/GameDbo';
 import { UserDbo } from '../db/dbo/UserDbo';
 import { getGameGenreConstants, GameGenresEnum } from '../common/getGameGenreConstants';
-import { createGameQuery } from '../db/queries/games/createGameQuery';
+import { createEntityQuery } from '../db/queries/createEntityQuery';
+import { DbTableEnum } from '../db/common/getDbTableConstants';
 
-export const seedGames = (addedByUser: UserDbo) => { 
-    return new Promise((resolve, reject) => { 
+export const seedGames = (addedByUser: UserDbo) => {
+    return new Promise((resolve, reject) => {
         const games = new Array<GameDbo>();
 
         const game01 = new GameDbo();
@@ -30,7 +31,9 @@ export const seedGames = (addedByUser: UserDbo) => {
         games.push(game01);
         games.push(game02);
 
-        Promise.all(games.map(createGameQuery))
+        Promise.all(games.map((game) => {
+            createEntityQuery(DbTableEnum.games, game);
+        }))
             .then(resolve)
             .catch(reject);
     });
