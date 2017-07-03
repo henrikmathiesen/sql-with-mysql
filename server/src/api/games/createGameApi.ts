@@ -6,7 +6,7 @@ import { getGameIsValid, getGameIsInvalidMessage } from '../validation/getGameIs
 import { getEntityExists, getEntityExistsInvalidMessage } from '../validation/getEntityExists';
 import { createEntityQuery } from '../../db/queries/createEntityQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
-import { createdGameBodyToUserMapping } from '../mapping/gameBodyToGameMapping';
+import { createdGameBodyToGameMapping } from '../mapping/gameBodyToGameMapping';
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -19,7 +19,7 @@ router.post('/api/game', (req, res) => {
         return;
     }
 
-    const newGame = createdGameBodyToUserMapping(game);
+    const newGame = createdGameBodyToGameMapping(game);
 
     getEntityExists(DbTableEnum.users, newGame.userId)
         .then((userExists: boolean) => {
