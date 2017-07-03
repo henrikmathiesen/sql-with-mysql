@@ -3,7 +3,7 @@ import * as bodyParser from 'body-parser';
 import { UserDbo } from '../../db/dbo/UserDbo';
 import { handleApiError } from '../common/handleApiError';
 import { getUserIsValid, userIsInValidMessage } from '../validation/getUserIsValid';
-import { getEntityExists, getEntityExistsInvalidMessage } from '../validation/getEntityExists';
+import { getEntityExists, entityExistsInvalidMessage } from '../validation/getEntityExists';
 import { updateEntityByIdQuery } from '../../db/queries/updateEntityByIdQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { updatedUserBodyToUserMapping, IUserBody } from '../mapping/userBodyToUserMapping';
@@ -23,7 +23,7 @@ router.put('/api/user/:id', (req, res) => {
     getEntityExists(DbTableEnum.users, id)
         .then((userExists: boolean) => {
             if (!userExists) {
-                handleApiError(req, res, getEntityExistsInvalidMessage);
+                handleApiError(req, res, entityExistsInvalidMessage);
             }
             else {
                 const updatedUser = updatedUserBodyToUserMapping(user);

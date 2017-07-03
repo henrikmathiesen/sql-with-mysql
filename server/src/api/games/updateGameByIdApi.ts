@@ -3,7 +3,7 @@ import * as bodyParser from 'body-parser';
 import { GameDbo } from '../../db/dbo/GameDbo';
 import { handleApiError } from '../common/handleApiError';
 import { getGameIsValid, gameIsInvalidMessage } from '../validation/getGameIsValid';
-import { getEntityExists, getEntityExistsInvalidMessage } from '../validation/getEntityExists';
+import { getEntityExists, entityExistsInvalidMessage } from '../validation/getEntityExists';
 import { updateEntityByIdQuery } from '../../db/queries/updateEntityByIdQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { updatedGameBodyToGameMapping, IGameBody } from '../mapping/gameBodyToGameMapping';
@@ -23,7 +23,7 @@ router.put('/api/game/:id', (req, res) => {
     getEntityExists(DbTableEnum.games, id)
         .then((gameExists: boolean) => {
             if (!gameExists) {
-                handleApiError(req, res, getEntityExistsInvalidMessage);
+                handleApiError(req, res, entityExistsInvalidMessage);
             }
             else {
                 const updatedGame = updatedGameBodyToGameMapping(game);
