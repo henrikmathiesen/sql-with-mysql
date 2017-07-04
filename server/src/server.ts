@@ -2,6 +2,7 @@ import * as express from 'express';
 import { isProduction, shouldSeed, shouldDelete } from './environment';
 import { initDb } from './db/initDb';
 import { exitProcessListener } from './exitProcessListener';
+import { uncaughtExceptionListener } from './uncaughtExceptionListener';
 import { seeder, deleter } from './seedDb/seeder';
 import { routing } from './routing';
 
@@ -21,6 +22,13 @@ initDb(() => {
         process.exit();
     });
 
+    uncaughtExceptionListener((error) => { 
+        console.log('uncaughtException', error);
+        console.log('Disconnected from Database');
+        console.log('Exiting App with status code 1');
+        process.exit(1);
+    });
+
     if (shouldSeed) {
         seeder(() => {
             console.log('Database seeded');
@@ -29,7 +37,7 @@ initDb(() => {
         });
     }
     else if (shouldDelete) {
-        deleter(() => { 
+        deleter(() => {
             console.log('Database table rows deleted');
             routing(server);
             serverListener();
