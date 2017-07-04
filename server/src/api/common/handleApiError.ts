@@ -1,4 +1,6 @@
-export const handleApiError = (req, res, error) => { 
+export const handleApiError = (req, res, error, showErrorDetailsToUser:boolean = false) => { 
     console.log(error);
-    res.status(500).json(`Error in route: [${req.method}]${req.path}`);
+    
+    const userErrorMessage = `Error in route: [${req.method}]${req.path}` + showErrorDetailsToUser ? ` ${error}` : ``;
+    res.status(500).json(userErrorMessage);
 };

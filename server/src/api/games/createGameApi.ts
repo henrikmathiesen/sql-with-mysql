@@ -16,7 +16,7 @@ router.post('/api/game', (req, res) => {
     const game: IGameBody = req.body;
 
     if (!getGameIsValid(game)) {
-        handleApiError(req, res, gameIsInvalidMessage);
+        handleApiError(req, res, gameIsInvalidMessage, true);
         return;
     }
 
@@ -25,7 +25,7 @@ router.post('/api/game', (req, res) => {
     getEntityExists(DbTableEnum.users, newGame.userId)
         .then((existingUser: EntityDbo) => {
             if (!existingUser) {
-                handleApiError(req, res, entityExistsInvalidMessage);
+                handleApiError(req, res, entityExistsInvalidMessage, true);
             }
             else {
                 createEntityQuery(DbTableEnum.games, newGame)

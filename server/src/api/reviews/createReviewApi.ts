@@ -17,7 +17,7 @@ router.post('/api/review', (req, res) => {
     const review: IReviewBody = req.body;
 
     if (!getReviewIsValid(review)) {
-        handleApiError(req, res, reviewIsInvalidMessage);
+        handleApiError(req, res, reviewIsInvalidMessage, true);
         return;
     }
 
@@ -46,13 +46,13 @@ router.post('/api/review', (req, res) => {
         .then((existingEntities: [EntityDbo]) => {
             const userAndGameExist = existingEntities[0] && existingEntities[1];
             if (!userAndGameExist) {
-                handleApiError(req, res, entityExistsInvalidMessage);
+                handleApiError(req, res, entityExistsInvalidMessage, true);
             }
             else {
                 getUserHasAlreadyAddedOneReviewForThisGame(newReview)
                     .then((userHasAlreadyAddedOneReviewForThisGame: boolean) => {
                         if (userHasAlreadyAddedOneReviewForThisGame) {
-                            handleApiError(req, res, userHasAlreadyAddedOneReviewForThisGameInvalidMessage);
+                            handleApiError(req, res, userHasAlreadyAddedOneReviewForThisGameInvalidMessage, true);
                             return;
                         }
                         else {

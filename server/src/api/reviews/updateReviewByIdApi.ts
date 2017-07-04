@@ -18,14 +18,14 @@ router.put('/api/review/:id', (req, res) => {
     const review: IReviewBody = req.body;
 
     if (!getReviewIsValid(review)) {
-        handleApiError(req, res, reviewIsInvalidMessage);
+        handleApiError(req, res, reviewIsInvalidMessage, true);
         return;
     }
 
     getEntityExists(DbTableEnum.reviews, id)
         .then((existingReview: EntityDbo) => {
             if (!existingReview) {
-                handleApiError(req, res, entityExistsInvalidMessage);
+                handleApiError(req, res, entityExistsInvalidMessage, true);
             }
             else {
                 const updatedReview = updatedReviewBodyToReviewMapping(review);

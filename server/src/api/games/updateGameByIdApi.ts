@@ -17,14 +17,14 @@ router.put('/api/game/:id', (req, res) => {
     const game: IGameBody = req.body;
 
     if (!getGameIsValid(game)) {
-        handleApiError(req, res, gameIsInvalidMessage);
+        handleApiError(req, res, gameIsInvalidMessage, true);
         return;
     }
 
     getEntityExists(DbTableEnum.games, id)
         .then((existingGame: EntityDbo) => {
             if (!existingGame) {
-                handleApiError(req, res, entityExistsInvalidMessage);
+                handleApiError(req, res, entityExistsInvalidMessage, true);
             }
             else {
                 const updatedGame = updatedGameBodyToGameMapping(game);

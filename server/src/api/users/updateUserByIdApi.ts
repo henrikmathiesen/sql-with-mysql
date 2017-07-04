@@ -17,14 +17,14 @@ router.put('/api/user/:id', (req, res) => {
     const user: IUserBody = req.body;
 
     if (!getUserIsValid(user)) {
-        handleApiError(req, res, userIsInValidMessage);
+        handleApiError(req, res, userIsInValidMessage, true);
         return;
     }
 
     getEntityExists(DbTableEnum.users, id)
         .then((existingUser: EntityDbo) => {
             if (!existingUser) {
-                handleApiError(req, res, entityExistsInvalidMessage);
+                handleApiError(req, res, entityExistsInvalidMessage, true);
             }
             else {
                 const updatedUser = updatedUserBodyToUserMapping(user);
