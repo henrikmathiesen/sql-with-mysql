@@ -20,8 +20,7 @@ export const updateEntityByIdQuery = (tableName: DbTableEnum, entity: EntityDbo,
                 reject(error);
             }
             else {
-                reject('bar');
-                //resolve();
+                resolve();
             }
         });
     });
