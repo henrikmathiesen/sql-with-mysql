@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import { EntityDbo } from '../../db/dbo/EntityDbo';
 import { ReviewDbo } from '../../db/dbo/ReviewDbo';
 import { handleApiError } from '../common/handleApiError';
 import { getReviewIsValid, reviewIsInvalidMessage } from '../validation/getReviewIsValid';
@@ -22,8 +23,8 @@ router.put('/api/review/:id', (req, res) => {
     }
 
     getEntityExists(DbTableEnum.reviews, id)
-        .then((reviewExists: boolean) => {
-            if (!reviewExists) {
+        .then((existingReview: EntityDbo) => {
+            if (!existingReview) {
                 handleApiError(req, res, entityExistsInvalidMessage);
             }
             else {
@@ -31,7 +32,7 @@ router.put('/api/review/:id', (req, res) => {
 
                 updateEntityByIdQuery(DbTableEnum.reviews, updatedReview, id)
                     .then(() => {
-                        calculateGameAvarageRatingBasedOnReviews(updatedReview.gameId)
+                        calculateGameAvarageRatingBasedOnReviews((existingReview as ReviewDbo).gameId)
                             .then(() => {
                                 res.end();
                             })
@@ -50,4 +51,4 @@ router.put('/api/review/:id', (req, res) => {
 
 });
 
-const updateReviewByIdApi = router;
+export const updateReviewByIdApi = router;

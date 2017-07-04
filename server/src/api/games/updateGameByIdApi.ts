@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import { EntityDbo } from '../../db/dbo/EntityDbo';
 import { GameDbo } from '../../db/dbo/GameDbo';
 import { handleApiError } from '../common/handleApiError';
 import { getGameIsValid, gameIsInvalidMessage } from '../validation/getGameIsValid';
@@ -21,8 +22,8 @@ router.put('/api/game/:id', (req, res) => {
     }
 
     getEntityExists(DbTableEnum.games, id)
-        .then((gameExists: boolean) => {
-            if (!gameExists) {
+        .then((existingGame: EntityDbo) => {
+            if (!existingGame) {
                 handleApiError(req, res, entityExistsInvalidMessage);
             }
             else {

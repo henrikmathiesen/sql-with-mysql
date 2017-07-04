@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import { EntityDbo } from '../../db/dbo/EntityDbo';
 import { UserDbo } from '../../db/dbo/UserDbo';
 import { handleApiError } from '../common/handleApiError';
 import { getUserIsValid, userIsInValidMessage } from '../validation/getUserIsValid';
@@ -21,8 +22,8 @@ router.put('/api/user/:id', (req, res) => {
     }
 
     getEntityExists(DbTableEnum.users, id)
-        .then((userExists: boolean) => {
-            if (!userExists) {
+        .then((existingUser: EntityDbo) => {
+            if (!existingUser) {
                 handleApiError(req, res, entityExistsInvalidMessage);
             }
             else {
