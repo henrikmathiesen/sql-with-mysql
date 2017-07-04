@@ -277,6 +277,12 @@ https://www.npmjs.com/package/mysql
 
 Following this toutorial https://www.youtube.com/watch?v=ZkQeV-znkZk , Iam going to use the last one.
 
+### General Information About Node
+
+https://nodejs.org/en/about/  
+https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d  
+https://stackoverflow.com/questions/5599024/what-so-different-about-node-jss-event-driven-cant-we-do-that-in-asp-nets-ht
+
 ### Node 6.10.2 and ES6 syntax
 
 We are also going to use ES6 syntax in Node, without a compiler, since the support seems good:  
