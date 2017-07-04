@@ -12,7 +12,7 @@
     "start:delete": "npm run ts && npm run serve:dev:delete",
     "start:prod": "npm run ts && npm run serve:prod",
     "ts": "tsc",
-    "clean-build": "rimraf server/bld",
+    "clean-bld": "rimraf server/bld",
     "serve:dev": "node server/bld/index.js",
     "serve:dev:seed": "cross-env NODE_ENV=seed node server/bld/index.js",
     "serve:dev:delete": "cross-env NODE_ENV=delete node server/bld/index.js",
