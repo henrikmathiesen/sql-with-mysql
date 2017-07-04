@@ -6,9 +6,9 @@ import { uncaughtExceptionListener } from './uncaughtExceptionListener';
 import { seeder, deleter } from './seedDb/seeder';
 import { routing } from './routing';
 
-const server = express();
+const app = express();
 const serverListener = () => {
-    server.listen('1337', () => {
+    app.listen('1337', () => {
         console.log(`Server is running, production mode is ${isProduction}, should seed is ${shouldSeed}, should delete is ${shouldDelete}`);
     });
 };
@@ -32,19 +32,19 @@ initDb(() => {
     if (shouldSeed) {
         seeder(() => {
             console.log('Database seeded');
-            routing(server);
+            routing(app);
             serverListener();
         });
     }
     else if (shouldDelete) {
         deleter(() => {
             console.log('Database table rows deleted');
-            routing(server);
+            routing(app);
             serverListener();
         });
     }
     else {
-        routing(server);
+        routing(app);
         serverListener();
     }
 });

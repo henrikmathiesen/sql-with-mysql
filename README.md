@@ -315,6 +315,9 @@ Lets seed the tables with some test data and then do an API.
 Yes, we are going to use it.  
 http://mherman.org/blog/2016/11/05/developing-a-restful-api-with-node-and-typescript/#.WUT9Z-vyhjF
 
+The author of the guide is creating the server in a bit different way, but it is really the same in our case  
+https://stackoverflow.com/questions/17696801/express-js-app-listen-vs-server-listen
+
 As usual Type definitions are behind the APIs they are supposed to cover. :/
 
 ### Changing naming conventions
