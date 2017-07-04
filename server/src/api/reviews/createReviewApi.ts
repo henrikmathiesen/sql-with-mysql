@@ -4,6 +4,7 @@ import { EntityDbo } from '../../db/dbo/EntityDbo';
 import { handleApiError } from '../common/handleApiError';
 import { getReviewIsValid, reviewIsInvalidMessage } from '../validation/getReviewIsValid';
 import { getEntityExists, entityExistsInvalidMessage } from '../validation/getEntityExists';
+import { getUserHasAlreadyAddedOneReviewForThisGame, userHasAlreadyAddedOneReviewForThisGameInvalidMessage } from '../validation/getUserHasAlreadyAddedOneReviewForThisGame';
 import { createEntityQuery } from '../../db/queries/createEntityQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { createdReviewBodyToReviewMapping, IReviewBody } from '../mapping/reviewBodyToReviewMapping';
@@ -22,6 +23,22 @@ router.post('/api/review', (req, res) => {
 
     const newReview = createdReviewBodyToReviewMapping(review);
 
+    const createReviewAndCalculateGameAvarageRating = () => {
+        createEntityQuery(DbTableEnum.reviews, newReview)
+            .then(() => {
+                calculateGameAvarageRatingBasedOnReviews(newReview.gameId)
+                    .then(() => {
+                        res.sendStatus(201);
+                    })
+                    .catch((error) => {
+                        handleApiError(req, res, error);
+                    });
+            })
+            .catch((error) => {
+                handleApiError(req, res, error);
+            });
+    };
+
     Promise.all([
         getEntityExists(DbTableEnum.users, newReview.userId),
         getEntityExists(DbTableEnum.games, newReview.gameId)
@@ -32,15 +49,15 @@ router.post('/api/review', (req, res) => {
                 handleApiError(req, res, entityExistsInvalidMessage);
             }
             else {
-                createEntityQuery(DbTableEnum.reviews, newReview)
-                    .then(() => {
-                        calculateGameAvarageRatingBasedOnReviews(newReview.gameId)
-                            .then(() => {
-                                res.sendStatus(201);
-                            })
-                            .catch((error) => { 
-                                handleApiError(req, res, error);
-                            });
+                getUserHasAlreadyAddedOneReviewForThisGame(newReview)
+                    .then((userHasAlreadyAddedOneReviewForThisGame: boolean) => {
+                        if (userHasAlreadyAddedOneReviewForThisGame) {
+                            handleApiError(req, res, userHasAlreadyAddedOneReviewForThisGameInvalidMessage);
+                            return;
+                        }
+                        else {
+                            createReviewAndCalculateGameAvarageRating();
+                        }
                     })
                     .catch((error) => {
                         handleApiError(req, res, error);
