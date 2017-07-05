@@ -42,6 +42,6 @@ export const routing = (app) => {
     app.use(getReviewsApi);             // /
     app.use(getReviewByIdApi);          // /
     app.use(createReviewApi);           // -
-    app.use(updateReviewByIdApi);       // -
+    app.use(updateReviewByIdApi);       // +
     app.use(deleteReviewByIdApi);       // /
 };

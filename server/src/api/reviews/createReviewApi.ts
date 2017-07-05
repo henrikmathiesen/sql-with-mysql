@@ -23,22 +23,6 @@ router.post('/api/review', (req, res) => {
 
     const newReview = createdReviewBodyToReviewMapping(review);
 
-    const createReviewAndCalculateGameAvarageRating = () => {
-        createEntityQuery(DbTableEnum.reviews, newReview)
-            .then(() => {
-                calculateGameAvarageRatingBasedOnReviews(newReview.gameId)
-                    .then(() => {
-                        res.sendStatus(201);
-                    })
-                    .catch((error) => {
-                        handleApiError(req, res, error);
-                    });
-            })
-            .catch((error) => {
-                handleApiError(req, res, error);
-            });
-    };
-
     Promise.all([
         getEntityExists(DbTableEnum.users, newReview.userId),
         getEntityExists(DbTableEnum.games, newReview.gameId)
@@ -46,23 +30,25 @@ router.post('/api/review', (req, res) => {
         .then((existingEntities: [EntityDbo]) => {
             const userAndGameExist = existingEntities[0] && existingEntities[1];
             if (!userAndGameExist) {
-                handleApiError(req, res, entityExistsInvalidMessage, true);
+                throw entityExistsInvalidMessage;
             }
             else {
-                getUserHasAlreadyAddedOneReviewForThisGame(newReview)
-                    .then((userHasAlreadyAddedOneReviewForThisGame: boolean) => {
-                        if (userHasAlreadyAddedOneReviewForThisGame) {
-                            handleApiError(req, res, userHasAlreadyAddedOneReviewForThisGameInvalidMessage, true);
-                            return;
-                        }
-                        else {
-                            createReviewAndCalculateGameAvarageRating();
-                        }
-                    })
-                    .catch((error) => {
-                        handleApiError(req, res, error);
-                    });
+                return getUserHasAlreadyAddedOneReviewForThisGame(newReview);
             }
+        })
+        .then((userHasAlreadyAddedOneReviewForThisGame: boolean) => {
+            if (userHasAlreadyAddedOneReviewForThisGame) {
+                throw userHasAlreadyAddedOneReviewForThisGameInvalidMessage;
+            }
+            else {
+                return createEntityQuery(DbTableEnum.reviews, newReview);
+            }
+        })
+        .then(() => {
+            return calculateGameAvarageRatingBasedOnReviews(newReview.gameId);
+        })
+        .then(() => { 
+            res.sendStatus(201);
         })
         .catch((error) => {
             handleApiError(req, res, error);
