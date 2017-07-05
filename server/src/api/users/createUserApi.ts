@@ -7,6 +7,7 @@ import { createEntityQuery } from '../../db/queries/createEntityQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { createdUserBodyToUserMapping, IUserBody } from '../mapping/userBodyToUserMapping';
 import { statusCodeConstants } from '../common/statusCodeConstants';
+import { responseHeaderConstants } from '../common/responseHeaderConstants';
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -22,7 +23,8 @@ router.post('/api/user', (req, res) => {
     const newUser = createdUserBodyToUserMapping(user);
 
     createEntityQuery(DbTableEnum.users, newUser)
-        .then(() => {
+        .then((insertId: number) => {
+            res.set(responseHeaderConstants.id, insertId.toString());
             res.sendStatus(statusCodeConstants.created);
         })
         .catch((error) => {

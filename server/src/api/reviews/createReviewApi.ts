@@ -10,12 +10,14 @@ import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { createdReviewBodyToReviewMapping, IReviewBody } from '../mapping/reviewBodyToReviewMapping';
 import { calculateGameAvarageRatingBasedOnReviews } from '../calculation/calculateGameAvarageRatingBasedOnReviews';
 import { statusCodeConstants } from '../common/statusCodeConstants';
+import { responseHeaderConstants } from '../common/responseHeaderConstants';
 
 const router = express.Router();
 router.use(bodyParser.json());
 
 router.post('/api/review', (req, res) => {
     const review: IReviewBody = req.body;
+    let _insertId: number;
 
     if (!getReviewIsValid(review)) {
         handleApiError(req, res, reviewIsInvalidMessage, true);
@@ -45,10 +47,12 @@ router.post('/api/review', (req, res) => {
                 return createEntityQuery(DbTableEnum.reviews, newReview);
             }
         })
-        .then(() => {
+        .then((insertId: number) => {
+            _insertId = insertId;
             return calculateGameAvarageRatingBasedOnReviews(newReview.gameId);
         })
         .then(() => { 
+            res.set(responseHeaderConstants.id, _insertId.toString());
             res.sendStatus(statusCodeConstants.created);
         })
         .catch((error) => {

@@ -3,7 +3,7 @@ import { getDbConnection } from '../common/getSetDbConnection';
 import { DbTableEnum, getDbTableConstants } from '../common/getDbTableConstants';
 import { EntityDbo } from '../dbo/EntityDbo';
 
-export const createEntityQuery = (tableName: DbTableEnum, entity: EntityDbo) => {
+export const createEntityQuery = (tableName: DbTableEnum, entity: EntityDbo): Promise<number> => {
     return new Promise((resolve, reject) => {
         const table = getDbTableConstants(tableName);
 
@@ -12,12 +12,12 @@ export const createEntityQuery = (tableName: DbTableEnum, entity: EntityDbo) => 
             SET ?
         `;
 
-        getDbConnection().query(sql, entity, (error: IError) => {
+        getDbConnection().query(sql, entity, (error: IError, results) => {
             if (error) {
                 reject(error);
             }
             else {
-                resolve();
+                resolve(results.insertId);
             }
         });
     });

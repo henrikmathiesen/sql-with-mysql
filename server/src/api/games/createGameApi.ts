@@ -9,6 +9,7 @@ import { createEntityQuery } from '../../db/queries/createEntityQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { createdGameBodyToGameMapping, IGameBody } from '../mapping/gameBodyToGameMapping';
 import { statusCodeConstants } from '../common/statusCodeConstants';
+import { responseHeaderConstants } from '../common/responseHeaderConstants';
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -32,7 +33,8 @@ router.post('/api/game', (req, res) => {
                 return createEntityQuery(DbTableEnum.games, newGame);
             }
         })
-        .then(() => {
+        .then((insertId: number) => {
+            res.set(responseHeaderConstants.id, insertId.toString());
             res.sendStatus(statusCodeConstants.created);
         })
         .catch((error) => {
