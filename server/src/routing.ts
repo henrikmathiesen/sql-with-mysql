@@ -22,26 +22,26 @@ import { deleteReviewByIdApi } from './api/reviews/deleteReviewByIdApi';
 export const routing = (app) => { 
 
     // user
-    app.use(getUsersApi);
-    app.use(getUserByIdApi);
-    app.use(createUserApi);
-    app.use(updateUserByIdApi);
-    app.use(deleteUserByIdApi);
-    app.use(getGamesForUserByIdApi);
-    app.use(getReviewsForUserByIdApi);
+    app.use(getUsersApi);               // /
+    app.use(getUserByIdApi);            // /
+    app.use(createUserApi);             // /
+    app.use(updateUserByIdApi);         // +
+    app.use(deleteUserByIdApi);         // /
+    app.use(getGamesForUserByIdApi);    // /
+    app.use(getReviewsForUserByIdApi);  // /
 
     // games
-    app.use(getGamesApi);
-    app.use(getGameByIdApi);
-    app.use(createGameApi);
-    app.use(updateGameByIdApi);
-    app.use(deleteGameByIdApi);
-    app.use(getReviewsForGameByIdApi);
+    app.use(getGamesApi);               // /
+    app.use(getGameByIdApi);            // /
+    app.use(createGameApi);             // +
+    app.use(updateGameByIdApi);         // +
+    app.use(deleteGameByIdApi);         // /
+    app.use(getReviewsForGameByIdApi);  // /
 
     // reviews
-    app.use(getReviewsApi);
-    app.use(getReviewByIdApi);
-    app.use(createReviewApi);
-    app.use(updateReviewByIdApi);
-    app.use(deleteReviewByIdApi);
+    app.use(getReviewsApi);             // /
+    app.use(getReviewByIdApi);          // /
+    app.use(createReviewApi);           // -
+    app.use(updateReviewByIdApi);       // -
+    app.use(deleteReviewByIdApi);       // /
 };

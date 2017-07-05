@@ -24,7 +24,7 @@ router.put('/api/user/:id', (req, res) => {
     getEntityExists(DbTableEnum.users, id)
         .then((existingUser: EntityDbo) => {
             if (!existingUser) {
-                handleApiError(req, res, entityExistsInvalidMessage, true);
+                throw entityExistsInvalidMessage;
             }
             else {
                 const updatedUser = updatedUserBodyToUserMapping(user);
@@ -35,7 +35,6 @@ router.put('/api/user/:id', (req, res) => {
             res.end();
         })
         .catch((error) => {
-            console.log('updateUserByIdApi outer error', error);
             handleApiError(req, res, error);
         });
 });

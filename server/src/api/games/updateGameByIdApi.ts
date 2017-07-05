@@ -24,19 +24,15 @@ router.put('/api/game/:id', (req, res) => {
     getEntityExists(DbTableEnum.games, id)
         .then((existingGame: EntityDbo) => {
             if (!existingGame) {
-                handleApiError(req, res, entityExistsInvalidMessage, true);
+                throw entityExistsInvalidMessage;
             }
             else {
                 const updatedGame = updatedGameBodyToGameMapping(game);
-
-                updateEntityByIdQuery(DbTableEnum.games, updatedGame, id)
-                    .then(() => {
-                        res.end();
-                    })
-                    .catch((error) => {
-                        handleApiError(req, res, error);
-                    });
+                return updateEntityByIdQuery(DbTableEnum.games, updatedGame, id);
             }
+        })
+        .then(() => {
+            res.end();
         })
         .catch((error) => {
             handleApiError(req, res, error);
