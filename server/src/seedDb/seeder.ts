@@ -10,29 +10,25 @@ import { DbTableEnum } from '../db/common/getDbTableConstants';
 import { UserDbo } from '../db/dbo/UserDbo';
 import { GameDbo } from '../db/dbo/GameDbo';
 
-let _addedByUser: UserDbo;
-let _addedToGame: GameDbo;
-let _doneCb;
+let _addedByUsers: UserDbo[];
 
 export const seeder = (doneCb) => {
-    _doneCb = doneCb;
     deleter(() => {
         seedUsers()
             .then(() => {
                 return getEntitiesQuery(DbTableEnum.users);
             })
             .then((users: UserDbo[]) => {
-                _addedByUser = users[0];
-                return seedGames(_addedByUser);
+                _addedByUsers = users;
+                return seedGames(_addedByUsers);
             })
             .then(() => {
                 return getEntitiesQuery(DbTableEnum.games);
             })
             .then((games: GameDbo[]) => { 
-                _addedToGame = games[0];
-                return seedReviews(_addedByUser, _addedToGame);
+                return seedReviews(_addedByUsers, games[0]);
             })
-            .then(_doneCb)
+            .then(doneCb)
             .catch((error) => {
                 console.log(error);
             })
