@@ -12,45 +12,27 @@ import { GameDbo } from '../db/dbo/GameDbo';
 
 let _addedByUser: UserDbo;
 let _addedToGame: GameDbo;
-
-const getGamesAndSeedReviewsForGame01AndUser01 = (doneCb) => {
-    getEntitiesQuery(DbTableEnum.games)
-        .then((games: GameDbo[]) => {
-            _addedToGame = games[0];
-            seedReviews(_addedByUser, _addedToGame)
-                .then(doneCb)
-                .catch((error) => {
-                    console.log(error);
-                });
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-};
-
-const getUsersAndSeedGamesForUser01 = (doneCb) => {
-    getEntitiesQuery(DbTableEnum.users)
-        .then((users: UserDbo[]) => {
-            _addedByUser = users[0];
-            seedGames(_addedByUser)
-                .then(() => {
-                    getGamesAndSeedReviewsForGame01AndUser01(doneCb);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-};
+let _doneCb;
 
 export const seeder = (doneCb) => {
+    _doneCb = doneCb;
     deleter(() => {
         seedUsers()
             .then(() => {
-                getUsersAndSeedGamesForUser01(doneCb);
+                return getEntitiesQuery(DbTableEnum.users);
             })
+            .then((users: UserDbo[]) => {
+                _addedByUser = users[0];
+                return seedGames(_addedByUser);
+            })
+            .then(() => {
+                return getEntitiesQuery(DbTableEnum.games);
+            })
+            .then((games: GameDbo[]) => { 
+                _addedToGame = games[0];
+                return seedReviews(_addedByUser, _addedToGame);
+            })
+            .then(_doneCb)
             .catch((error) => {
                 console.log(error);
             })
