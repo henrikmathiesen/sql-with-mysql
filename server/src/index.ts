@@ -3,7 +3,8 @@ import { isProduction, shouldSeed, shouldDelete } from './environment';
 import { initDb } from './db/initDb';
 import { exitProcessListener } from './exitProcessListener';
 import { uncaughtExceptionListener } from './uncaughtExceptionListener';
-import { seeder, deleter } from './seedDb/seeder';
+import { seeder } from './seedDb/seeder';
+import { deleter } from './seedDb/deleter';
 import { routing } from './routing';
 
 const app = express();

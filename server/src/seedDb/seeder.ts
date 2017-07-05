@@ -1,6 +1,4 @@
-import { deleteAllReviews } from './deleteAllReviews';
-import { deleteAllGames } from './deleteAllGames';
-import { deleteAllUsers } from './deleteAllUsers';
+import { deleter } from './deleter';
 
 import { seedReviews } from './seedReviews';
 import { seedGames } from './seedGames';
@@ -42,14 +40,6 @@ const getUsersAndSeedGamesForUser01 = (doneCb) => {
                     console.log(error);
                 });
         })
-        .catch((error) => {
-            console.log(error);
-        });
-};
-
-export const deleter = (doneCb) => {
-    Promise.all([deleteAllReviews(), deleteAllGames(), deleteAllUsers()])
-        .then(doneCb)
         .catch((error) => {
             console.log(error);
         });
