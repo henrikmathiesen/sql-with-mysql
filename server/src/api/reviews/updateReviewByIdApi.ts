@@ -20,7 +20,7 @@ router.put('/api/review/:id', (req, res) => {
     let reviewCurrent: ReviewDbo;
 
     if (!getReviewIsValid(reviewBody)) {
-        handleApiError(req, res, reviewIsInvalidMessage, true);
+        handleApiError(req, res, reviewIsInvalidMessage);
         return;
     }
 

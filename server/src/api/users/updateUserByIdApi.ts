@@ -18,7 +18,7 @@ router.put('/api/user/:id', (req, res) => {
     const user: IUserBody = req.body;
 
     if (!getUserIsValid(user)) {
-        handleApiError(req, res, userIsInValidMessage, true);
+        handleApiError(req, res, userIsInValidMessage);
         return;
     }
 

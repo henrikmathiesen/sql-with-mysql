@@ -18,7 +18,7 @@ router.put('/api/game/:id', (req, res) => {
     const game: IGameBody = req.body;
 
     if (!getGameIsValid(game)) {
-        handleApiError(req, res, gameIsInvalidMessage, true);
+        handleApiError(req, res, gameIsInvalidMessage);
         return;
     }
 

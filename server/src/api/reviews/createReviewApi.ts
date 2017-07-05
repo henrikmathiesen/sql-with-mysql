@@ -20,7 +20,7 @@ router.post('/api/review', (req, res) => {
     let _insertId: number;
 
     if (!getReviewIsValid(review)) {
-        handleApiError(req, res, reviewIsInvalidMessage, true);
+        handleApiError(req, res, reviewIsInvalidMessage);
         return;
     }
 
