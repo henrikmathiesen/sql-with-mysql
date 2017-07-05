@@ -32,7 +32,7 @@ router.put('/api/user/:id', (req, res) => {
             }
         })
         .then(() => { 
-            res.end();
+            res.sendStatus(204);
         })
         .catch((error) => {
             handleApiError(req, res, error);
