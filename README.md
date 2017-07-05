@@ -400,6 +400,12 @@ Setting other status codes are fine though: res.status(201).json(newUser);
 
 Remember that if we only send status, we need to use send, res.sendStatus(201); as opposed to res.status(201).json(newUser) where .json will call send()
 
+### Status codes
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status  
+https://stackoverflow.com/questions/797834/should-a-restful-put-operation-return-something  
+https://stackoverflow.com/questions/2342579/http-status-code-for-update-and-delete
+
 ### Deleting rows with Foreign Key Contraints
 
 I handled it with a BOOLEAN column in each table named deleted. It is stored as 0/1.   
