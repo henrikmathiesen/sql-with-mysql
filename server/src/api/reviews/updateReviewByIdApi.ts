@@ -15,9 +15,10 @@ router.use(bodyParser.json());
 
 router.put('/api/review/:id', (req, res) => {
     const id: number = parseInt(req.params.id);
-    const review: IReviewBody = req.body;
+    const reviewBody: IReviewBody = req.body;
+    let reviewCurrent: ReviewDbo;
 
-    if (!getReviewIsValid(review)) {
+    if (!getReviewIsValid(reviewBody)) {
         handleApiError(req, res, reviewIsInvalidMessage, true);
         return;
     }
@@ -25,25 +26,19 @@ router.put('/api/review/:id', (req, res) => {
     getEntityExists(DbTableEnum.reviews, id)
         .then((existingReview: EntityDbo) => {
             if (!existingReview) {
-                handleApiError(req, res, entityExistsInvalidMessage, true);
+                throw entityExistsInvalidMessage;
             }
             else {
-                const updatedReview = updatedReviewBodyToReviewMapping(review);
-
-                updateEntityByIdQuery(DbTableEnum.reviews, updatedReview, id)
-                    .then(() => {
-                        calculateGameAvarageRatingBasedOnReviews((existingReview as ReviewDbo).gameId)
-                            .then(() => {
-                                res.end();
-                            })
-                            .catch((error) => {
-                                handleApiError(req, res, error);
-                            });
-                    })
-                    .catch((error) => {
-                        handleApiError(req, res, error);
-                    });
+                reviewCurrent = existingReview as ReviewDbo;
+                const updatedReview = updatedReviewBodyToReviewMapping(reviewBody);
+                return updateEntityByIdQuery(DbTableEnum.reviews, updatedReview, id);
             }
+        })
+        .then(() => {
+            return calculateGameAvarageRatingBasedOnReviews(reviewCurrent.gameId);
+        })
+        .then(() => {
+            res.sendStatus(204);
         })
         .catch((error) => {
             handleApiError(req, res, error);
