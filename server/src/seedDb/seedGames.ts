@@ -4,7 +4,7 @@ import { getGameGenreConstants, GameGenresEnum } from '../common/getGameGenreCon
 import { createEntityQuery } from '../db/queries/createEntityQuery';
 import { DbTableEnum } from '../db/common/getDbTableConstants';
 
-export const seedGames = (addedByUser: UserDbo) => {
+export const seedGames = (addedByUsers: UserDbo[]) => {
     return new Promise((resolve, reject) => {
         const games = new Array<GameDbo>();
 
@@ -15,7 +15,7 @@ export const seedGames = (addedByUser: UserDbo) => {
         game01.genre = getGameGenreConstants(GameGenresEnum.roleplaying);
         game01.releaseYear = 2010;
         game01.avarageRating = 10;
-        game01.userId = addedByUser.id;
+        game01.userId = addedByUsers[0].id;
         game01.deleted = false;
 
         const game02 = new GameDbo();
@@ -25,7 +25,7 @@ export const seedGames = (addedByUser: UserDbo) => {
         game02.genre = getGameGenreConstants(GameGenresEnum.roleplaying);
         game02.releaseYear = 2015;
         game02.avarageRating = 10;
-        game02.userId = addedByUser.id;
+        game02.userId = addedByUsers[1].id;
         game02.deleted = false;
 
         games.push(game01);

@@ -4,7 +4,7 @@ import { UserDbo } from '../db/dbo/UserDbo';
 import { createEntityQuery } from '../db/queries/createEntityQuery';
 import { DbTableEnum } from '../db/common/getDbTableConstants';
 
-export const seedReviews = (addedByUser: UserDbo, addedToGame: GameDbo) => {
+export const seedReviews = (addedByUsers: UserDbo[], addedToGame: GameDbo) => {
     return new Promise((resolve, reject) => {
         const reviews = new Array<ReviewDbo>();
 
@@ -13,7 +13,7 @@ export const seedReviews = (addedByUser: UserDbo, addedToGame: GameDbo) => {
         review01.body = 'Explore the lands and enjoy.';
         review01.rating = 10;
         review01.gameId = addedToGame.id;
-        review01.userId = addedByUser.id;
+        review01.userId = addedByUsers[0].id;
         review01.deleted = false;
 
         const review02 = new ReviewDbo();
@@ -21,7 +21,7 @@ export const seedReviews = (addedByUser: UserDbo, addedToGame: GameDbo) => {
         review02.body = 'A fantastic world and characters.';
         review02.rating = 10;
         review02.gameId = addedToGame.id;
-        review02.userId = addedByUser.id;
+        review02.userId = addedByUsers[1].id;
         review02.deleted = false;
 
         reviews.push(review01);

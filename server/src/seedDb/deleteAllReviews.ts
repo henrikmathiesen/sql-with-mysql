@@ -15,7 +15,6 @@ export const deleteAllReviews = () => {
                         return deleteEntityByIdQuery(DbTableEnum.reviews, review.id)
                     }))
                         .then(resolve);
-
                 }
             })
             .catch(reject);

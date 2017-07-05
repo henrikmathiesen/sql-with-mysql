@@ -25,17 +25,14 @@ router.post('/api/game', (req, res) => {
     getEntityExists(DbTableEnum.users, newGame.userId)
         .then((existingUser: EntityDbo) => {
             if (!existingUser) {
-                handleApiError(req, res, entityExistsInvalidMessage, true);
+                throw entityExistsInvalidMessage;
             }
             else {
-                createEntityQuery(DbTableEnum.games, newGame)
-                    .then(() => { 
-                        res.sendStatus(201);
-                    })
-                    .catch((error) => { 
-                        handleApiError(req, res, error);            
-                    });
+                return createEntityQuery(DbTableEnum.games, newGame);
             }
+        })
+        .then(() => {
+            res.sendStatus(201);
         })
         .catch((error) => {
             handleApiError(req, res, error);
