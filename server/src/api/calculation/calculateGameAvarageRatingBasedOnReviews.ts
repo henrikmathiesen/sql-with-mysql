@@ -9,11 +9,10 @@ import { getDbColumnConstants, IReviewsColumnConstants } from '../../db/common/g
 export const calculateGameAvarageRatingBasedOnReviews = (gameId: number) => {
     return new Promise((resolve, reject) => {
         const gameIdColumn = (getDbColumnConstants(DbTableEnum.reviews) as IReviewsColumnConstants).gameId;
+        let gameAvarageRating = 0;
 
         getEntitiesForEntityByIdQuery(DbTableEnum.reviews, gameIdColumn, gameId)
             .then((reviews: ReviewDbo[]) => {
-                let gameAvarageRating = 0;
-
                 for (let review = 0; review < reviews.length; review++) {
                     gameAvarageRating += reviews[review].rating;
                 }
@@ -21,15 +20,13 @@ export const calculateGameAvarageRatingBasedOnReviews = (gameId: number) => {
                 gameAvarageRating = gameAvarageRating / reviews.length;
                 gameAvarageRating = Math.round(gameAvarageRating);
 
-                getEntityByIdQuery(DbTableEnum.games, gameId)
-                    .then((game: GameDbo) => {
-                        game.avarageRating = gameAvarageRating;
-                        updateEntityByIdQuery(DbTableEnum.games, game, gameId)
-                            .then(resolve)
-                            .catch(reject);
-                    })
-                    .catch(reject);
+                return getEntityByIdQuery(DbTableEnum.games, gameId);
             })
+            .then((game: GameDbo) => {
+                game.avarageRating = gameAvarageRating;
+                return updateEntityByIdQuery(DbTableEnum.games, game, gameId);
+            })
+            .then(resolve)
             .catch(reject);
     });
 };
