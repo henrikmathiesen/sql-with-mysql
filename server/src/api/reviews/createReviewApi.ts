@@ -9,6 +9,7 @@ import { createEntityQuery } from '../../db/queries/createEntityQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { createdReviewBodyToReviewMapping, IReviewBody } from '../mapping/reviewBodyToReviewMapping';
 import { calculateGameAvarageRatingBasedOnReviews } from '../calculation/calculateGameAvarageRatingBasedOnReviews';
+import { statusCodeConstants } from '../common/statusCodeConstants';
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -48,7 +49,7 @@ router.post('/api/review', (req, res) => {
             return calculateGameAvarageRatingBasedOnReviews(newReview.gameId);
         })
         .then(() => { 
-            res.sendStatus(201);
+            res.sendStatus(statusCodeConstants.created);
         })
         .catch((error) => {
             handleApiError(req, res, error);

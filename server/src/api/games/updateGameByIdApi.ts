@@ -8,6 +8,7 @@ import { getEntityExists, entityExistsInvalidMessage } from '../validation/getEn
 import { updateEntityByIdQuery } from '../../db/queries/updateEntityByIdQuery';
 import { DbTableEnum } from '../../db/common/getDbTableConstants';
 import { updatedGameBodyToGameMapping, IGameBody } from '../mapping/gameBodyToGameMapping';
+import { statusCodeConstants } from '../common/statusCodeConstants';
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -32,7 +33,7 @@ router.put('/api/game/:id', (req, res) => {
             }
         })
         .then(() => {
-            res.sendStatus(204);
+            res.sendStatus(statusCodeConstants.noContent);
         })
         .catch((error) => {
             handleApiError(req, res, error);
