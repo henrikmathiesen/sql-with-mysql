@@ -13,12 +13,14 @@ export const calculateGameAvarageRatingBasedOnReviews = (gameId: number) => {
 
         getEntitiesForEntityByIdQuery(DbTableEnum.reviews, gameIdColumn, gameId)
             .then((reviews: ReviewDbo[]) => {
-                for (let review = 0; review < reviews.length; review++) {
-                    gameAvarageRating += reviews[review].rating;
-                }
+                if(reviews) {
+                    for (let review = 0; review < reviews.length; review++) {
+                        gameAvarageRating += reviews[review].rating;
+                    }
 
-                gameAvarageRating = gameAvarageRating / reviews.length;
-                gameAvarageRating = Math.round(gameAvarageRating);
+                    gameAvarageRating = gameAvarageRating / reviews.length;
+                    gameAvarageRating = Math.round(gameAvarageRating);
+                }
 
                 return getEntityByIdQuery(DbTableEnum.games, gameId);
             })
