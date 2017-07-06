@@ -15,11 +15,11 @@ export const getGameIsValid = (game: IGameBody) => {
     const genreIsSport = game.genre == getGameGenreConstants(GameGenresEnum.sport);
     const genreIsStrategy = game.genre == getGameGenreConstants(GameGenresEnum.strategy);
 
-    const nameIsNotEmpty = game.name;
-    const developerIsNotEmpty = game.developer;
-    const publisherIsNotEmpty = game.publisher;
-    const releaseYearIsNotEmpty = game.releaseYear;
-    const userIdIsNotEmpty = game.userId;
+    const nameIsNotEmpty = Boolean(game.name);
+    const developerIsNotEmpty =  Boolean(game.developer);
+    const publisherIsNotEmpty = Boolean(game.publisher);
+    const releaseYearIsNotEmpty = Boolean(game.releaseYear);
+    const userIdIsNotEmpty = Boolean(game.userId);
 
     const hasValidTypes = nameIsAString &&
         developerIsAString &&

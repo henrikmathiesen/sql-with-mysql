@@ -9,11 +9,11 @@ export const getReviewIsValid = (review: IReviewBody) => {
     const gameIdIsANumber = typeof review.gameId === 'number';
     const userIdIsANumber = typeof review.userId === 'number';
 
-    const headerIsNotEmpty = review.header;
-    const bodyIsNotEmpty = review.body;
-    const ratingIsNotEmpty = review.rating;
-    const gameIdIsNotEmpty = review.gameId;
-    const userIdIsNotEmpty = review.userId;
+    const headerIsNotEmpty = Boolean(review.header);
+    const bodyIsNotEmpty = Boolean(review.body);
+    const ratingIsNotEmpty = Boolean(review.rating);
+    const gameIdIsNotEmpty = Boolean(review.gameId);
+    const userIdIsNotEmpty = Boolean(review.userId);
 
     const ratingIsBetween1And10 = review.rating >= 1 && review.rating <= 10;
 
