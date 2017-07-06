@@ -30,9 +30,6 @@ describe('It can calculate an avarage rating for a game, based on the games revi
                     const reviewScoresSum = reviewScores.reduce((total, score) => total + score);
                     gameAvarageRating = Math.round(reviewScoresSum / reviews.length);
                 }
-                else {
-                    gameAvarageRating = 0;
-                }
 
                 return gameAvarageRating;
             }
