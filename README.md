@@ -419,3 +419,5 @@ const registeredIsAnIso8601Date = moment(user.registered, moment.ISO_8601, true)
 ## Unit Testing
 
 I thought about doing unit testing for this project, but because of time contraints I will not do it. It would be alot of integration tests with the SQL database and that is something new for me. Maybe some other time in the future. This projekt is mainly about getting better at SQL, and I think that Iam more familiar with SQL now.
+
+Iam having second thoughts, I will do some unit testing, its always good to do some at least.
