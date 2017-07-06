@@ -9,7 +9,7 @@ describe('It validates a user', () => {
                 email: 'foo@bar.baz'
             };
 
-            expect(getUserIsValid(jsonUserPost as any)).toBeFalsy();
+            expect(getUserIsValid(jsonUserPost as any)).toEqual(false);
         });
 
         it('Sample B', () => {
@@ -18,7 +18,7 @@ describe('It validates a user', () => {
                 email: 2
             };
 
-            expect(getUserIsValid(jsonUserPost as any)).toBeFalsy();
+            expect(getUserIsValid(jsonUserPost as any)).toEqual(false);
         });
     });
 
@@ -29,7 +29,7 @@ describe('It validates a user', () => {
                 email: 'foo@bar.baz'
             };
 
-            expect(getUserIsValid(jsonUserPost as any)).toBeFalsy();
+            expect(getUserIsValid(jsonUserPost as any)).toEqual(false);
         });
 
         it('Sample B', () => {
@@ -38,7 +38,7 @@ describe('It validates a user', () => {
                 email: ''
             };
 
-            expect(getUserIsValid(jsonUserPost as any)).toBeFalsy();
+            expect(getUserIsValid(jsonUserPost as any)).toEqual(false);
         });
     });
 
@@ -49,7 +49,7 @@ describe('It validates a user', () => {
                 email: 'foo@bar.baz'
             };
 
-            expect(getUserIsValid(jsonUserPost as any)).toBeTruthy();
+            expect(getUserIsValid(jsonUserPost as any)).toEqual(true);
         });
     });
 
