@@ -46,7 +46,7 @@ describe('It can calculate an avarage rating for a game, based on the games revi
                 const review03 = new ReviewDbo();
                 review03.rating = 10;
 
-                let reviews = new Array<ReviewDbo>();
+                const reviews = new Array<ReviewDbo>();
                 reviews.push(review01);
                 reviews.push(review02);
                 reviews.push(review03);
@@ -60,7 +60,7 @@ describe('It can calculate an avarage rating for a game, based on the games revi
                 const review02 = new ReviewDbo();
                 review02.rating = 10;
 
-                let reviews = new Array<ReviewDbo>();
+                const reviews = new Array<ReviewDbo>();
                 reviews.push(review01);
                 reviews.push(review02);
 
