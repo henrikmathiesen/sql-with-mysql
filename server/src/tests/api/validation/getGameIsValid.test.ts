@@ -95,7 +95,7 @@ describe('It validates a game', () => {
         });
     });
 
-    describe('A valid user', () => {
+    describe('A valid game', () => {
         it('Sample A', () => {
             const jsonUserPost = {
                 name: 'some game',
