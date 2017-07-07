@@ -175,6 +175,11 @@ SELECT g.id, g.name
 FROM Games g  
 WHERE g.foo IS NOT NULL;
 
+#### Which games have a review
+
+select * from games as g  
+where exists (select * from reviews as r where r.gameId = g.id);
+
 ### Functions
 
 SELECT COUNT( * ) FROM Games; -- return count (including NULL values)  
