@@ -33,7 +33,7 @@ initDb(() => {
         exitApp(1);
     });
 
-    if (shouldSeed && !isProduction) {
+    if (shouldSeed) {
         seeder(() => {
             console.log('Database seeded');
             routing(app);
@@ -41,7 +41,7 @@ initDb(() => {
             serverListener();
         });
     }
-    else if (shouldDelete && !isProduction) {
+    else if (shouldDelete) {
         deleter(() => {
             console.log('Database table rows deleted');
             routing(app);
