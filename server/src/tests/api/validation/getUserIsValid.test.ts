@@ -5,7 +5,7 @@ describe('It validates a user', () => {
     describe('By checking property types', () => {
         it('Sample A', () => {
             const jsonUserPost = {
-                name: 2,
+                name: 2,                                // invalid
                 email: 'foo@bar.baz'
             };
 
@@ -15,7 +15,7 @@ describe('It validates a user', () => {
         it('Sample B', () => {
             const jsonUserPost = {
                 name: 'foo',
-                email: 2
+                email: 2                                // invalid
             };
 
             expect(getUserIsValid(jsonUserPost as any)).toEqual(false);
@@ -25,7 +25,7 @@ describe('It validates a user', () => {
     describe('By checking has no empty values', () => {
         it('Sample A', () => {
             const jsonUserPost = {
-                name: '',
+                name: '',                               // invalid
                 email: 'foo@bar.baz'
             };
 
@@ -35,7 +35,7 @@ describe('It validates a user', () => {
         it('Sample B', () => {
             const jsonUserPost = {
                 name: 'foo',
-                email: ''
+                email: ''                               // invalid
             };
 
             expect(getUserIsValid(jsonUserPost as any)).toEqual(false);
