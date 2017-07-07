@@ -16,9 +16,9 @@ const gameBodyToGameMapping = (gameBody: IGameBody, isCreated: boolean) => {
     game.publisher = gameBody.publisher;
     game.genre = gameBody.genre;
     game.releaseYear = gameBody.releaseYear;
-    game.avarageRating = 0;
 
     if (isCreated) {
+        game.avarageRating = 0;
         game.userId = gameBody.userId;
         game.deleted = false;
     }
