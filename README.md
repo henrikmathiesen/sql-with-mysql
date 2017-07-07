@@ -425,6 +425,12 @@ However we handle that ourselves in handleApiErrors. We have a global request er
 https://derickbailey.com/2014/09/06/proper-error-handling-in-expressjs-route-handlers/  
 https://expressjs.com/en/guide/error-handling.html
 
+More on error handling (actuallt our global unhandled exception handler is NOT encouraged):  
+https://www.joyent.com/node-js/production/design/errors
+
+It could be a good idea to restart the application instead of exit with code 1, if unhandled exception:  
+https://stackoverflow.com/questions/7310521/node-js-best-practice-exception-handling
+
 ## Unit Testing
 
 I thought about doing unit testing for this project, but because of time contraints I will not do it. It would be alot of integration tests with the SQL database and that is something new for me. Maybe some other time in the future. This projekt is mainly about getting better at SQL, and I think that Iam more familiar with SQL now.
