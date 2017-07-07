@@ -114,6 +114,42 @@ describe('It validates a review', () => {
 
             expect(getReviewIsValid(jsonUserPost as any)).toEqual(false);
         });
+
+        it('Sample E', () => {
+            const jsonUserPost = {
+                header: 'some header',
+                body: 'some body',
+                                                            // invalid
+                gameId: 1,
+                userId: 1
+            };
+
+            expect(getReviewIsValid(jsonUserPost as any)).toEqual(false);
+        });
+
+        it('Sample F', () => {
+            const jsonUserPost = {
+                header: 'some header',
+                body: 'some body',
+                rating: undefined,                          // invalid
+                gameId: 1,
+                userId: 1
+            };
+
+            expect(getReviewIsValid(jsonUserPost as any)).toEqual(false);
+        });
+
+        it('Sample G', () => {
+            const jsonUserPost = {
+                header: 'some header',
+                body: 'some body',
+                rating: null,                               // invalid
+                gameId: 1,
+                userId: 1
+            };
+
+            expect(getReviewIsValid(jsonUserPost as any)).toEqual(false);
+        });
     });
 
     describe('A valid review', () => { 
