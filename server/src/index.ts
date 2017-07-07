@@ -3,6 +3,7 @@ import { isProduction, shouldSeed, shouldDelete } from './environment';
 import { initDb } from './db/initDb';
 import { exitProcessListener } from './exitProcessListener';
 import { uncaughtExceptionListener } from './uncaughtExceptionListener';
+import { uncaughtRequestErrors } from './uncaughtRequestErrors';
 import { seeder } from './seedDb/seeder';
 import { deleter } from './seedDb/deleter';
 import { routing } from './routing';
@@ -14,38 +15,43 @@ const serverListener = () => {
     });
 };
 
+const exitApp = (code) => {
+    console.log('Disconnected from Database');
+    console.log(`Exiting App with status code ${code}`);
+    process.exit(code);
+};
+
 initDb(() => {
     console.log('Connected to Database');
 
     exitProcessListener(() => {
-        console.log('Disconnected from Database');
-        console.log('Exiting App');
-        process.exit();
+        exitApp(0);
     });
 
-    uncaughtExceptionListener((error) => { 
+    uncaughtExceptionListener((error) => {
         console.log('uncaughtException', error);
-        console.log('Disconnected from Database');
-        console.log('Exiting App with status code 1');
-        process.exit(1);
+        exitApp(1);
     });
 
-    if (shouldSeed) {
+    if (shouldSeed && !isProduction) {
         seeder(() => {
             console.log('Database seeded');
             routing(app);
+            uncaughtRequestErrors(app);
             serverListener();
         });
     }
-    else if (shouldDelete) {
+    else if (shouldDelete && !isProduction) {
         deleter(() => {
             console.log('Database table rows deleted');
             routing(app);
+            uncaughtRequestErrors(app);
             serverListener();
         });
     }
     else {
         routing(app);
+        uncaughtRequestErrors(app);
         serverListener();
     }
 });

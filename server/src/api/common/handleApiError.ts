@@ -1,8 +1,9 @@
 import { statusCodeConstants } from '../common/statusCodeConstants';
+import { isProduction } from '../../environment';
 
 export const handleApiError = (req, res, error) => { 
-    console.log(error);
+    const errorInRoute = `Error in route: [${req.method}]${req.path}`;
+    const userErrorMessage = isProduction ? errorInRoute : errorInRoute + '\n' + error.stack;
     
-    const userErrorMessage = `Error in route: [${req.method}]${req.path}`;
-    res.status(statusCodeConstants.internalServerError).json(userErrorMessage);
+    res.status(statusCodeConstants.internalServerError).send(userErrorMessage);
 };
