@@ -16,11 +16,15 @@ router.delete('/api/review/:id', (req, res) => {
 
     getEntityByIdQuery(DbTableEnum.reviews, id)
         .then((review: ReviewDbo) => {
-            _gameId = review.gameId;
-            return setAsDeletedEntityByIdQuery(DbTableEnum.reviews, id);
+            if (review) {
+                _gameId = review.gameId;
+                return setAsDeletedEntityByIdQuery(DbTableEnum.reviews, id);
+            }
         })
         .then(() => {
-            return calculateGameAvarageRatingBasedOnReviews(_gameId);
+            if(_gameId) {
+                return calculateGameAvarageRatingBasedOnReviews(_gameId);
+            }
         })
         .then(() => {
             res.sendStatus(statusCodeConstants.noContent);
