@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { isProduction, shouldSeed, shouldDelete } from './environment';
+import { isProduction, shouldSeed, shouldDelete, custom } from './environment';
 import { initDb } from './db/initDb';
 import { exitProcessListener } from './exitProcessListener';
 import { uncaughtExceptionListener } from './uncaughtExceptionListener';
@@ -11,7 +11,7 @@ import { routing } from './routing';
 const app = express();
 const serverListener = () => {
     app.listen('1337', () => {
-        console.log(`Server is running, production mode is ${isProduction}, should seed is ${shouldSeed}, should delete is ${shouldDelete}`);
+        console.log(`Server is running, production mode is ${isProduction}, should seed is ${shouldSeed}, should delete is ${shouldDelete}, custom is: ${custom}`);
     });
 };
 
