@@ -273,7 +273,7 @@ WHERE g.id IN(1,2,3,4);
 
 ## Setting up an API with Node and Express
 
-Tutorial: https://www.youtube.com/watch?v=DvjBYM8ScZw
+Tutorial (also authentication): https://www.youtube.com/watch?v=DvjBYM8ScZw
 
 Of course we want to do that. Lets install Express Web Framework.  
 https://www.npmjs.com/package/express
