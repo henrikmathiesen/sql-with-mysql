@@ -14,12 +14,12 @@
     "start:custom":"npm run ts && npm run serve:custom",
     "ts": "tsc",
     "test": "npm run ts && jest",
-    "clean-bld": "rimraf server/bld",
-    "serve:dev": "node server/bld/index.js",
-    "serve:dev:seed": "cross-env NODE_ENV=seed node server/bld/index.js",
-    "serve:dev:delete": "cross-env NODE_ENV=delete node server/bld/index.js",
-    "serve:prod": "cross-env NODE_ENV=production node server/bld/index.js",
-    "serve:custom":"cross-env CUSTOM=foo node server/bld/index.js"
+    "clean:bld": "rimraf server/bld",
+    "serve:dev": "node server/bld/main.js",
+    "serve:dev:seed": "cross-env NODE_ENV=seed node server/bld/main.js",
+    "serve:dev:delete": "cross-env NODE_ENV=delete node server/bld/main.js",
+    "serve:prod": "cross-env NODE_ENV=production node server/bld/main.js",
+    "serve:custom":"cross-env CUSTOM=foo node server/bld/main.js"
   },
   "dependencies": {
     "body-parser": "1.17.2",
