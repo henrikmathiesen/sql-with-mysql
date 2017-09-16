@@ -1,4 +1,10 @@
-export const isProduction = process.env.NODE_ENV === 'production';
-export const shouldSeed = process.env.NODE_ENV === 'seed';
-export const shouldDelete = process.env.NODE_ENV === 'delete';
-export const custom = process.env.CUSTOM === 'foo'; // testing setting custom env variables
+//export const custom = process.env.CUSTOM === 'foo'; // testing setting custom env variables, works fine
+
+export const environmentsConstants = {
+    development: 'development',
+    production: 'production',
+    seed: 'seed',
+    delete: 'delete'
+};
+
+export const environment = process.env.NODE_ENV || environmentsConstants.development;

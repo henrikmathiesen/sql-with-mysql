@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { isProduction, shouldSeed, shouldDelete, custom } from './environment';
+import { environment, environmentsConstants } from './environment';
 import { initDb } from './db/initDb';
 import { exitProcessListener } from './exitProcessListener';
 import { uncaughtExceptionListener } from './uncaughtExceptionListener';
@@ -10,8 +10,10 @@ import { routing } from './routing';
 
 const app = express();
 const serverListener = () => {
-    app.listen('1337', () => {
-        console.log(`Server is running, production mode is ${isProduction}, should seed is ${shouldSeed}, should delete is ${shouldDelete}, custom is: ${custom}`);
+    const port = '1337';
+
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}, environment is ${environment}`);
     });
 };
 
@@ -19,6 +21,13 @@ const exitApp = (code) => {
     console.log('Disconnected from Database');
     console.log(`Exiting App with status code ${code}`);
     process.exit(code);
+};
+
+const startApp = () => {
+    console.log('starting app');
+    routing(app);
+    uncaughtRequestErrors(app);
+    serverListener();
 };
 
 initDb(() => {
@@ -33,25 +42,19 @@ initDb(() => {
         exitApp(1);
     });
 
-    if (shouldSeed) {
+    if (environment === environmentsConstants.seed) {
         seeder(() => {
             console.log('Database seeded');
-            routing(app);
-            uncaughtRequestErrors(app);
-            serverListener();
+            startApp();
         });
     }
-    else if (shouldDelete) {
+    else if (environment === environmentsConstants.delete) {
         deleter(() => {
             console.log('Database table rows deleted');
-            routing(app);
-            uncaughtRequestErrors(app);
-            serverListener();
+            startApp();
         });
     }
     else {
-        routing(app);
-        uncaughtRequestErrors(app);
-        serverListener();
+        startApp();
     }
 });
