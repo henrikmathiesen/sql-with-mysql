@@ -1,14 +1,23 @@
 import { statusCodeConstants } from '../common/statusCodeConstants';
 import { environment, environmentsConstants } from '../../environment';
 
-// In production mode, send no stacktrace but send custom error message. In development mode, send both.
-
-const getErrorIsCustomError = (error: any) => {
+const errorIsCustomError = (error: any) => {
     return typeof error === 'string';
 };
 
 export const handleApiError = (req, res, error) => {
     const errorInRoute = `Error in route: [${req.method}]${req.path}`;
-    const userErrorMessage = (environment === environmentsConstants.production) && !getErrorIsCustomError(error) ? errorInRoute : (errorInRoute + '\n') + (error.stack || error);
-    res.status(statusCodeConstants.internalServerError).send(userErrorMessage);
+    let errorMessage = '';
+
+    if (errorIsCustomError(error)) {
+        errorMessage = (errorInRoute + '\n') + error;
+    }
+    else if (environment === environmentsConstants.production) {
+        errorMessage = errorInRoute;
+    }
+    else {
+        errorMessage = (errorInRoute + '\n') + error.stack;
+    }
+
+    res.status(statusCodeConstants.internalServerError).send(errorMessage);
 };
