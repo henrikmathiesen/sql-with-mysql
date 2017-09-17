@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./server/src",
     "target": "es6",
     "module": "commonjs",
     "outDir": "server/bld",
