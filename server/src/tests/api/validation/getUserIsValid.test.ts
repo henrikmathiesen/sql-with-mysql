@@ -1,4 +1,4 @@
-import { getUserIsValid } from '../../../api/validation/getUserIsValid';
+import { getUserIsValid } from 'api/validation/getUserIsValid';
 
 describe('It validates a user', () => {
 

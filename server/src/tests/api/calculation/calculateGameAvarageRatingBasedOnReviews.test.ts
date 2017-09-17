@@ -1,5 +1,5 @@
-import { ReviewDbo } from '../../../db/dbo/ReviewDbo';
-import { GameDbo } from '../../../db/dbo/GameDbo';
+import { ReviewDbo } from 'db/dbo/ReviewDbo';
+import { GameDbo } from 'db/dbo/GameDbo';
 
 describe('It can calculate an avarage rating for a game, based on the games reviews', () => {
 

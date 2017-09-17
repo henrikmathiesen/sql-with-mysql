@@ -1,4 +1,4 @@
-import { getReviewIsValid } from '../../../api/validation/getReviewIsValid';
+import { getReviewIsValid } from 'api/validation/getReviewIsValid';
 
 describe('It validates a review', () => {
 

@@ -1,4 +1,4 @@
-import { getGameIsValid } from '../../../api/validation/getGameIsValid';
+import { getGameIsValid } from 'api/validation/getGameIsValid';
 
 describe('It validates a game', () => {
 
