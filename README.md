@@ -425,9 +425,9 @@ const registeredIsAnIso8601Date = moment(user.registered, moment.ISO_8601, true)
 
 ### Error handling
 
-Important, stack trace is sent to user in !production mode, but not in production mode.
+Important, stack trace is sent to client in development mode but not in production mode. One can argue that a better aproach is to never send stack trace to client (since there is a risk a client developer creates logic around it and that logic wont work in production mode), instead the api should log the stack trace in the database.
 
-However we handle that ourselves in handleApiErrors. We have a global request error handler, that calls handleApiErrors. Also catch blocks calls handleApiErrors, could have used return next(error) instead.
+We handle errors in handleApiErrors. We have a global request error handler, that calls handleApiErrors. Also catch blocks calls handleApiErrors, could have used return next(error) instead.
 
 https://derickbailey.com/2014/09/06/proper-error-handling-in-expressjs-route-handlers/  
 https://expressjs.com/en/guide/error-handling.html

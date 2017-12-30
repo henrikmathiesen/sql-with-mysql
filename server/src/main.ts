@@ -57,4 +57,6 @@ initDb(() => {
     else {
         startApp();
     }
+}, () => {
+    exitApp(1);
 });
