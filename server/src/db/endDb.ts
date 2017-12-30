@@ -1,12 +1,12 @@
 import { IError } from 'mySql';
 import { getDbConnection } from './common/getSetDbConnection';
 
-export const endDb = (doneCb) => {
+export const endDb = (doneCb, errorCb) => {
     const connection = getDbConnection();
 
     connection.end((error: IError) => {
         if (error) {
-            throw error;
+            errorCb();
         }
         else {
             doneCb();

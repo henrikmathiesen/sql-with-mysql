@@ -17,10 +17,10 @@ const serverListener = () => {
     });
 };
 
-const exitApp = (code) => {
+const exitApp = (exitCode) => {
     console.log('Disconnected from Database');
-    console.log(`Exiting App with code ${code}`);
-    process.exit(code);
+    console.log(`Exiting App with code ${exitCode}`);
+    process.exit(exitCode);
 };
 
 const startApp = () => {
@@ -33,8 +33,8 @@ const startApp = () => {
 initDb(() => {
     console.log('Connected to Database');
 
-    exitProcessListener(() => {
-        exitApp(0);
+    exitProcessListener((exitCode) => {
+        exitApp(exitCode);
     });
 
     uncaughtExceptionListener((error) => {
