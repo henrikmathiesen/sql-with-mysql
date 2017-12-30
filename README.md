@@ -438,6 +438,16 @@ https://www.joyent.com/node-js/production/design/errors
 It could be a good idea to restart the application instead of exit with code 1, if unhandled exception:  
 https://stackoverflow.com/questions/7310521/node-js-best-practice-exception-handling
 
+### Escaping query values
+
+We are doing this ofcourse, https://www.npmjs.com/package/mysql#escaping-query-values
+
+### Sanitizer and Validator
+
+Sanatize html and script. Validate email addresses etc. Maybe look into these another time ...  
+https://github.com/markau/express-sanitizer  
+https://github.com/ctavan/express-validator
+
 ## Unit Testing
 
 I thought about doing unit testing for this project, but because of time contraints I will not do it. It would be alot of integration tests with the SQL database and that is something new for me. Maybe some other time in the future. This projekt is mainly about getting better at SQL, and I think that Iam more familiar with SQL now.

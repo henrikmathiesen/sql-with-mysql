@@ -19,7 +19,7 @@ const serverListener = () => {
 
 const exitApp = (code) => {
     console.log('Disconnected from Database');
-    console.log(`Exiting App with status code ${code}`);
+    console.log(`Exiting App with code ${code}`);
     process.exit(code);
 };
 
