@@ -271,6 +271,17 @@ WHERE g.id = 2;
 DELETE FROM Games as g  
 WHERE g.id IN(1,2,3,4);
 
+#### SQL LOOP
+
+DECLARE @NUM AS INT;  
+SET @NUM = 1;
+
+WHILE (@NUM < 100)  
+BEGIN  
+SET @NUM = @NUM + 1;  
+-- INSERT INTO STATEMENT  
+END
+
 ## Setting up an API with Node and Express
 
 Tutorial (also authentication): https://www.youtube.com/watch?v=DvjBYM8ScZw
